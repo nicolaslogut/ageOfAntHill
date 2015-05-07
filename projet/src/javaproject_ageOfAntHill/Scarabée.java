@@ -1,0 +1,2 @@
+class Scarabée extends Unité {
+}

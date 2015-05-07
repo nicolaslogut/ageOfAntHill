@@ -1,0 +1,2 @@
+class Mouche extends Unité {
+}

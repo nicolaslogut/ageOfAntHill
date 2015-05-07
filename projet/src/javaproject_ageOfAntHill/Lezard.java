@@ -1,0 +1,2 @@
+class Lezard extends Unité {
+}

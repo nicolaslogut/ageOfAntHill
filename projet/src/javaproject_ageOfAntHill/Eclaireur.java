@@ -1,0 +1,2 @@
+class Eclaireur extends Unité {
+}
