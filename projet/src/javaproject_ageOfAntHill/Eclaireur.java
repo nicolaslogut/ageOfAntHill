@@ -1,3 +1,9 @@
+/**
+ * représente un éclaireur
+ * sa caractéristique principal est de se déplacer rapidement
+ * @author joris
+ *
+ */
 class Eclaireur extends Unité {
 	/**
 	 * vitesse déplacement par défaut d'un éclaireur

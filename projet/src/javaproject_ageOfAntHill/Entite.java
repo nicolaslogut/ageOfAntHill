@@ -19,7 +19,11 @@ class Entite {
 		
 	}
 	
+	/**
+	 * ouvre le menu avec les différentes opérations disponibles pour cet entité
+	 */
 	public void ouvrirMenu() {
+		
 	}
 
 	

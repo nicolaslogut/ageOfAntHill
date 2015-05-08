@@ -1,5 +1,6 @@
 /**
  * représente une unité dans une partie
+ * c'est une entité avec, en plus, la possibilite de se déplacer, attaquer...
  * @author joris
  *
  */
@@ -51,7 +52,7 @@ class Unite extends Entite {
 	/**
 	 * renvoie true si l'unité a été déplacée ; false si déplacement impossible
 	 */
-	public boolean deplacerUnite(){
+	public boolean deplacerUnite(int positionX,int positionY){
 		
 	}
 }
