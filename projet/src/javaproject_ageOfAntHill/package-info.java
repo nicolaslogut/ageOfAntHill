@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author joris
- *
- */
-package ageOfAntHill;

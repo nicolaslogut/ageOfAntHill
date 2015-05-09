@@ -1,4 +1,5 @@
-class Gardien extends Unite {
+package javaproject_ageOfAntHill;
+class Guardian extends Unit {
 	/**
 	 * Default speed
 	 */
@@ -13,7 +14,8 @@ class Gardien extends Unite {
 	 * Default damages
 	 */
 	private static final int DEFAULT_HEAVY_UNIT_DAMAGE = 0;
-	/*
+	
+	/**
 	 * Default health
 	 */
 	private static final int DEFAULT_HEAVY_UNIT_HP = 0;
@@ -21,21 +23,21 @@ class Gardien extends Unite {
 	
 	
 	/**
-	 * create a unit with default caracteristics
+	 * creates a guardian with its default stats
 	 */
-	public Gardien(int numEquipe){
+	public Guardian(int teamNumber){
 		this.armor=DEFAULT_HEAVY_UNIT_ARMOR;
 		this.damages=DEFAULT_HEAVY_UNIT_DAMAGE;
 		this.maxHealthPoints=DEFAULT_HEAVY_UNIT_HP;
 		this.healthPoints=DEFAULT_HEAVY_UNIT_HP;
 		this.deplacements=DEFAULT_GUARDIAN_SPEED;
-		this.equipe=numEquipe;
+		this.team=teamNumber;
 	}
 	
 	/**
-	 * le gardien devient momentan�ment beaucoup plus r�sistant
+	 * The guardian's armor is momentarily strenghened
 	 */
-	public void resister() { // si le 'momentan�ment' (le temps) est trop dur � g�rer, trouver autre chose
+	public void resister() { // si le 'momentanement' (le temps) est trop dur a gerer, trouver autre chose
 	}
 
 }

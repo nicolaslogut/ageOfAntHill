@@ -1,3 +1,3 @@
 package javaproject_ageOfAntHill;
-class Building extends Constructible {
+class Building extends Buildable {
 }

@@ -1,11 +1,16 @@
 package javaproject_ageOfAntHill;
 /**
- * représente la carte de la partie (l'ensemble de la 'map' du jeu)
+ * represents the map of the game
  * 
  * @author joris
  *
  */
 class Map extends Interface {
+	/* note: oui, on va faire comme �a alors
+    mais du coup, on fait un autre objet enum pour faire une
+    enumeration de tous les differents objets qu'on peut mettre
+    dans une case ? Ou c'est ta classe Case ?
+    */
 	/**
 	 * grille de jeu representant toute la carte d'une partie c'est un tableau
 	 * de Position à deux dimmentions. Cette solution à été privilégiée car les cases
@@ -20,9 +25,9 @@ class Map extends Interface {
 	private Case[][] grille;
 
 	/**
-	 * crée nouvelle carte sous la forme d'une grille (un tableau de cases
-	 * ('Position') à 2 dimensions)
+	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
+	/*                      to check soon
 	public Map(){
 		grille = new Case[][];
 		for (int positionX=0;positionX<;positionX++){
@@ -31,12 +36,12 @@ class Map extends Interface {
 				this.grille[positionY][positionX]=new Position(positionX, positionY);
 			}
 		}
-	}
+	}*/
 
 	/**
-	 * affiche une repr�sentation graphique de la carte (sous forme de grille)
+	 * displays a visual representaion of the map (as a grid)
 	 */
 	public void afficherCarte() {
-
+		
 	}
 }

@@ -1,19 +1,20 @@
-class Lezard extends Unité {
+package javaproject_ageOfAntHill;
+class Lezard extends Unit {
 	/**
-	 * vitesse déplacement par défaut d'un lézard
+	 * lizard's default movement speed
 	 */
 	private final static int DEFAULT_LIZARD_SPEED=3;
 	
 	/**
-	 * crée lézard avec toutes ses caractéristiques par défaut spécifiques
+	 * creates a lizard with its default stats
 	 */
-	public Lezard(int numEquipe){
-		this.armure=DEFAULT_MEDIUM_UNIT_ARMOR;
-		this.degats=DEFAULT_MEDIUM_UNIT_DAMAGE;
-		this.pointsDeVieMax=DEFAULT_MEDIUM_UNIT_PV;
-		this.pointsDeVie=DEFAULT_MEDIUM_UNIT_PV;
+	public Lezard(int teamNumber){
+		this.armor=DEFAULT_MEDIUM_UNIT_ARMOR;
+		this.damages=DEFAULT_MEDIUM_UNIT_DAMAGE;
+		this.maxHealthPoints=DEFAULT_MEDIUM_UNIT_HP;
+		this.healthPoints=DEFAULT_MEDIUM_UNIT_HP;
 		this.deplacements=DEFAULT_LIZARD_SPEED;
-		this.equipe=numEquipe;
+		this.team=teamNumber;
 	}
 	
 }

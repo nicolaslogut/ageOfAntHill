@@ -1,4 +1,4 @@
 package javaproject_ageOfAntHill;
-class Amelioration extends Contructible {
+class Amelioration extends Buildable {
 	
 }
