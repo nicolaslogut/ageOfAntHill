@@ -1,2 +1,0 @@
-class Amélioration extends Constructible {
-}
