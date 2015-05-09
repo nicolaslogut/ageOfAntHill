@@ -7,7 +7,7 @@ package javaproject_ageOfAntHill;
  */
 class Scout extends Unit {
 	/**
-	 * This is the default move scope
+	 * This is the default move range
 	 */
 	private final static int DEFAULT_SCOUT_SPEED=6;
 	

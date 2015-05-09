@@ -6,7 +6,7 @@ package javaproject_ageOfAntHill;
  *
  */
 class Map extends Interface {
-	/* note: oui, on va faire comme ça alors
+	/* note: oui, on va faire comme ï¿½a alors
     mais du coup, on fait un autre objet enum pour faire une
     enumeration de tous les differents objets qu'on peut mettre
     dans une case ? Ou c'est ta classe Case ?

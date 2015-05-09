@@ -1,6 +1,8 @@
 package javaproject_ageOfAntHill;
+
+// gotta change this description later on :/ kinda sucks
 /**
- * représente une 'case' à une position d'abscisse posX et d'ordonnée posY
+ * represente une 'case'  une position d'abscisse posX et d'ordonnÃ©e posY
  * @author joris
  *
  */
@@ -10,7 +12,7 @@ class Position {
 	 */
 	private int posX;
 	/**
-	 * ordonnée de la position de la case
+	 * ordonnee de la position de la case
 	 */
 	private int posY;
 	
@@ -25,7 +27,7 @@ class Position {
 	/**
 	 * return false if there is an entity at the given cooridnates (positionX,positionY) ; true otherwise
 	 */
-	public boolean estVideOuNon(int positionX, int positionY){
+	public boolean isEmptyOrNot(int positionX, int positionY){
 		return true;
 	}
 	

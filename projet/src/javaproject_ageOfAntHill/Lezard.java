@@ -1,5 +1,6 @@
 package javaproject_ageOfAntHill;
-class Lezard extends Unit {
+
+class Lizard extends Unit {
 	/**
 	 * lizard's default movement speed
 	 */
@@ -8,7 +9,7 @@ class Lezard extends Unit {
 	/**
 	 * creates a lizard with its default stats
 	 */
-	public Lezard(int teamNumber){
+	public Lizard(int teamNumber){
 		this.armor=DEFAULT_MEDIUM_UNIT_ARMOR;
 		this.damages=DEFAULT_MEDIUM_UNIT_DAMAGE;
 		this.maxHealthPoints=DEFAULT_MEDIUM_UNIT_HP;
