@@ -1,2 +1,0 @@
-class Batiment extends Constructible {
-}

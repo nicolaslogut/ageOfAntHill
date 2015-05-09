@@ -1,5 +1,7 @@
+package javaproject_ageOfAntHill;
+
 /**
- * représente une entité, un objet dans la partie
+ * reprÃ©sente une entitÃ©, un objet dans la partie
  * @author joris
  *
  */
@@ -13,14 +15,14 @@ class Entite {
 	private int equipe;
 	
 	/**
-	 * crée une nouvelle entité, ce qui correspond à un objet dans la partie (unité, bâtiment...)
+	 * crÃ©e une nouvelle entitÃ©, ce qui correspond Ã  un objet dans la partie (unitÃ©, bÃ¢timent...)
 	 */
 	public Entite(){
 		
 	}
 	
 	/**
-	 * ouvre le menu avec les différentes opérations disponibles pour cet entité
+	 * ouvre le menu avec les diffÃ©rentes opÃ©rations disponibles pour cet entitÃ©
 	 */
 	public void ouvrirMenu() {
 		

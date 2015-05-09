@@ -1,11 +1,12 @@
-class Mouche extends Unité {
+package javaproject_ageOfAntHill;
+class Fly extends Unit {
 	/**
-	 * vitesse déplacement par défaut d'une mouche
+	 * vitesse dï¿½placement par dï¿½faut d'une mouche
 	 */
 	private final static int DEFAULT_FLY_SPEED=6;
 	
 	/**
-	 * crée mouche avec toutes ses caractéristiques par défaut spécifiques
+	 * crï¿½e mouche avec toutes ses caractï¿½ristiques par dï¿½faut spï¿½cifiques
 	 */
 	public Mouche(int numEquipe){
 		this.armure=DEFAULT_LIGHT_UNIT_ARMOR;
