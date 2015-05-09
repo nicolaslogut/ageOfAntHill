@@ -1,5 +1,7 @@
+package javaproject_ageOfAntHill;
+
 /**
- * représente une 'case' à une position d'abscisse posX et d'ordonnée posY
+ * reprÃ©sente une 'case'  une position d'abscisse posX et d'ordonnÃ©e posY
  * @author joris
  *
  */
@@ -9,7 +11,7 @@ class Position {
 	 */
 	private int posX;
 	/**
-	 * ordonnée de la position de la case
+	 * ordonnÃ©e de la position de la case
 	 */
 	private int posY;
 	

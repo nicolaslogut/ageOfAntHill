@@ -1,5 +1,5 @@
 package javaproject_ageOfAntHill;
-class Fly extends Unit {
+class Fly extends Unite {
 	/**
 	 * vitesse d�placement par d�faut d'une mouche
 	 */

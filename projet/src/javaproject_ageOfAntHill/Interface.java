@@ -1,8 +1,10 @@
+package javaproject_ageOfAntHill;
+
 class Interface {
 	public void selection() {
 	}
 
-	public void deplacerUnité() {
+	public void deplacerUnitï¿½() {
 	}
 
 	public void creerBatiment() {

@@ -1,17 +1,19 @@
+package javaproject_ageOfAntHill;
+
 /**
- * représente une reine fourmis dans la partie
- * sa principale caractéristique est de donner naissance à d'autre fourmis
+ * reprÃ©sente une reine fourmi dans la partie
+ * sa principale caractÃ©ristique est de donner naissance Ã  d'autre fourmis
  * @author joris
  *
  */
-class Reine extends Unité {
+class Reine extends Unite {
 	/**
-	 * vitesse déplacement par défaut de la reine
+	 * vitesse dÃ©placement par dÃ©faut de la reine
 	 */
 	private final static int DEFAULT_QUEEN_SPEED=0;
 	
 	/**
-	 * crée reine avec ses caractéristiques par défaut
+	 * crÃ©e reine avec ses caractÃ©ristiques par dÃ©faut
 	 */
 	public Reine(int numEquipe){
 		this.degats=DEFAULT_PEACEFUL_UNIT_DAMAGE;

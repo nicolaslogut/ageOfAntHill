@@ -1,3 +1,5 @@
+package javaproject_ageOfAntHill;
+
 class Partie {
 	public void creerPartie() {
 	}

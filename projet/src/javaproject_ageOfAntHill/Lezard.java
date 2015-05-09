@@ -1,11 +1,13 @@
-class Lezard extends Unité {
+package javaproject_ageOfAntHill;
+
+class Lezard extends Unite {
 	/**
-	 * vitesse déplacement par défaut d'un lézard
+	 * vitesse dÃ©placement par dÃ©faut d'un lÃ©zard
 	 */
 	private final static int DEFAULT_LIZARD_SPEED=3;
 	
 	/**
-	 * crée lézard avec toutes ses caractéristiques par défaut spécifiques
+	 * crÃ©er lÃ©zard avec toutes ses caractÃ©ristiques par dÃ©faut spÃ©cifiques
 	 */
 	public Lezard(int numEquipe){
 		this.armure=DEFAULT_MEDIUM_UNIT_ARMOR;

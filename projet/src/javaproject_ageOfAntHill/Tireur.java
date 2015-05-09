@@ -1,25 +1,27 @@
+package javaproject_ageOfAntHill;
+
 /**
- * représente un Tireur (une unité ayant pour particularité sa longue portée)
+ * reprÃ©sente un Tireur (une unitÃ© ayant pour particularitÃ© sa longue portÃ©e)
  * @author joris
  *
  */
 class Tireur extends Unite {
 	/**
-	 * vitesse déplacement par défaut du tireur
+	 * vitesse dÃ©placement par dÃ©faut du tireur
 	 */
 	private final static int DEFAULT_SHOOTER_SPEED=4;
 	/**
-	 * valeur par defaut de la portée d'un tireur (sans bonus)
+	 * valeur par defaut de la portÃ©e d'un tireur (sans bonus)
 	 */
 	private final static int DEFAULT_SHOOTER_RANGE=5;
 	
 	/**
-	 * Portée d'attaque actuelle du tireur (en nombre de cases)
+	 * PortÃ©e d'attaque actuelle du tireur (en nombre de cases)
 	 */
 	private int portee;
 	
 	/**
-	 * crée tireur avec toutes ses caractéristiques par défaut spécifiques
+	 * crÃ©e tireur avec toutes ses caractÃ©ristiques par dÃ©faut spÃ©cifiques
 	 */
 	public Tireur(int numEquipe){
 		this.portee=DEFAULT_SHOOTER_RANGE;
@@ -32,17 +34,17 @@ class Tireur extends Unite {
 	}
 	
 	/**
-	 * attaque l'ennemi si possible (s'il est dans la portée)
-	 * si l'attaque réussit, l'ennemi perd (degat tireur - armure ennemi) pv
+	 * attaque l'ennemi si possible (s'il est dans la portÃ©e)
+	 * si l'attaque rÃ©ussit, l'ennemi perd (degat tireur - armure ennemi) pv
 	 */
 	public void tirer() {
 		
 	}
 	
 	/**
-	 * renvoie true si la cible est dans la portée d'attaque du Tireur ; false sinon
+	 * renvoie true si la cible est dans la portÃ©e d'attaque du Tireur ; false sinon
 	 */
-	private boolean verifierPortee(){ // eventuellement supprimer cette méthode en l'insérant dans la méthode tirer()
+	private boolean verifierPortee(){ // eventuellement supprimer cette mÃ©thode en l'insÃ©rant dans la mÃ©thode tirer()
 		
 	}
 

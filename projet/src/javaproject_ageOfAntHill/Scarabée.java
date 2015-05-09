@@ -1,11 +1,13 @@
-class Scarabée extends Unité {
+package javaproject_ageOfAntHill;
+
+class Scarabï¿½e extends Unite{
 	/**
-	 * vitesse déplacement par défaut du scarabée
+	 * vitesse dÃ©placement par dÃ©faut du scarabÃ©e
 	 */
 	private final static int DEFAULT_BEETLE_SPEED=2;
 	
 	/**
-	 * crée scarabée avec toutes ses caractéristiques par défaut spécifiques
+	 * crÃ©e scarabÃ©e avec toutes ses caractÃ©ristiques par dÃ©faut spÃ©cifiques
 	 */
 	public Gardien(int numEquipe){
 		this.armure=DEFAULT_HEAVY_UNIT_ARMOR;

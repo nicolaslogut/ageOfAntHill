@@ -1,3 +1,5 @@
+package javaproject_ageOfAntHill;
+
 class Gardien extends Unite {
 	/**
 	 * Default speed
@@ -33,9 +35,9 @@ class Gardien extends Unite {
 	}
 	
 	/**
-	 * le gardien devient momentan�ment beaucoup plus r�sistant
+	 * le gardien devient momentanément beaucoup plus résistant
 	 */
-	public void resister() { // si le 'momentan�ment' (le temps) est trop dur � g�rer, trouver autre chose
+	public void resister() { // si le 'momentanément' (le temps) est trop dur à gérer, trouver autre chose
 	}
 
 }

@@ -34,7 +34,7 @@ class Map extends Interface {
 	}
 
 	/**
-	 * affiche une repr�sentation graphique de la carte (sous forme de grille)
+	 * affiche une représentation graphique de la carte (sous forme de grille)
 	 */
 	public void afficherCarte() {
 

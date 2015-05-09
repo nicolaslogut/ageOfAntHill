@@ -1,11 +1,13 @@
-class Guerrier extends Unité {
+package javaproject_ageOfAntHill;
+
+class Guerrier extends Unite {
 	/**
-	 * vitesse déplacement par défaut d'un guerrier
+	 * vitesse dÃ©placement par dÃ©faut d'un guerrier
 	 */
 	private final static int DEFAULT_WARRIOR_SPEED=3;
 	
 	/**
-	 * crée guerrier avec toutes ses caractéristiques par défaut spécifiques
+	 * crÃ©e guerrier avec toutes ses caractÃ©ristiques par dÃ©faut spÃ©cifiques
 	 */
 	public Guerrier(int numEquipe){
 		this.armure=DEFAULT_MEDIUM_UNIT_ARMOR;

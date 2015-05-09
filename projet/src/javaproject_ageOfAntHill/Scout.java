@@ -5,14 +5,14 @@ package javaproject_ageOfAntHill;
  * @author joris
  *
  */
-class Scout extends Unit {
+class Scout extends Unite {
 	/**
 	 * This is the default move scope
 	 */
 	private final static int DEFAULT_SCOUT_SPEED=6;
 	
 	/**
-	 * cr�e �claireur avec toutes ses caract�ristiques par d�faut sp�cifiques
+	 * crée éclaireur avec toutes ses caractéristiques par défaut spécifiques
 	 */
 	public Pathfinder(int numEquipe){
 		this.armure=DEFAULT_LIGHT_UNIT_ARMOR;

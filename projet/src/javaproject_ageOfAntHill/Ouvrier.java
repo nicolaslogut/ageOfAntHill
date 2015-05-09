@@ -1,11 +1,13 @@
-class Ouvrier extends Unité {
+package javaproject_ageOfAntHill;
+
+class Ouvrier extends Unite {
 	/**
-	 * vitesse déplacement par défaut d'un ouvrier
+	 * vitesse dÃ©placement par dÃ©faut d'un ouvrier
 	 */
 	private final static int DEFAULT_WORKER_SPEED=4;
 	
 	/**
-	 * crée ouvrier avec ses caractéristiques par défaut
+	 * crÃ©e ouvrier avec ses caractÃ©ristiques par dÃ©faut
 	 */
 	public Ouvrier(int numEquipe){
 		this.degats=DEFAULT_PEACEFUL_UNIT_DAMAGE;
@@ -17,7 +19,7 @@ class Ouvrier extends Unité {
 	}
 	
 	/**
-	 * construit un bâtiment devant lui
+	 * construit un bÃ¢timent devant lui
 	 */
 	public void construire() {
 	}
