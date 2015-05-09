@@ -1,31 +1,31 @@
 /**
- * représente une unité dans une partie
- * c'est une entité avec, en plus, la possibilite de se déplacer, attaquer...
+ * reprï¿½sente une unitï¿½ dans une partie
+ * c'est une entitï¿½ avec, en plus, la possibilite de se dï¿½placer, attaquer...
  * @author joris
  *
  */
 class Unite extends Entite {
-	// éventuellement créer une nouvelle classe (abstraite ?) pour stocker toutes ces constantes
+	// ï¿½ventuellement crï¿½er une nouvelle classe (abstraite ?) pour stocker toutes ces constantes
 	/**
-	 * armure, dégâts et PDV par défaut des unités qui n'attaquent pas (ouvriers, reines, ...)
+	 * armure, dï¿½gï¿½ts et PDV par dï¿½faut des unitï¿½s qui n'attaquent pas (ouvriers, reines, ...)
 	 */
 	private final static int DEFAULT_PEACEFUL_UNIT_ARMOR=1;
 	private final static int DEFAULT_PEACEFUL_UNIT_DAMAGE=0;
 	private final static int DEFAULT_PEACEFUL_UNIT_HP=20;
 	/**
-	 * armure, dégâts et PDV par défaut des unités à faible armure (éclaireurs, tireurs et mouches)
+	 * armure, dï¿½gï¿½ts et PDV par dï¿½faut des unitï¿½s ï¿½ faible armure (ï¿½claireurs, tireurs et mouches)
 	 */
 	private final static int DEFAULT_LIGHT_UNIT_ARMOR=2;
 	private final static int DEFAULT_LIGHT_UNIT_DAMAGE=6;
 	private final static int DEFAULT_LIGHT_UNIT_HP=24;
 	/**
-	 * armure, dégâts et PDV par défaut des unités à armure normale (guerriers, lézards)
+	 * armure, dï¿½gï¿½ts et PDV par dï¿½faut des unitï¿½s ï¿½ armure normale (guerriers, lï¿½zards)
 	 */
 	private final static int DEFAULT_MEDIUM_UNIT_ARMOR=3;
 	private final static int DEFAULT_MEDIUM_UNIT_DAMAGE=10;
 	private final static int DEFAULT_MEDIUM_UNIT_HP=32;
 	/**
-	 * armure, dégâts et PDV par défaut des unités à armure résistante (gardiens, scarabées)
+	 * armure, dï¿½gï¿½ts et PDV par dï¿½faut des unitï¿½s ï¿½ armure rï¿½sistante (gardiens, scarabï¿½es)
 	 */
 	private final static int DEFAULT_HEAVY_UNIT_ARMOR=5;
 	private final static int DEFAULT_HEAVY_UNIT_DAMAGE=7;
@@ -33,24 +33,49 @@ class Unite extends Entite {
 	
 	
 	/**
-	 * vitesse de déplacement d'une unité (en cases parcourues par seconde)
+	 * The units armor : It reduce the damages taken.
 	 */
-	private int deplacement;
+	private int armor;
 	
 	/**
-	 * nombre de dégâts infligés par unité lors d'une attaque	
+	 * The damages amount that the unit can inflict.
 	 */
-	private int degats;
+	private int damages;
 	
 	/**
-	 * nouvelle unité
+	 * The maximum health points for the unit.
+	 */
+	private int maxHealthPoints;
+	
+	/**
+	 * The current health points
+	 */
+	private int healthPoints;
+	
+	/**
+	 * The unit movement scope
+	 */
+	private int deplacements;
+	
+	/**
+	 * The team the unit belong.
+	 */
+	private int equipe;
+	
+	/**
+	 * The attack scope
+	 */
+	private int scope;
+	
+	/**
+	 * nouvelle unitï¿½
 	 */
 	public Unite(){
 		
 	}
 	
 	/**
-	 * renvoie true si l'unité a été déplacée ; false si déplacement impossible
+	 * renvoie true si l'unitï¿½ a ï¿½tï¿½ dï¿½placï¿½e ; false si dï¿½placement impossible
 	 */
 	public boolean deplacerUnite(int positionX,int positionY){
 		
