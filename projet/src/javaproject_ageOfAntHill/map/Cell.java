@@ -4,7 +4,8 @@ import javaproject_ageOfAntHill.entity.Unit;
 
 import javax.swing.text.html.parser.Entity;
 
-public class Cell {
+public class Cell 
+{
 
 	/**
 	 * if there is an unit on this cell
@@ -16,17 +17,28 @@ public class Cell {
 	private Entity entity;
 
 	/**
-	 * cell's state( the state can be grass or sand or water.
+	 * cell's state (the state can be grass, sand or water).
 	 * 
 	 */
 	private CellState cellstate;
 	
 	
-	public Cell( Unit unit, CellState cellstate){
+	/**
+	 * construct a cell
+	 * @param unit the unit on the case if we have one
+	 * @param cellstate the state of the cell
+	 */
+	public Cell( Unit unit, CellState cellstate)
+	{
 		
 	}
 	
-	public Cell ( ){
+	
+	/**
+	 * default constructor for cell
+	 */
+	public Cell ()
+	{
 		
 	}
 	

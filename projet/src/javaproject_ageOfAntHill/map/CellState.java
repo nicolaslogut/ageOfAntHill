@@ -9,7 +9,11 @@ package javaproject_ageOfAntHill.map;
  *
  */
 
-public enum CellState {
+public enum CellState 
+{
+	/**
+	 * enumeration of the different state we can apply in a cell
+	 */
 		YELLOW_SQUARE,
 		GREEN_SQUARE,
 		BLUE_SQUARE;
