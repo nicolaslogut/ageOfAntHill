@@ -1,4 +1,4 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.map;
 /**
  * Define a cell state for the map's cells. There is 3 types of cells :
  * the yellow type : represent sand

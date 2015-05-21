@@ -1,11 +1,13 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.map;
+
+
 /**
  * represents the map of the game
  * 
  * @author joris
  *
  */
-class Map extends Interface {
+public class Map {
 	/* note: oui, on va faire comme �a alors
     mais du coup, on fait un autre objet enum pour faire une
     enumeration de tous les differents objets qu'on peut mettre

@@ -1,4 +1,4 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.map;
 
 import javaproject_ageOfAntHill.entity.Unit;
 
@@ -20,6 +20,7 @@ public class Cell {
 	 * 
 	 */
 	private CellState cellstate;
+	
 	
 	public Cell( Unit unit, CellState cellstate){
 		

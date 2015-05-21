@@ -1,6 +1,6 @@
 package javaproject_ageOfAntHill.entity;
 
-import javaproject_ageOfAntHill.CellState;
+import javaproject_ageOfAntHill.map.CellState;
 
 /**
  * repr�sente une unit� dans une partie
