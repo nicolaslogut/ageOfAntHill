@@ -1,5 +1,9 @@
-package javaproject_ageOfAntHill;
-class Worker extends Unit {
+package javaproject_ageOfAntHill.entity;
+
+import javaproject_ageOfAntHill.entity.buildable.Building;
+
+
+public class Worker extends Unit {
 	/**
 	 * a worker's default movement speed
 	 */

@@ -1,4 +1,6 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.entity;
+
+
 /**
  * represents a Shooter (a special unit with long range attacks)
  * @author joris
@@ -38,7 +40,7 @@ class Shooter extends Unit {
 	/**
 	 * return true if the target is in the attack range of the shooter ; false otherwise
 	 */
-	private boolean checkRange(){ // eventuellement supprimer cette méthode en l'insérant dans la méthode tirer()
+	private boolean checkRange(){ // eventuellement supprimer cette mï¿½thode en l'insï¿½rant dans la mï¿½thode tirer()
 		return true;
 	}
 

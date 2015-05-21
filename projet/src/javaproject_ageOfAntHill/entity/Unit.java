@@ -1,11 +1,14 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.entity;
+
+import javaproject_ageOfAntHill.CellState;
+
 /**
  * repr�sente une unit� dans une partie
  * c'est une entit� avec, en plus, la possibilite de se d�placer, attaquer...
  * @author joris
  *
  */
-class Unit extends Entity {
+public class Unit extends Entity {
 	// �ventuellement cr�er une nouvelle classe (abstraite ?) pour stocker toutes ces constantes
 	/**
 	 * armure, d�g�ts et PDV par d�faut des unit�s qui n'attaquent pas (ouvriers, reines, ...)
@@ -73,7 +76,7 @@ class Unit extends Entity {
 	/**
 	 * return true if the unit moved ; false if it was impossible
 	 */
-	public boolean moveUnit(Case thisCase){
+	public boolean moveUnit(CellState thisCase){
 		return true;
 	}
 }

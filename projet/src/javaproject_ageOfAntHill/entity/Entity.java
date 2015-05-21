@@ -1,11 +1,11 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.entity;
 
 /**
  * represents an entity, an object in the game
  * @author joris
  * 
  */
-class Entity {
+public class Entity {
 	protected int healthPoints;
 
 	protected int maxHealthPoints;

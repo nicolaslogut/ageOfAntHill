@@ -1,4 +1,5 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.entity;
+
 
 class Lizard extends Unit {
 	/**

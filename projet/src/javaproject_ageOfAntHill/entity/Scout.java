@@ -1,4 +1,6 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.entity;
+
+
 /**
  * This class is a scout, a pathfinder
  * This unit got a huge move scope

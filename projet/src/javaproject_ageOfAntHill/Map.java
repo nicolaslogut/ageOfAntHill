@@ -22,16 +22,16 @@ class Map extends Interface {
 	 * souvenir) contenant un type de case (forêt, plaine, etc), et
 	 * éventuellement une unité.
 	 */
-	private Case[][] grille;
+	private Cell[][] grille;
 
 	/**
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
-	/*                      to check soon
-	public Map(){
-		grille = new Case[][];
-		for (int positionX=0;positionX<;positionX++){
-			for (int positionY=0;positionY;positionY++){
+	                    //  to check soon
+	/*public Map(){
+		grille = new Cell[][];
+		for (int positionX=0;positionX<20;positionX++){
+			for (int positionY=0;positionY<20;positionY++){
 				// assigne à chaque case de la grille une 'Position' où sont enregistrées les coordonées posX et posY
 				this.grille[positionY][positionX]=new Position(positionX, positionY);
 			}

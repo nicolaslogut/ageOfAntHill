@@ -1,7 +1,9 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.entity;
+
+
 /**
- * représente une reine fourmis dans la partie
- * sa principale caractéristique est de donner naissance à d'autre fourmis
+ * reprï¿½sente une reine fourmis dans la partie
+ * sa principale caractï¿½ristique est de donner naissance ï¿½ d'autre fourmis
  * @author joris
  *
  */

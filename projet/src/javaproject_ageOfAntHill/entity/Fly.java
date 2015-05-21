@@ -1,4 +1,6 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.entity;
+
+
 class Fly extends Unit {
 	/**
 	 * a fly's movement speed
