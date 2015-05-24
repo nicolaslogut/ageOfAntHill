@@ -1,5 +1,26 @@
 package javaproject_ageOfAntHill;
-class Game {
+/**
+ *this class allows to launch the game 
+ * 
+ * @author mathieu
+ *
+ */
+public class Game {
+
+	public static void main(String[] args) 
+	{
+		System.out.println(new javaproject_ageOfAntHill.map.Map()); 
+
+	}
+	
+	/**
+	 * method which allows to play
+	 * to complete
+	 * Shouldn't be here though ; will check later
+	 */
+	public void play() {
+	}
+	
 	public void createGame() {
 	}
 
@@ -14,5 +35,4 @@ class Game {
 
 	public void loadGame() {
 	}
-
 }

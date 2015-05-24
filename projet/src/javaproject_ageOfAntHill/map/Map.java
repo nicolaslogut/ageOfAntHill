@@ -30,15 +30,15 @@ public class Map {
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
 	                    //  to check soon
-	/*public Map(){
+	public Map(){/*
 		grille = new Cell[][];
 		for (int positionX=0;positionX<20;positionX++){
 			for (int positionY=0;positionY<20;positionY++){
 				// assigne à chaque case de la grille une 'Position' où sont enregistrées les coordonées posX et posY
 				this.grille[positionY][positionX]=new Position(positionX, positionY);
 			}
-		}
-	}*/
+		}*/
+	}
 
 	/**
 	 * displays a visual representaion of the map (as a grid)
