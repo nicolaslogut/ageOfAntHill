@@ -8,7 +8,7 @@
  * 		(First class which is loaded when running the applet)
  */
 /**
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 package javaproject_ageOfAntHill;

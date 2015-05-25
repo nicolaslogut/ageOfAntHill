@@ -1,8 +1,8 @@
 package javaproject_ageOfAntHill.entity;
 /**
- * repr�sente une reine fourmis dans la partie
- * sa principale caract�ristique est de donner naissance � d'autre fourmis
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * represents a Queen ant in a game
+ * Her main characteristic is to give birth to other ants
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 

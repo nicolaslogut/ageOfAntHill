@@ -2,7 +2,7 @@ package javaproject_ageOfAntHill.entity;
 
 /**
  * represents an entity, an object in the game
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  * 
  */
 public class Entity {

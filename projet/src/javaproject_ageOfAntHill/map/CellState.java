@@ -5,7 +5,7 @@ package javaproject_ageOfAntHill.map;
  * the green type : represent grass
  * the blue type : represent water
  *  
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 

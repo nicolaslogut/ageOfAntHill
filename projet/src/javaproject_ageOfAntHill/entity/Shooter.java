@@ -1,7 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 /**
  * represents a Shooter (a special unit with long range attacks)
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 

@@ -6,7 +6,7 @@ import javax.swing.text.html.parser.Entity;
 
 /**
  * Class which allows to create cells
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 public class Cell 

@@ -7,7 +7,7 @@ import javaproject_ageOfAntHill.entity.Unit;
 /**
  * represents the map of the game
  * 
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 public class Map {

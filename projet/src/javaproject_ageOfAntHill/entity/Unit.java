@@ -4,7 +4,7 @@ import javaproject_ageOfAntHill.map.CellState;
 /**
  * represents a unit in a game
  * this is an entity that has the capacity to move and attack
- * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 
