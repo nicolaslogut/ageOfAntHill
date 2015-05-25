@@ -1,13 +1,13 @@
 package javaproject_ageOfAntHill.entity;
 
 import javaproject_ageOfAntHill.map.CellState;
-
 /**
  * represents a unit in a game
  * this is an entity that has the capacity to move and attack
- * @author joris
+ * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
+
 public class Unit extends Entity {
 	// eventuellement creer une nouvelle classe (abstraite ?) pour stocker toutes ces constantes
 	/**

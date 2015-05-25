@@ -1,10 +1,8 @@
 package javaproject_ageOfAntHill.entity;
-
-
 /**
  * This class is a scout, a pathfinder
  * This unit got a huge move scope
- * @author joris
+ * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 class Scout extends Unit {

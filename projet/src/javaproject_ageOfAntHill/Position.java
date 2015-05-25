@@ -3,10 +3,10 @@ package javaproject_ageOfAntHill;
 // gotta change this description later on :/ kinda sucks
 /**
  * represents a case at given (x,y) coordinates
- * @author joris
+ * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
-class Position {
+public class Position {
 	/**
 	 * abscissa of the case
 	 */

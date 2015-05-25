@@ -5,16 +5,22 @@ package javaproject_ageOfAntHill.map;
  * the green type : represent grass
  * the blue type : represent water
  *  
- * @author augstm
+ * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 
 public enum CellState 
 {
 	/**
-	 * enumeration of the different state we can apply in a cell
+	 * This define the Yellow colour of the cellState
 	 */
-		YELLOW_SQUARE,
-		GREEN_SQUARE,
-		BLUE_SQUARE;
+	YELLOW_SQUARE,
+	/**
+	 * This define the Green colour of the cellState
+	 */
+	GREEN_SQUARE,
+	/**
+	 * This define the Blue colour of the cellState
+	 */
+	BLUE_SQUARE;
 }

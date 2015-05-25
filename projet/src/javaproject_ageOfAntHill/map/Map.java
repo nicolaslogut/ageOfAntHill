@@ -1,10 +1,13 @@
 package javaproject_ageOfAntHill.map;
 
+import javaproject_ageOfAntHill.Position;
+import javaproject_ageOfAntHill.entity.Unit;
+
 
 /**
  * represents the map of the game
  * 
- * @author joris
+ * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 public class Map {
@@ -39,6 +42,15 @@ public class Map {
 			}
 		}*/
 	}
+	
+	/**
+	 * this method allow you to get the position of a unit
+	 * TOUT DOUX :3
+	 */
+	/*public Unit getUnit(){
+	*	
+	* }
+	*/
 
 	/**
 	 * displays a visual representaion of the map (as a grid)

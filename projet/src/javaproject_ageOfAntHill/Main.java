@@ -2,7 +2,7 @@ package javaproject_ageOfAntHill;
 
 /**
  * launching the game menu etc...
- * @author joris
+ * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
 public class Main {

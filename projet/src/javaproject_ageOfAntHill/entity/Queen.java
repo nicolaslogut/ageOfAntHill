@@ -1,12 +1,11 @@
 package javaproject_ageOfAntHill.entity;
-
-
 /**
  * repr�sente une reine fourmis dans la partie
  * sa principale caract�ristique est de donner naissance � d'autre fourmis
- * @author joris
+ * @author Maxime Augst, Jorris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
+
 class Queen extends Unit {
 	/**
 	 * Queen's default movement speed
