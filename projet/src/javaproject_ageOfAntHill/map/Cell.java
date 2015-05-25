@@ -3,7 +3,11 @@ package javaproject_ageOfAntHill.map;
 import javaproject_ageOfAntHill.entity.Unit;
 
 import javax.swing.text.html.parser.Entity;
-
+/**
+ * Class which allows to create cells
+ * @author mathieu26
+ *
+ */
 public class Cell 
 {
 

@@ -2,22 +2,22 @@ package javaproject_ageOfAntHill;
 
 // gotta change this description later on :/ kinda sucks
 /**
- * represente une 'case'  une position d'abscisse posX et d'ordonnée posY
+ * represent a case which a given abscissa and ordered
  * @author joris
  *
  */
-class Position {
+public class Position {
 	/**
-	 * abscisse de la position de la case
+	 * abscissa of the case
 	 */
 	private int posX;
 	/**
-	 * ordonnee de la position de la case
+	 * ordered of the case
 	 */
 	private int posY;
 	
 	/**
-	 * 
+	 * construct a new position ?
 	 */
 	public Position(int positionX, int positionY){
 		this.posX = positionX;
