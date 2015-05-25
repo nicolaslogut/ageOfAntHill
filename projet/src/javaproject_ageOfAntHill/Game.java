@@ -1,4 +1,5 @@
 package javaproject_ageOfAntHill;
+// I thought it was starting an instance of the game ?
 /**
  *this class allows to launch the game 
  * 
@@ -6,12 +7,15 @@ package javaproject_ageOfAntHill;
  *
  */
 public class Game {
-
-	public static void main(String[] args) 
-	{
-		System.out.println(new javaproject_ageOfAntHill.map.Map()); 
-
+	
+	private javaproject_ageOfAntHill.map.Map theMap;
+	
+	
+	public Game(){
+		theMap = new javaproject_ageOfAntHill.map.Map();
+		// to finish later
 	}
+	
 	
 	/**
 	 * method which allows to play

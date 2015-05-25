@@ -3,12 +3,12 @@ package javaproject_ageOfAntHill.entity;
 
 class Warrior extends Unit {
 	/**
-	 * vitesse d�placement par d�faut d'un guerrier
+	 * warrior's moving speed
 	 */
 	private final static int DEFAULT_WARRIOR_SPEED=3;
 	
 	/**
-	 * cr�e guerrier avec toutes ses caract�ristiques par d�faut sp�cifiques
+	 * creates a warrior with all its default stats
 	 */
 	public Warrior(int teamNumber){
 		this.armor=DEFAULT_MEDIUM_UNIT_ARMOR;

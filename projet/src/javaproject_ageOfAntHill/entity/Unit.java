@@ -3,33 +3,33 @@ package javaproject_ageOfAntHill.entity;
 import javaproject_ageOfAntHill.map.CellState;
 
 /**
- * repr�sente une unit� dans une partie
- * c'est une entit� avec, en plus, la possibilite de se d�placer, attaquer...
+ * represents a unit in a game
+ * this is an entity that has the capacity to move and attack
  * @author joris
  *
  */
 public class Unit extends Entity {
-	// �ventuellement cr�er une nouvelle classe (abstraite ?) pour stocker toutes ces constantes
+	// eventuellement creer une nouvelle classe (abstraite ?) pour stocker toutes ces constantes
 	/**
-	 * armure, d�g�ts et PDV par d�faut des unit�s qui n'attaquent pas (ouvriers, reines, ...)
+	 * default armor, damages and HP for non-attacking units (queen, workers...)
 	 */
 	protected final static int DEFAULT_PEACEFUL_UNIT_ARMOR=1;
 	protected final static int DEFAULT_PEACEFUL_UNIT_DAMAGE=0;
 	protected final static int DEFAULT_PEACEFUL_UNIT_HP=20;
 	/**
-	 * armure, d�g�ts et PDV par d�faut des unit�s � faible armure (�claireurs, tireurs et mouches)
+	 * default armor, damages and HP for non-attacking units (scouts, shooters,flies...)
 	 */
 	protected final static int DEFAULT_LIGHT_UNIT_ARMOR=2;
 	protected final static int DEFAULT_LIGHT_UNIT_DAMAGE=6;
 	protected final static int DEFAULT_LIGHT_UNIT_HP=24;
 	/**
-	 * armure, d�g�ts et PDV par d�faut des unit�s � armure normale (guerriers, l�zards)
+	 * default armor, damages and HP for medium armor units (warriors, lizards...)
 	 */
 	protected final static int DEFAULT_MEDIUM_UNIT_ARMOR=3;
 	protected final static int DEFAULT_MEDIUM_UNIT_DAMAGE=10;
 	protected final static int DEFAULT_MEDIUM_UNIT_HP=32;
 	/**
-	 * armure, d�g�ts et PDV par d�faut des unit�s � armure r�sistante (gardiens, scarab�es)
+	 * default armor, damages and HP for heavy armor units (guardians, scarab...)
 	 */
 	protected final static int DEFAULT_HEAVY_UNIT_ARMOR=5;
 	protected final static int DEFAULT_HEAVY_UNIT_DAMAGE=7;
