@@ -6,7 +6,7 @@ package javaproject_ageOfAntHill;
  * @author joris
  *
  */
-public class Position {
+class Position {
 	/**
 	 * abscissa of the case
 	 */

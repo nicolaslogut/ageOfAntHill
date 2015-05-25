@@ -12,6 +12,14 @@ import javax.swing.text.html.parser.Entity;
  public class Cell 
  {
 
+/**
+ * Class which allows to create cells
+ * @author mathieu26
+ *
+ */
+public class Cell 
+{
+
 	/**
 	 * if there is an unit on this cell
 	 */
