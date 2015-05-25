@@ -10,17 +10,41 @@ package javaproject_ageOfAntHill.map;
  */
 
 public enum CellState 
+
+
 {
-	/**
-	 * This define the Yellow colour of the cellState
-	 */
-	YELLOW_SQUARE,
-	/**
-	 * This define the Green colour of the cellState
-	 */
-	GREEN_SQUARE,
-	/**
-	 * This define the Blue colour of the cellState
-	 */
-	BLUE_SQUARE;
+
+	
+//	/*private String fileName
+//	*/
+//	
+//	/**
+//	 * This define the Yellow colour of the cellState
+//	 */
+//	SAND_SQUARE("S", "SAND_SQUARE.png"),
+//	/**
+//	 * This define the Green colour of the cellState
+//	 */
+//	GRASS_SQUARE("G", "GRASS_SQUARE.png"),
+//	/**
+//	 * This define the Blue colour of the cellState
+//	 */
+//	WATER_SQUARE("W", "WATER_SQUARE.png");
+//
+//
+//
+//
+//	private CellState(String fileName)
+//	{
+//
+//	this.fileName = fileName;
+//	}
+//
+//	
+//	
+//		public String getFileName()
+//	{
+//	return this.fileName;
+//	}
+//
 }
