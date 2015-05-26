@@ -3,6 +3,7 @@ package javaproject_ageOfAntHill.entity;
  * represents a Shooter (a special unit with long range attacks)
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
+ * @version 20150526
  */
 
 class Shooter extends Unit {

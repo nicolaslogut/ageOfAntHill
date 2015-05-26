@@ -5,6 +5,7 @@ package javaproject_ageOfAntHill;
  * represents a case at given (x,y) coordinates
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
+ * @version 20150526
  */
 public class Position {
 	/**

@@ -6,6 +6,7 @@ import javaproject_ageOfAntHill.map.CellState;
  * this is an entity that has the capacity to move and attack
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
+ * @version 20150526
  */
 
 public class Unit extends Entity {

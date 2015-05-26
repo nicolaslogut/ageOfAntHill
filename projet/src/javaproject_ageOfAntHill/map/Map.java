@@ -10,7 +10,7 @@ import javaproject_ageOfAntHill.entity.Unit;
  * represents the map of the game
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
- *
+ * @version 20150526
  */
 public class Map {
 	/* note: oui, on va faire comme �a alors
@@ -39,7 +39,7 @@ public class Map {
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
 	                    //  to check soon
-	public Map(){
+/*	public Map(){
 		this.grid = new Cell[NBCOLUMN][NBLINE];
 		for (int xPos=0;xPos<NBLINE;xPos++){
 			for (int yPos=0;yPos<NBCOLUMN;yPos++){

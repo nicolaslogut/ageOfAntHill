@@ -8,6 +8,7 @@ import javax.swing.text.html.parser.Entity;
  * Class which allows to create cells
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
+ * @version 20150526
  */
 public class Cell 
 {
