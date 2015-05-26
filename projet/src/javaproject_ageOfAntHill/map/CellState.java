@@ -9,42 +9,62 @@ package javaproject_ageOfAntHill.map;
  *
  */
 
-public enum CellState 
-
-
-{
-
+public enum CellState {	
+	/**
+	 * This define the Yellow color of the cellState
+	 */
+	SAND_SQUARE("S", "SAND_SQUARE.png"),
 	
-//	/*private String fileName
-//	*/
-//	
-//	/**
-//	 * This define the Yellow colour of the cellState
-//	 */
-//	SAND_SQUARE("S", "SAND_SQUARE.png"),
-//	/**
-//	 * This define the Green colour of the cellState
-//	 */
-//	GRASS_SQUARE("G", "GRASS_SQUARE.png"),
-//	/**
-//	 * This define the Blue colour of the cellState
-//	 */
-//	WATER_SQUARE("W", "WATER_SQUARE.png");
-//
-//
-//
-//
-//	private CellState(String fileName)
-//	{
-//
-//	this.fileName = fileName;
-//	}
-//
-//	
-//	
-//		public String getFileName()
-//	{
-//	return this.fileName;
-//	}
-//
+	/**
+	 * This define the Green color of the cellState
+	 */
+	GRASS_SQUARE("G", "GRASS_SQUARE.png"),
+	
+	/**
+	 * This define the Blue color of the cellState
+	 */
+	WATER_SQUARE("W", "WATER_SQUARE.png");
+	
+	/**
+	 * Name of the file (picture)
+	 */
+	private String fileName;
+	/**
+	 * state of the cell (the state can be water, grass or sand) 
+	 */
+	private String state;
+	/**
+	 * true if the state is water.
+	 */
+	private boolean unreachable;  
+
+	/**
+	 * 
+	 * @param desc
+	 * @param fileName
+	 */
+	private CellState(String desc , String fileName)
+	{
+	this.state = desc; 
+	this.fileName = fileName; 
+	this.unreachable = (desc=="W"); 
+	}
+
+	/**
+	 * 
+	 * @return the file name 
+	 */
+	
+		public String getFileName()
+	{
+			return this.fileName;
+	}
+		
+	/**
+	 * 
+	 * @return true if the cell is unreachable
+	 */
+	private boolean unreachable(){
+		return this.unreachable;
+	}
 }

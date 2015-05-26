@@ -79,4 +79,8 @@ public class Unit extends Entity {
 	public boolean moveUnit(CellState thisCase){
 		return true;
 	}
+	
+	private void moveAvailable(){
+		
+	}
 }

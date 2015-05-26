@@ -12,38 +12,38 @@ import javax.swing.text.html.parser.Entity;
 public class Cell 
 {
 
-//	/**
-//	 * if there is an Entity on this cell
-//	 */
-//	private Entity entity;
-//
-//	/**
-//	 * cell's state (the state can be grass, sand or water).
-//	 * 
-//	 */
-//	private CellState cellstate;
-//	
-//	
-//	/**
-//	 * 
-//	 * default constructor.
-//	 */
-//	public Cell() {
-//		this(null, CellState.GRASS_SQUARE);
-//	}
-//
-//	public Cell(Entity entity) {
-//		this(null, CellState.GRASS_SQUARE);
-//	}
-//	
-//	
-//	public Cell(CellState cellstate)
-//	{
-//		this(null, cellstate);
-//	}
-//
-//	public Cell(Entity entity, CellState cellstate) {
-//		this.entity = entity;
-//		this.cellstate = cellstate;
-//	}
+	/**
+	 * if there is an Entity on this cell
+	 */
+	private Entity entity;
+
+	/**
+	 * cell's state (the state can be grass, sand or water).
+	 * 
+	 */
+	private CellState cellstate;
+	
+	
+	/**
+	 * 
+	 * default constructor.
+	 */
+	public Cell() {
+		this(null, CellState.GRASS_SQUARE);
+	}
+
+	public Cell(Entity entity) {
+		this(null, CellState.GRASS_SQUARE);
+	}
+	
+	
+	public Cell(CellState cellstate)
+	{
+		this(null, cellstate);
+	}
+
+	public Cell(Entity entity, CellState cellstate) {
+		this.entity = entity;
+		this.cellstate = cellstate;
+	}
 }

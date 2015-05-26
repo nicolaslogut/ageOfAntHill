@@ -27,7 +27,7 @@ public class Position {
 	/**
 	 * returns false if there is an entity at the given cooridnates (positionX,positionY) ; true otherwise
 	 */
-	public boolean isEmptyOrNot(int positionX, int positionY){
+	public boolean moveAvailable(int positionX, int positionY){
 		return true;
 	}
 	
