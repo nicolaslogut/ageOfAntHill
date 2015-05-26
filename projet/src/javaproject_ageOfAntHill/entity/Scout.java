@@ -4,6 +4,7 @@ package javaproject_ageOfAntHill.entity;
  * This unit got a huge move scope
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
+ * @version 20150526
  */
 class Scout extends Unit {
 	/**

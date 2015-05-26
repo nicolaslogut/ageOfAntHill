@@ -7,6 +7,7 @@ package javaproject_ageOfAntHill.map;
  *  
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
+ * @version 20150526
  */
 
 public enum CellState {	

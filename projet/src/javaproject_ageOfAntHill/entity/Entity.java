@@ -4,6 +4,7 @@ package javaproject_ageOfAntHill.entity;
  * represents an entity, an object in the game
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  * 
+ * @version 20150526
  */
 public class Entity {
 	/**

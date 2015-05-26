@@ -4,6 +4,7 @@ package javaproject_ageOfAntHill.entity;
  * Her main characteristic is to give birth to other ants
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
+ * @version 20150526
  */
 
 class Queen extends Unit {
