@@ -2,6 +2,8 @@ package javaproject_ageOfAntHill.map;
 
 //import java.util.Random;
 
+import java.util.Random;
+
 import javaproject_ageOfAntHill.Position;
 import javaproject_ageOfAntHill.entity.Unit;
 
@@ -44,8 +46,8 @@ public class Map {
 		for (int xPos=0;xPos<NBLINE;xPos++){
 			for (int yPos=0;yPos<NBCOLUMN;yPos++){
 				// assigne à chaque case de la grille une 'Position' où sont enregistrées les coordonées posX et posY
-				double rand = Math.random()*(3);
-				int randInt=rand.intValue();
+				Random random;
+				int randInt = random.nextInt(3);
 				String state;
 				switch (randInt) {
 				case 0:
