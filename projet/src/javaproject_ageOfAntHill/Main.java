@@ -15,7 +15,7 @@ public class Main {
 	{
 		// System.out.println(new javaproject_ageOfAntHill.map.Map()); 
 		Map map = new Map();
-		System.out.println("map : \n" + map.displayMap());
+		System.out.println("map :\n" + map.displayMap());
 	}
 
 }

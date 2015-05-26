@@ -41,29 +41,27 @@ public class Map {
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
 	                    //  to check soon
-/*	public Map(){
+	public Map(){
 		this.grid = new Cell[NBCOLUMN][NBLINE];
 		for (int xPos=0;xPos<NBLINE;xPos++){
 			for (int yPos=0;yPos<NBCOLUMN;yPos++){
 				// assigne à chaque case de la grille une 'Position' où sont enregistrées les coordonées posX et posY
-				Random random;
+				Random random = new Random();
 				int randInt = random.nextInt(3);
-				String state;
 				switch (randInt) {
 				case 0:
-					state="S";
+					this.grid[yPos][xPos] = new Cell(CellState.SAND_SQUARE);
 					break;
 				case 1:
-					state="G";
+					this.grid[yPos][xPos] = new Cell(CellState.GRASS_SQUARE);
 					break;
 				case 2:
-					state="W";
+					this.grid[yPos][xPos] = new Cell(CellState.WATER_SQUARE);
 					break;
 				default:
-					state="X";
+					this.grid[yPos][xPos] = new Cell(CellState.SAND_SQUARE);
 				}
-					
-				this.grid[yPos][xPos] = new Cell(CellState.SAND_SQUARE); // to check later on
+				// to check later on
 			}
 		}
 	}
