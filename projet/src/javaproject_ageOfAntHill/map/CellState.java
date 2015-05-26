@@ -43,11 +43,11 @@ public enum CellState {
 	 * @param desc
 	 * @param fileName
 	 */
-	private CellState(String desc , String fileName)
+	private CellState(String initial , String fileName)
 	{
-	this.state = desc; 
+	this.state = initial; 
 	this.fileName = fileName; 
-	this.unreachable = (desc=="W"); 
+	this.unreachable = (initial=="W"); 
 	}
 
 	/**
@@ -66,5 +66,9 @@ public enum CellState {
 	 */
 	private boolean unreachable(){
 		return this.unreachable;
+	}
+
+	public String cellStateToString() {
+		return this.state;
 	}
 }

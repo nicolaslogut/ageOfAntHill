@@ -46,4 +46,8 @@ public class Cell
 		this.entity = entity;
 		this.cellstate = cellstate;
 	}
+	
+	public String cellToString(int lineNumber,int colNumber) {
+		return this.cellstate.cellStateToString();
+	}
 }

@@ -1,5 +1,7 @@
 package javaproject_ageOfAntHill.map;
 
+//import java.util.Random;
+
 import javaproject_ageOfAntHill.Position;
 import javaproject_ageOfAntHill.entity.Unit;
 
@@ -16,6 +18,10 @@ public class Map {
     enumeration de tous les differents objets qu'on peut mettre
     dans une case ? Ou c'est ta classe Case ?
     */
+	
+	private final static int NBLINE = 30;
+	private final static int NBCOLUMN = 30;
+	
 	/**
 	 * grille de jeu representant toute la carte d'une partie c'est un tableau
 	 * de Position à deux dimmentions. Cette solution à été privilégiée car les cases
@@ -27,20 +33,37 @@ public class Map {
 	 * souvenir) contenant un type de case (forêt, plaine, etc), et
 	 * éventuellement une unité.
 	 */
-	private Cell[][] grille;
+	private Cell[][] grid;
 
 	/**
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
 	                    //  to check soon
-	public Map(){/*
-		grille = new Cell[][];
-		for (int positionX=0;positionX<20;positionX++){
-			for (int positionY=0;positionY<20;positionY++){
+	public Map(){
+		this.grid = new Cell[NBCOLUMN][NBLINE];
+		for (int xPos=0;xPos<NBLINE;xPos++){
+			for (int yPos=0;yPos<NBCOLUMN;yPos++){
 				// assigne à chaque case de la grille une 'Position' où sont enregistrées les coordonées posX et posY
-				this.grille[positionY][positionX]=new Position(positionX, positionY);
+				double rand = Math.random()*(3);
+				int randInt=rand.intValue();
+				String state;
+				switch (randInt) {
+				case 0:
+					state="S";
+					break;
+				case 1:
+					state="G";
+					break;
+				case 2:
+					state="W";
+					break;
+				default:
+					state="X";
+				}
+					
+				this.grid[yPos][xPos] = new Cell(CellState.SAND_SQUARE); // to check later on
 			}
-		}*/
+		}
 	}
 	
 	/**
@@ -55,7 +78,20 @@ public class Map {
 	/**
 	 * displays a visual representaion of the map (as a grid)
 	 */
-	public void afficherCarte() {
-		
+	public String displayMap() {
+		String mapAsciiArt = "-----------------------------------------------------------------------"
+				+ "--------------------------------------------------\n";
+		for (int lineNumber=0; lineNumber<NBLINE; lineNumber++){
+			mapAsciiArt+="| ";
+			for (int columnNumber=0; columnNumber< NBCOLUMN; columnNumber++){
+				mapAsciiArt += this.grid[columnNumber][lineNumber].cellToString(lineNumber, columnNumber);
+				mapAsciiArt+=" | ";
+			}
+			
+			mapAsciiArt+="\n";
+			mapAsciiArt+= "-----------------------------------------------------------------------"
+					+ "--------------------------------------------------\n";
+		}
+		return mapAsciiArt;
 	}
 }
