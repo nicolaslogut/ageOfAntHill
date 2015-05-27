@@ -63,9 +63,10 @@ public class Cell
 	public String cellToString(int lineNumber,int colNumber) {
 		return this.cellstate.cellStateToString();
 	}
-	public CellState getCellState(){
+	
+	/*public CellState getCellState(){
 		return this.CellState;
-	}
+	}*/
 
 }
 
