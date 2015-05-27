@@ -47,7 +47,7 @@ public class Map {
 			for (int yPos=0;yPos<NBCOLUMN;yPos++){
 				// assigne à chaque case de la grille une 'Position' où sont enregistrées les coordonées posX et posY
 				Random random = new Random();
-				int randInt = random.nextInt(3);
+				int randInt = random.nextInt(5);
 				switch (randInt) {
 				case 0:
 					this.grid[yPos][xPos] = new Cell(CellState.SAND_SQUARE);
