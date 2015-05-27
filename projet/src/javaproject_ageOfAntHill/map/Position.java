@@ -1,4 +1,4 @@
-package javaproject_ageOfAntHill;
+package javaproject_ageOfAntHill.map;
 
 // gotta change this description later on :/ kinda sucks
 /**
@@ -11,18 +11,27 @@ public class Position {
 	/**
 	 * abscissa of the case
 	 */
-	private int posX;
+	private int x;
+	
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
 	/**
 	 * ordered of the case
 	 */
-	private int posY;
+	private int y;
 	
 	/**
 	 * constructs a new case at given coordinates
 	 */
 	public Position(int positionX, int positionY){
-		this.posX = positionX;
-		this.posY = positionY;
+		this.x = positionX;
+		this.y = positionY;
 	}
 	
 	/**

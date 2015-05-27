@@ -22,7 +22,7 @@ public class Cell
 	 * cell's state (the state can be grass, sand or water).
 	 * 
 	 */
-	private CellState cellstate;
+	private CellState cellState;
 	
 	
 	/**
@@ -52,7 +52,7 @@ public class Cell
 	 */
 	public Cell(Entity entity, CellState cellstate) {
 		this.entity = entity;
-		this.cellstate = cellstate;
+		this.cellState = cellstate;
 	}
 	/**
 	 * 
@@ -61,10 +61,10 @@ public class Cell
 	 * @return
 	 */
 	public String cellToString(int lineNumber,int colNumber) {
-		return this.cellstate.cellStateToString();
+		return this.cellState.cellStateToString();
 	}
 	public CellState getCellState(){
-		return this.CellState;
+		return this.cellState;
 	}
 
 }
