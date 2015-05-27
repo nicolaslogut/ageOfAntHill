@@ -48,25 +48,10 @@ public class Map {
 				// assigne à chaque case de la grille une 'Position' où sont
 				// enregistrées les coordonées posX et posY
 				Random random = new Random();
-<<<<<<< HEAD
+
 				int randInt = random.nextInt(3);
 				this.setElem(new Position(xPos, yPos), randInt);
-=======
-				int randInt = random.nextInt(5);
-				switch (randInt) {
-				case 0:
-					this.grid[yPos][xPos] = new Cell(CellState.SAND_SQUARE);
-					break;
-				case 1:
-					this.grid[yPos][xPos] = new Cell(CellState.GRASS_SQUARE);
-					break;
-				case 2:
-					this.grid[yPos][xPos] = new Cell(CellState.WATER_SQUARE);
-					break;
-				default:
-					this.grid[yPos][xPos] = new Cell(CellState.SAND_SQUARE);
-				}
->>>>>>> branch 'master' of https://github.com/nicolaslogut/ageOfAntHill.git
+
 				// to check later on
 			}
 		}
