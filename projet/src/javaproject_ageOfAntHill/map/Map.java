@@ -14,11 +14,6 @@ import javaproject_ageOfAntHill.entity.Unit;
  * @version 20150526
  */
 public class Map {
-	/*
-	 * note: oui, on va faire comme �a alors mais du coup, on fait un autre
-	 * objet enum pour faire une enumeration de tous les differents objets qu'on
-	 * peut mettre dans une case ? Ou c'est ta classe Case ?
-	 */
 
 	private final static int NBLINE = 30;
 	private final static int NBCOLUMN = 30;
@@ -45,6 +40,7 @@ public class Map {
 		this.grid = new Cell[NBCOLUMN][NBLINE];
 		for (int xPos = 0; xPos < NBLINE; xPos++) {
 			for (int yPos = 0; yPos < NBCOLUMN; yPos++) {
+				this.grid[xPos][yPos] = new Cell();
 				// assigne à chaque case de la grille une 'Position' où sont
 				// enregistrées les coordonées posX et posY
 				Random random = new Random();
@@ -92,6 +88,8 @@ public class Map {
 		Random random = new Random();
 
 		for (Position currentPos : positions) {
+			if (this.outOfTheMap(currentPos))
+				continue;
 			if (this.grid[currentPos.getX()][currentPos.getY()].getCellState() != CellState.WATER_SQUARE) {
 				int randInt = random.nextInt(MAX_WATER_LAKE - waterSet);
 				if (randInt == 0) {
@@ -111,6 +109,13 @@ public class Map {
 	 * 
 	 * }
 	 */
+
+	private boolean outOfTheMap(Position position) {
+		if (position.getY() < 0 || position.getY() > NBLINE 
+				|| position.getX() < 0 || position.getX() > NBCOLUMN)
+			return false;
+		return true;
+	}
 
 	/**
 	 * displays a visual representaion of the map (as a grid)

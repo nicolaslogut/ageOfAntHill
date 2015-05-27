@@ -13,6 +13,11 @@ public class Position {
 	 */
 	private int x;
 	
+	/**
+	 * ordered of the case
+	 */
+	private int y;
+	
 	public int getX() {
 		return x;
 	}
@@ -21,11 +26,7 @@ public class Position {
 		return y;
 	}
 
-	/**
-	 * ordered of the case
-	 */
-	private int y;
-	
+
 	/**
 	 * constructs a new case at given coordinates
 	 */
