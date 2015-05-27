@@ -37,18 +37,36 @@ public class Cell
 		this(null, CellState.GRASS_SQUARE);
 	}
 	
-	
+	/**
+	 * constructor with the CellState chosen
+	 * @param cellstate
+	 */
 	public Cell(CellState cellstate)
 	{
 		this(null, cellstate);
 	}
-
+	/**
+	 * allow to create a cell with an entity and a CellState chosen
+	 * @param entity
+	 * @param cellstate
+	 */
 	public Cell(Entity entity, CellState cellstate) {
 		this.entity = entity;
 		this.cellstate = cellstate;
 	}
-	
+	/**
+	 * 
+	 * @param lineNumber
+	 * @param colNumber
+	 * @return
+	 */
 	public String cellToString(int lineNumber,int colNumber) {
 		return this.cellstate.cellStateToString();
 	}
+	public CellState getCellState(){
+		return this.CellState;
+	}
+
 }
+
+
