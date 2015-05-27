@@ -13,9 +13,10 @@ public class Main {
 	// To check later. Eventually insert into another class.
 	public static void main(String[] args) 
 	{
-		// System.out.println(new javaproject_ageOfAntHill.map.Map()); 
+		// System.out.println(new javaproject_ageOfAntHill.map.Map());
 		Map map = new Map();
-		System.out.println("map :\n" + map.displayMap());
+		//System.out.println("map :\n" + map.displayMap());
+		
 	}
 
 }

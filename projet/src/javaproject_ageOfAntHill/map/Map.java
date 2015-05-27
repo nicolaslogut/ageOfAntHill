@@ -4,8 +4,6 @@ package javaproject_ageOfAntHill.map;
 
 import java.util.Random;
 
-import javaproject_ageOfAntHill.entity.Unit;
-
 /**
  * represents the map of the game
  * 
@@ -18,7 +16,7 @@ public class Map {
 	private final static int NBLINE = 30;
 	private final static int NBCOLUMN = 30;
 
-	private final static int MAX_WATER_LAKE = 10;
+	private final static int MAX_WATER_LAKE = 2;
 
 	/**
 	 * grille de jeu representant toute la carte d'une partie c'est un tableau
@@ -35,7 +33,6 @@ public class Map {
 	/**
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
-	// to check soon
 	public Map() {
 		this.grid = new Cell[NBCOLUMN][NBLINE];
 		for (int xPos = 0; xPos < NBLINE; xPos++) {
@@ -47,8 +44,6 @@ public class Map {
 
 				int randInt = random.nextInt(3);
 				this.setElem(new Position(xPos, yPos), randInt);
-
-				// to check later on
 			}
 		}
 	}
@@ -88,33 +83,37 @@ public class Map {
 		Random random = new Random();
 
 		for (Position currentPos : positions) {
-			if (this.outOfTheMap(currentPos))
+			if (this.notOutOfTheMap(currentPos))
 				continue;
-			if (this.grid[currentPos.getX()][currentPos.getY()].getCellState() != CellState.WATER_SQUARE) {
-				int randInt = random.nextInt(MAX_WATER_LAKE - waterSet);
-				if (randInt == 0) {
-					this.setElem(currentPos, CellState.SAND_SQUARE);
-				} else {
-					setWater(currentPos, waterSet + 1);
+			if(this.grid[currentPos.getX()][currentPos.getY()] != null)
+				if (this.grid[currentPos.getX()][currentPos.getY()].getCellState() != CellState.WATER_SQUARE) {
+					int randInt = random.nextInt(MAX_WATER_LAKE - waterSet);
+					if (randInt == 0) {
+						this.setElem(currentPos, CellState.SAND_SQUARE);
+					} else {
+						setWater(currentPos, waterSet + 1);
+					}
 				}
-			}
 		}
 	}
 
 	/**
 	 * this method allow you to get the position of a unit TOUT DOUX :3
 	 */
-	/*
-	 * public Unit getUnit(){
-	 * 
-	 * }
+	/*public Unit getUnit(){
+		//TODO later
+	}*/
+	
+	/**
+	 * returns true if the cell is out of the Map ; false otherwise
+	 * @param position
+	 * @return
 	 */
-
-	private boolean outOfTheMap(Position position) {
-		if (position.getY() < 0 || position.getY() > NBLINE 
-				|| position.getX() < 0 || position.getX() > NBCOLUMN)
-			return false;
-		return true;
+	private boolean notOutOfTheMap(Position position) {
+		if (position.getY() < 0 || position.getY() >= NBLINE 
+				|| position.getX() < 0 || position.getX() >= NBCOLUMN)
+			return true;
+		return false;
 	}
 
 	/**
@@ -133,7 +132,7 @@ public class Map {
 
 			mapAsciiArt += "\n";
 			mapAsciiArt += "-----------------------------------------------------------------------"
-					+ "--------------------------------------------------\n";
+				+ "--------------------------------------------------\n";
 		}
 		return mapAsciiArt;
 	}

@@ -1,7 +1,5 @@
 package javaproject_ageOfAntHill.map;
 
-import javaproject_ageOfAntHill.entity.Unit;
-
 import javax.swing.text.html.parser.Entity;
 
 /**
@@ -45,6 +43,7 @@ public class Cell
 	{
 		this(null, cellstate);
 	}
+	
 	/**
 	 * allow to create a cell with an entity and a CellState chosen
 	 * @param entity

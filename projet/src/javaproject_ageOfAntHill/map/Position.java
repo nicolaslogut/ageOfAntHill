@@ -1,6 +1,5 @@
 package javaproject_ageOfAntHill.map;
 
-// gotta change this description later on :/ kinda sucks
 /**
  * represents a case at given (x,y) coordinates
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
