@@ -9,7 +9,7 @@ import javaproject_ageOfAntHill.map.CellState;
  * @version 20150526
  */
 
-public class Unit extends Entity {
+public abstract class Unit extends Entity {
 	// eventuellement creer une nouvelle classe (abstraite ?) pour stocker toutes ces constantes
 	/**
 	 * default armor, damages and HP for non-attacking units (queen, workers...)

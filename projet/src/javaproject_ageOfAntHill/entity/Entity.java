@@ -6,7 +6,7 @@ package javaproject_ageOfAntHill.entity;
  * 
  * @version 20150526
  */
-public class Entity {
+public abstract class Entity {
 	/**
 	 * defined the healPoints of a unity
 	 */
