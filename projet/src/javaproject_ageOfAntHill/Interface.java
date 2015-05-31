@@ -10,12 +10,21 @@ import java.awt.event.MouseListener;
  * @version 20150526
  */
 public class Interface implements InterfaceHM, MouseListener {
+	/**
+	 * Allow the player to select one of multiple entities (Units or Building)
+	 */
 	public void selectEntities() {
 	}
 	
+	/**
+	 * Allows the player to move any Unit
+	 */
 	public void moveUnit() {
 	}
 	
+	/**
+	 * Allows the player to create a building
+	 */
 	public void createBuilding() {
 	}
 	

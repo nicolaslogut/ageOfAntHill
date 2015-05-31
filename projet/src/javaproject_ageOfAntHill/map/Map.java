@@ -48,6 +48,12 @@ public class Map implements InterfaceMap {
 		}
 	}
 
+	/**
+	 * This method create the different elements available for the map. It create random tiles with WATER_SQUARE,
+	 * SAND_SQUARE, GRASS_SQUARE.
+	 * @param position
+	 * @param value
+	 */
 	private void setElem(Position position, int value) {
 		if (this.grid[position.getX()][position.getY()].getCellState() == CellState.WATER_SQUARE
 				|| this.grid[position.getX()][position.getY()].getCellState() == CellState.WATER_SQUARE)
@@ -67,10 +73,21 @@ public class Map implements InterfaceMap {
 
 	}
 
+	/**
+	 * 
+	 * @param position
+	 * @param state
+	 */
 	private void setElem(Position position, CellState state) {
 		this.grid[position.getX()][position.getY()] = new Cell(state);
 	}
 
+	/**
+	 * This method set a bunch of WATER_SQUARE tiles to create a smooth lake surrounded by SAND_SQUARE
+	 * (Create a limited size lake to avoid big lakes, or a lake with the map size)
+	 * @param position
+	 * @param waterSet
+	 */
 	private void setWater(Position position, int waterSet) {
 		this.grid[position.getX()][position.getY()] = new Cell(CellState.WATER_SQUARE);
 		Position[] positions = new Position[] {

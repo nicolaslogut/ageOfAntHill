@@ -14,7 +14,13 @@ import javax.swing.WindowConstants;
  *
  */
 public class Displaying implements Runnable {
+	/**
+	 * A constant integer which contain the total number of lines
+	 */
 	private final static int NBLINE=64;	// 64 seems the most adequate as default value
+	/**
+	 * A constant integer which contain the total number of column
+	 */
 	private final static int NBCOLUMN=64; // 64 seems the most adequate as default value
 	
 	private InterfaceHM interfHM;
@@ -41,6 +47,9 @@ public class Displaying implements Runnable {
 		initGraphInt();
 	}
 	
+	/**
+	 * The main frame of the game, contain the size and a bunch of parameters
+	 */
 	private void initGraphInt() {
 		this.window.setTitle("Age Of AntHill **BETA TEST**");
 		this.window.setSize(1200, 1025);

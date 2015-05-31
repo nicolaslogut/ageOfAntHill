@@ -14,12 +14,19 @@ import javax.swing.JLabel;
  */
 @SuppressWarnings("serial")
 public class LabelCustom extends JLabel {	
-	
+	/**
+	 * TOUT DOUX
+	 * @param nbLine
+	 * @param nbCol
+	 */
 	public LabelCustom(int nbLine, int nbCol) {
 		this.addPicture();
 			// adds a picture (a square of grass, water, sand...)
 	}
 	
+	/**
+	 * This set all the tiles available for the map
+	 */
 	public void addPicture() {
 		Random random = new Random();
 		int randInt = random.nextInt(10);

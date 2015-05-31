@@ -17,10 +17,18 @@ public class Position {
 	 */
 	private int y;
 	
+	/**
+	 * Get the abscissa of the case
+	 * @return
+	 */
 	public int getX() {
 		return x;
 	}
-
+	
+	/**
+	 * Get the ordered of the case
+	 * @return
+	 */
 	public int getY() {
 		return y;
 	}

@@ -11,10 +11,11 @@ public class Game {
 	
 	private javaproject_ageOfAntHill.map.Map theMap;
 	
-	
+	/**
+	 * TOUT DOUX
+	 */
 	public Game(){
 		theMap = new javaproject_ageOfAntHill.map.Map();
-		// to finish later
 	}
 	
 	

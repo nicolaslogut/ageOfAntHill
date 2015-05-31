@@ -12,7 +12,10 @@ import javaproject_ageOfAntHill.map.Map;
  * @version 20150526
  */
 public class Main {
-
+	/**
+	 * This is the main
+	 * @param args
+	 */
 	// To check later. Eventually insert into another class.
 	public static void main(String[] args) 
 	{
