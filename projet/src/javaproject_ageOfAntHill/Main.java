@@ -1,5 +1,8 @@
 package javaproject_ageOfAntHill;
 
+import javax.swing.SwingUtilities;
+
+import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Map;
 
 /**
@@ -14,9 +17,14 @@ public class Main {
 	public static void main(String[] args) 
 	{
 		// System.out.println(new javaproject_ageOfAntHill.map.Map());
-		Map map = new Map();
-		//System.out.println("map :\n" + map.displayMap());
+		InterfaceHM interfHM = new Interface();
+		InterfaceMap map = new Map();
+		Displaying disp = new Displaying(interfHM);
+		SwingUtilities.invokeLater(disp);
 		
+		// System.out.println("map :\n" + map.mapToString());
+		
+		// Game myGame = new Game();
 	}
 
 }

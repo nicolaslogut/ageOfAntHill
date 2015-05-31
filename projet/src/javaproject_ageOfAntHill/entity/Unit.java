@@ -1,6 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 
 import javaproject_ageOfAntHill.map.CellState;
+import javaproject_ageOfAntHill.map.Position;
 /**
  * represents a unit in a game
  * this is an entity that has the capacity to move and attack
@@ -75,13 +76,25 @@ public abstract class Unit extends Entity {
 	}
 	
 	/**
+	 * this method allow you to get the position of a unit TOUT DOUX :3
+	 */
+	public Position getUnit(){
+		// TODO later
+		return null;
+	}
+	
+	/**
 	 * return true if the unit moved ; false if it was impossible
 	 */
 	public boolean moveUnit(CellState thisCase){
 		return true;
 	}
 	
-	private void moveAvailable(){
-		
+	/**
+	 * checks if the given Position is in the Map, and if there is no Entity at this Position
+	 * returns true if it's 'OK' to move ; false otherwise
+	 */
+	private boolean moveAvailable(){
+		return true;	// should use the 'notOutOfTheMap' method from Map
 	}
 }

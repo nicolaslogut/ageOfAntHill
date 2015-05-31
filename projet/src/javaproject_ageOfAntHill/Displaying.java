@@ -1,12 +1,10 @@
 package javaproject_ageOfAntHill;
 
 import java.awt.GridLayout;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
-//import javax.swing.JLabel;
 import javax.swing.JPanel;
-//import javax.swing.JSplitPane;
-//import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 
@@ -16,8 +14,10 @@ import javax.swing.WindowConstants;
  *
  */
 public class Displaying implements Runnable {
-	private final static int NBLINE=30;
-	private final static int NBCOLUMN=30;
+	private final static int NBLINE=64;	// 64 seems the most adequate as default value
+	private final static int NBCOLUMN=64; // 64 seems the most adequate as default value
+	
+	private InterfaceHM interfHM;
 	
 	/**
 	 * window of the game
@@ -29,7 +29,8 @@ public class Displaying implements Runnable {
 	 */
 	private JPanel pan1;
 	
-	public Displaying(){
+	public Displaying(InterfaceHM interfHM){
+		this.interfHM = interfHM;
 		this.window = new JFrame();
 		this.pan1 = new JPanel();
 	}
@@ -37,43 +38,25 @@ public class Displaying implements Runnable {
 	
 	@Override
 	public void run() {
+		initGraphInt();
+	}
+	
+	private void initGraphInt() {
 		this.window.setTitle("Age Of AntHill **BETA TEST**");
 		this.window.setSize(1200, 1025);
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
-		//JPanel pan2 = new JPanel();
-		//JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		
-		// pan1 => the grid (for the P4 game)
-		GridLayout gl = new GridLayout(64,64);
+		GridLayout gl = new GridLayout(NBLINE, NBCOLUMN);
 		this.pan1.setLayout(gl);
-		for (int numButton=0;numButton<4096;numButton++){
-			ButtonCustom button = new ButtonCustom(); 
-			this.pan1.add(button);
-		    button.addPicture(NBLINE, NBCOLUMN);
-		    			// adds a picture (a square of grass, water, sand...)
-		    //button.addActionListener(null);
+		for (int numCell=0;numCell<NBLINE*NBCOLUMN;numCell++){
+			LabelCustom cell = new LabelCustom(NBLINE, NBCOLUMN);
+			cell.addMouseListener((MouseListener) this.interfHM);
+			this.pan1.add(cell);
 		}
-		/*
-		// pan2 => the console
-		JLabel lab = new JLabel("Console :\n");
-		lab.setHorizontalTextPosition(SwingConstants.LEFT);
-		lab.setHorizontalAlignment(SwingConstants.LEFT);
-		pan2.add(lab);
 		
-		// splitPane
-		splitPane.add(pan1);
-		splitPane.add(pan2);
-		splitPane.setDividerLocation(588);
-		splitPane.setEnabled(false);
-		splitPane.setDividerSize(0);
-		*/
-		// adding JSplitPane (both pan1 and pan2) in JFrame
 		this.window.setContentPane(pan1);
-		//CellState.voidToken(window)
-		// displays the window
 		this.window.setVisible(true);
 	}
 }

@@ -11,7 +11,7 @@ import java.util.Random;
  *         Amaglio, Adrien Arsac
  * @version 20150526
  */
-public class Map {
+public class Map implements InterfaceMap {
 
 	private final static int NBLINE = 30;
 	private final static int NBCOLUMN = 30;
@@ -63,7 +63,6 @@ public class Map {
 			this.setWater(position, 0);
 		default:
 			this.grid[position.getX()][position.getY()] = new Cell(CellState.SAND_SQUARE);
-
 		}
 
 	}
@@ -96,20 +95,13 @@ public class Map {
 				}
 		}
 	}
-
-	/**
-	 * this method allow you to get the position of a unit TOUT DOUX :3
-	 */
-	/*public Unit getUnit(){
-		//TODO later
-	}*/
 	
 	/**
 	 * returns true if the cell is out of the Map ; false otherwise
 	 * @param position
 	 * @return
 	 */
-	private boolean notOutOfTheMap(Position position) {
+	public boolean notOutOfTheMap(Position position) {
 		if (position.getY() < 0 || position.getY() >= NBLINE 
 				|| position.getX() < 0 || position.getX() >= NBCOLUMN)
 			return true;
@@ -119,7 +111,7 @@ public class Map {
 	/**
 	 * displays a visual representaion of the map (as a grid)
 	 */
-	public String displayMap() {
+	public String mapToString() {
 		String mapAsciiArt = "-----------------------------------------------------------------------"
 				+ "--------------------------------------------------\n";
 		for (int lineNumber = 0; lineNumber < NBLINE; lineNumber++) {
