@@ -16,7 +16,7 @@ public class Map implements InterfaceMap {
 	private final static int NBLINE = 30;
 	private final static int NBCOLUMN = 30;
 
-	private final static int MAX_WATER_LAKE = 2;
+	private final static int MAX_WATER_LAKE = 4;
 
 	/**
 	 * grille de jeu representant toute la carte d'une partie c'est un tableau
@@ -35,83 +35,63 @@ public class Map implements InterfaceMap {
 	 */
 	public Map() {
 		this.grid = new Cell[NBCOLUMN][NBLINE];
-		for (int xPos = 0; xPos < NBLINE; xPos++) {
-			for (int yPos = 0; yPos < NBCOLUMN; yPos++) {
-				this.grid[xPos][yPos] = new Cell();
-				// assigne à chaque case de la grille une 'Position' où sont
-				// enregistrées les coordonées posX et posY
-				Random random = new Random();
-
-				int randInt = random.nextInt(3);
-				this.setElem(new Position(xPos, yPos), randInt);
+		for (int numLine=0;numLine<NBLINE;numLine++){
+			for (int numCol=0;numCol<NBCOLUMN;numCol++){
+				this.grid[numLine][numCol] = new Cell();    // Grass square by default
+			}
+		}
+		
+		for (int numWaterBlock=0;numWaterBlock<MAX_WATER_LAKE;numWaterBlock++)
+			this.generateSandWater();
+	}
+	
+	/**
+	 * adds a water block randomly on the map, and fill its surroundings with sand
+	 */
+	public void generateSandWater(){
+		Random rand = new Random();
+		int randLine=0;
+		int randCol=0;
+		boolean randValues = false;
+		
+		// Checks if it is a good idea to place a water area there
+		while (!randValues){
+			randCol = rand.nextInt(NBCOLUMN-7) + 2;
+			randLine = rand.nextInt(NBLINE-8) + 2;
+			randValues=true;
+			for (int numLine=randLine;numLine<=randLine+4;numLine++){
+				for (int numCol=randCol;numCol<=randCol+4;numCol++){
+					if (this.grid[numLine][numCol].cellState!=CellState.GRASS_SQUARE){
+						randValues = false;
+					}
+				}
+			}
+		}
+		
+		int randNbCol = rand.nextInt(6);
+		int randNbLine = rand.nextInt(7);
+		
+		// adds a water area
+		for (int numLine=randLine;numLine<=randLine+randNbLine;numLine++){
+			for (int numCol=randCol;numCol<=randCol+randNbCol;numCol++){
+				this.grid[numLine][numCol]=null;
+				this.grid[numLine][numCol]= new Cell(CellState.WATER_SQUARE);
+			}
+		}
+		
+		// adds Sand area around water
+		for (int numLine=randLine-2;numLine<=randLine+randNbLine+2;numLine++){
+			for (int numCol=randCol-2;numCol<=randCol+randNbCol+2;numCol++){
+				if (this.grid[numLine][numCol].cellState!=CellState.WATER_SQUARE){
+					this.grid[numLine][numCol]=null;
+					this.grid[numLine][numCol]= new Cell(CellState.SAND_SQUARE);
+				}
 			}
 		}
 	}
-
-	/**
-	 * This method create the different elements available for the map. It create random tiles with WATER_SQUARE,
-	 * SAND_SQUARE, GRASS_SQUARE.
-	 * @param position
-	 * @param value
-	 */
-	private void setElem(Position position, int value) {
-		if (this.grid[position.getX()][position.getY()].getCellState() == CellState.WATER_SQUARE
-				|| this.grid[position.getX()][position.getY()].getCellState() == CellState.WATER_SQUARE)
-			return;
-		switch (value) {
-		case 0:
-			this.grid[position.getX()][position.getY()] = new Cell(CellState.SAND_SQUARE);
-			break;
-		case 1:
-			this.grid[position.getX()][position.getY()] = new Cell(CellState.GRASS_SQUARE);
-			break;
-		case 2:
-			this.setWater(position, 0);
-		default:
-			this.grid[position.getX()][position.getY()] = new Cell(CellState.SAND_SQUARE);
-		}
-
-	}
-
-	/**
-	 * 
-	 * @param position
-	 * @param state
-	 */
-	private void setElem(Position position, CellState state) {
-		this.grid[position.getX()][position.getY()] = new Cell(state);
-	}
-
-	/**
-	 * This method set a bunch of WATER_SQUARE tiles to create a smooth lake surrounded by SAND_SQUARE
-	 * (Create a limited size lake to avoid big lakes, or a lake with the map size)
-	 * @param position
-	 * @param waterSet
-	 */
-	private void setWater(Position position, int waterSet) {
-		this.grid[position.getX()][position.getY()] = new Cell(CellState.WATER_SQUARE);
-		Position[] positions = new Position[] {
-				new Position(position.getX()+1, position.getY()),
-				new Position(position.getX()-1, position.getY()),
-				new Position(position.getX(), position.getY()+1),
-				new Position(position.getX(), position.getY()-1) };
-
-		Random random = new Random();
-
-		for (Position currentPos : positions) {
-			if (this.notOutOfTheMap(currentPos))
-				continue;
-			if(this.grid[currentPos.getX()][currentPos.getY()] != null)
-				if (this.grid[currentPos.getX()][currentPos.getY()].getCellState() != CellState.WATER_SQUARE) {
-					int randInt = random.nextInt(MAX_WATER_LAKE - waterSet);
-					if (randInt == 0) {
-						this.setElem(currentPos, CellState.SAND_SQUARE);
-					} else {
-						setWater(currentPos, waterSet + 1);
-					}
-				}
-		}
-	}
+	
+	
+	
 	
 	/**
 	 * returns true if the cell is out of the Map ; false otherwise

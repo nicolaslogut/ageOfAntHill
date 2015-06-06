@@ -1,4 +1,7 @@
 package javaproject_ageOfAntHill;
+
+import javaproject_ageOfAntHill.map.Map;
+
 // I thought it was starting an instance of the game ?
 /**
  *this class allows to launch the game 
@@ -9,13 +12,13 @@ package javaproject_ageOfAntHill;
  */
 public class Game {
 	
-	private javaproject_ageOfAntHill.map.Map theMap;
+	private Map theMap;
 	
 	/**
 	 * TOUT DOUX
 	 */
 	public Game(){
-		theMap = new javaproject_ageOfAntHill.map.Map();
+		this.theMap = new Map();
 	}
 	
 	

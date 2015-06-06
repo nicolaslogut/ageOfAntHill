@@ -20,7 +20,7 @@ public class Cell
 	 * cell's state (the state can be grass, sand or water).
 	 * 
 	 */
-	private CellState cellState;
+	protected CellState cellState;
 	
 	
 	/**
