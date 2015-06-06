@@ -13,10 +13,10 @@ import javaproject_ageOfAntHill.LabelCustom;
  */
 public class Map implements InterfaceMap {
 
- private final static int NBLINE = 64;
- private final static int NBCOLUMN = 64;
+ private final static int NBLINE = 48;
+ private final static int NBCOLUMN = 48;
 
- private final static int MAX_WATER_LAKE = 15;
+ private final static int MAX_WATER_LAKE = 11;
 
  /**
   * grille de jeu representant toute la carte d'une partie c'est un tableau

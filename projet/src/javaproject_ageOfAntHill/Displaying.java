@@ -8,77 +8,73 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
 
-
 /**
  * used to (temporarily) display the graphic interface
- * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ * 
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
+ *         Amaglio, Adrien Arsac
  *
  */
 public class Displaying implements Runnable, ActionListener {
 	/**
 	 * A constant integer which contain the total number of lines
 	 */
-	private final static int NBLINE=64;	// 64 seems the most adequate as default value
+	private final static int NBLINE = 48; // 64 seems the most adequate as
+											// default value
 	/**
 	 * A constant integer which contain the total number of column
 	 */
-	private final static int NBCOLUMN=64; // 64 seems the most adequate as default value
-	
+	private final static int NBCOLUMN = 48; // 64 seems the most adequate as
+											// default value
+
 	private InterfaceHM interfHM;
-	
+
 	/**
 	 * window of the game
 	 */
 	private JFrame window;
-	/*
+	/**
 	 * 
 	 */
-	private JMenuItem ItemAbout;
-	/*
+	private JMenuItem itemAbout;
+	/**
 	 * 
 	 */
-	private JMenuItem ItemClose;
+	private JMenuItem itemClose;
 	/**
 	 * grid of the game
 	 */
 	private JPanel gridOfTheGame;
-	
-	private JPanel menu;
-	
-	private JPanel console;
-	
+
 	private JLabel cons;
-	
-	private JSplitPane splitWindow;
+
 	private JSplitPane splitGame;
-	
-	
-	
-	public Displaying(InterfaceHM interfHM){
-		
+	private JMenuBar menuBar;
+
+	public Displaying(InterfaceHM interfHM) {
+
 		this.interfHM = interfHM;
-		
-		this.splitWindow = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-				
+
 		this.window = new JFrame();
-		
-		this.setGridOfTheGame(new JPanel());
-		
+		this.menuBar = new JMenuBar();
+		this.window.setJMenuBar(this.menuBar);
+		this.gridOfTheGame = new JPanel();
 		this.initGraphInt();
 	}
-	
-	
+
 	@Override
 	public void run() {
 		// will be used later
 	}
-	
+
 	/**
 	 * The main frame of the game, contain the size and a bunch of parameters
 	 */
@@ -88,64 +84,56 @@ public class Displaying implements Runnable, ActionListener {
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
-		
-		this.setMenu(new JPanel());
-		
+
 		JMenu menu = new JMenu("Menu");
-		this.ItemAbout = new JMenuItem("About");
-		this.ItemClose = new JMenuItem("Close");
-		menu.add(this.ItemAbout);
-		menu.add(this.ItemClose);
-		this.ItemAbout.addActionListener(this);
-		this.ItemClose.addActionListener(this);
+		this.itemAbout = new JMenuItem("About");
+		this.itemClose = new JMenuItem("Close");
+		menu.add(this.itemAbout);
+		menu.add(this.itemClose);
+		this.itemAbout.addActionListener(this);
+		this.itemClose.addActionListener(this);
+		this.menuBar.add(menu);
+
 		GridLayout gl = new GridLayout(NBLINE, NBCOLUMN);
-		this.getGridOfTheGame().setLayout(gl);
-		
-		for (int numCell=0;numCell<NBLINE*NBCOLUMN;numCell++){
+		this.gridOfTheGame.setLayout(gl);
+
+		for (int numCell = 0; numCell < NBLINE * NBCOLUMN; numCell++) {
 			LabelCustom cell = new LabelCustom(NBLINE, NBCOLUMN);
 			cell.addMouseListener((MouseListener) this.interfHM);
 			this.getGridOfTheGame().add(cell);
-			this.getGridOfTheGame().setComponentZOrder(cell,numCell);
-			
-		this.cons = new JLabel("Console :");
-		this.console.add(cons);	
-	
-		splitGame.add(this.gridOfTheGame);
-		splitGame.add(this.console);
-	
-		splitWindow.add(this.menu);
-		splitWindow.add(this.splitGame);
-		
-		this.window.setContentPane(getGridOfTheGame());
-		this.window.setVisible(true);
+			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
 		}
-	}
+		JPanel console = new JPanel();
+		this.cons = new JLabel("Console :");
+		console.add(cons);
 
+		splitGame.add(this.gridOfTheGame);
+		splitGame.add(console);
+		splitGame.setDividerLocation(600);
+		splitGame.setDividerSize(0);
+
+		this.window.setContentPane(this.splitGame);
+		this.window.setVisible(true);
+
+	}
 
 	public JPanel getGridOfTheGame() {
 		return gridOfTheGame;
-		
-	}
 
+	}
 
 	public void setGridOfTheGame(JPanel gridOfTheGame) {
 		this.gridOfTheGame = gridOfTheGame;
 	}
-	
-	public JPanel getMenu() {
-		  return menu;
-		 }
 
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		JMenuItem itemSelectionne = (JMenuItem) event.getSource();
 
-		 public void setMenu(JPanel menu) {
-		  this.menu = menu;
-		 }
+		if (itemSelectionne == this.itemAbout) {
 
+		} else {
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
 		}
+	}
 }
