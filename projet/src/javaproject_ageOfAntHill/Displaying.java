@@ -10,9 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
+
 
 /**
  * used to (temporarily) display the graphic interface
@@ -128,12 +130,15 @@ public class Displaying implements Runnable, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		JMenuItem itemSelectionne = (JMenuItem) event.getSource();
+		  JMenuItem selectedItem = (JMenuItem) event.getSource();
+		  
+		  String instructions="blablabla"; // TODO => add helping instructions
 
-		if (itemSelectionne == this.itemAbout) {
-
-		} else {
-
-		}
-	}
+		  if (selectedItem == this.itemAbout) {
+		   JOptionPane.showMessageDialog(this.window, instructions, "About", JOptionPane.INFORMATION_MESSAGE);
+		  }
+		  if (selectedItem == this.itemClose) {
+		   this.window.dispose();
+		  }
+		 }
 }
