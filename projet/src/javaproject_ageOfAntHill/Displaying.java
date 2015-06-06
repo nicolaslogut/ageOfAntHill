@@ -1,10 +1,16 @@
 package javaproject_ageOfAntHill;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
 
 
@@ -13,7 +19,7 @@ import javax.swing.WindowConstants;
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
  */
-public class Displaying implements Runnable {
+public class Displaying implements Runnable, ActionListener {
 	/**
 	 * A constant integer which contain the total number of lines
 	 */
@@ -29,16 +35,40 @@ public class Displaying implements Runnable {
 	 * window of the game
 	 */
 	private JFrame window;
-	
+	/*
+	 * 
+	 */
+	private JMenuItem ItemAbout;
+	/*
+	 * 
+	 */
+	private JMenuItem ItemClose;
 	/**
 	 * grid of the game
 	 */
-	private JPanel pan1;
+	private JPanel gridOfTheGame;
+	
+	private JPanel menu;
+	
+	private JPanel console;
+	
+	private JLabel cons;
+	
+	private JSplitPane splitWindow;
+	private JSplitPane splitGame;
+	
+	
 	
 	public Displaying(InterfaceHM interfHM){
+		
 		this.interfHM = interfHM;
+		
+		this.splitWindow = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+				
 		this.window = new JFrame();
-		this.setPan1(new JPanel());
+		
+		this.setGridOfTheGame(new JPanel());
 		
 		this.initGraphInt();
 	}
@@ -59,26 +89,63 @@ public class Displaying implements Runnable {
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
+		
+		this.setMenu(new JPanel());
+		
+		JMenu menu = new JMenu("Menu");
+		this.ItemAbout = new JMenuItem("About");
+		this.ItemClose = new JMenuItem("Close");
+		menu.add(this.ItemAbout);
+		menu.add(this.ItemClose);
+		this.ItemAbout.addActionListener(this);
+		this.ItemClose.addActionListener(this);
 		GridLayout gl = new GridLayout(NBLINE, NBCOLUMN);
-		this.getPan1().setLayout(gl);
+		this.getGridOfTheGame().setLayout(gl);
+		
 		for (int numCell=0;numCell<NBLINE*NBCOLUMN;numCell++){
 			LabelCustom cell = new LabelCustom(NBLINE, NBCOLUMN);
 			cell.addMouseListener((MouseListener) this.interfHM);
-			this.getPan1().add(cell);
-			this.getPan1().setComponentZOrder(cell,numCell);
-		}
+			this.getGridOfTheGame().add(cell);
+			this.getGridOfTheGame().setComponentZOrder(cell,numCell);
+			
+		this.cons = new JLabel("Console :");
+		this.console.add(cons);	
+	
+		splitGame.add(this.gridOfTheGame);
+		splitGame.add(this.console);
+	
+		splitWindow.add(this.menu);
+		splitWindow.add(this.splitGame);
 		
-		this.window.setContentPane(getPan1());
+		this.window.setContentPane(getGridOfTheGame());
 		this.window.setVisible(true);
+		}
 	}
 
 
-	public JPanel getPan1() {
-		return pan1;
+	public JPanel getGridOfTheGame() {
+		return gridOfTheGame;
+		
 	}
 
 
-	public void setPan1(JPanel pan1) {
-		this.pan1 = pan1;
+	public void setGridOfTheGame(JPanel gridOfTheGame) {
+		this.gridOfTheGame = gridOfTheGame;
 	}
+	
+	public JPanel getMenu() {
+		  return menu;
+		 }
+
+
+		 public void setMenu(JPanel menu) {
+		  this.menu = menu;
+		 }
+
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 }
