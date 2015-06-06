@@ -19,13 +19,15 @@ public class Main {
 	// To check later. Eventually insert into another class.
 	public static void main(String[] args) 
 	{
-//		InterfaceHM interfHM = new Interface();
-//		InterfaceMap map = new Map();
-//		Displaying disp = new Displaying(interfHM);
-//		SwingUtilities.invokeLater(disp);
+		InterfaceHM interfHM = new Interface();
+		InterfaceMap map = new Map();
+		Displaying disp = new Displaying(interfHM);
+		disp.run();
+		//SwingUtilities.invokeLater(disp);
+		map.generateSandWater(disp);
 		
-		Map map = new Map();
-		System.out.println("map :\n" + map.mapToString());
+//		Map map = new Map();
+//		System.out.println("map :\n" + map.mapToString());
 	}
 
 }

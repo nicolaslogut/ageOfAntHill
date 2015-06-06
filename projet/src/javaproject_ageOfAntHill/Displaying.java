@@ -38,13 +38,15 @@ public class Displaying implements Runnable {
 	public Displaying(InterfaceHM interfHM){
 		this.interfHM = interfHM;
 		this.window = new JFrame();
-		this.pan1 = new JPanel();
+		this.setPan1(new JPanel());
+		
+		this.initGraphInt();
 	}
 	
 	
 	@Override
 	public void run() {
-		initGraphInt();
+		// will be used later
 	}
 	
 	/**
@@ -58,14 +60,25 @@ public class Displaying implements Runnable {
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 		GridLayout gl = new GridLayout(NBLINE, NBCOLUMN);
-		this.pan1.setLayout(gl);
+		this.getPan1().setLayout(gl);
 		for (int numCell=0;numCell<NBLINE*NBCOLUMN;numCell++){
 			LabelCustom cell = new LabelCustom(NBLINE, NBCOLUMN);
 			cell.addMouseListener((MouseListener) this.interfHM);
-			this.pan1.add(cell);
+			this.getPan1().add(cell);
+			this.getPan1().setComponentZOrder(cell,numCell);
 		}
 		
-		this.window.setContentPane(pan1);
+		this.window.setContentPane(getPan1());
 		this.window.setVisible(true);
+	}
+
+
+	public JPanel getPan1() {
+		return pan1;
+	}
+
+
+	public void setPan1(JPanel pan1) {
+		this.pan1 = pan1;
 	}
 }

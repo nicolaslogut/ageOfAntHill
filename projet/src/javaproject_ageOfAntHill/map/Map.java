@@ -1,8 +1,8 @@
 package javaproject_ageOfAntHill.map;
 
-//import java.util.Random;
-
 import java.util.Random;
+import javaproject_ageOfAntHill.Displaying;
+import javaproject_ageOfAntHill.LabelCustom;
 
 /**
  * represents the map of the game
@@ -13,10 +13,10 @@ import java.util.Random;
  */
 public class Map implements InterfaceMap {
 
-	private final static int NBLINE = 30;
-	private final static int NBCOLUMN = 30;
+	private final static int NBLINE = 64;
+	private final static int NBCOLUMN = 64;
 
-	private final static int MAX_WATER_LAKE = 4;
+	private final static int MAX_WATER_LAKE = 15;
 
 	/**
 	 * grille de jeu representant toute la carte d'une partie c'est un tableau
@@ -40,58 +40,87 @@ public class Map implements InterfaceMap {
 				this.grid[numLine][numCol] = new Cell();    // Grass square by default
 			}
 		}
-		
-		for (int numWaterBlock=0;numWaterBlock<MAX_WATER_LAKE;numWaterBlock++)
-			this.generateSandWater();
 	}
 	
 	/**
 	 * adds a water block randomly on the map, and fill its surroundings with sand
 	 */
-	public void generateSandWater(){
-		Random rand = new Random();
-		int randLine=0;
-		int randCol=0;
-		boolean randValues = false;
-		
-		// Checks if it is a good idea to place a water area there
-		while (!randValues){
-			randCol = rand.nextInt(NBCOLUMN-7) + 2;
-			randLine = rand.nextInt(NBLINE-8) + 2;
-			randValues=true;
-			for (int numLine=randLine;numLine<=randLine+4;numLine++){
-				for (int numCol=randCol;numCol<=randCol+4;numCol++){
-					if (this.grid[numLine][numCol].cellState!=CellState.GRASS_SQUARE){
-						randValues = false;
+	public void generateSandWater(Displaying disp){
+		for (int numWaterBlock=0;numWaterBlock<MAX_WATER_LAKE;numWaterBlock++){
+			Random rand = new Random();
+			int randNumLine=0;
+			int randNumCol=0;
+			int randNbCols = rand.nextInt(8) + 2;
+			int randNbLines = rand.nextInt(9) + 2;
+			boolean randValues = false;
+			
+			// Picks a random location and checks if it is a good idea to place a water area there
+			while (!randValues){
+				randNumCol = rand.nextInt(NBCOLUMN-randNbCols+1);
+				randNumLine = rand.nextInt(NBLINE-randNbLines+1);
+				randValues=true;
+				for (int numLine=randNumLine;numLine<randNumLine+randNbLines;numLine++){
+					for (int numCol=randNumCol;numCol<randNumCol+randNbCols;numCol++){
+						if (this.grid[numLine][numCol].cellState!=CellState.GRASS_SQUARE){
+							randValues = false;
+						}
 					}
 				}
 			}
-		}
-		
-		int randNbCol = rand.nextInt(6);
-		int randNbLine = rand.nextInt(7);
-		
-		// adds a water area
-		for (int numLine=randLine;numLine<=randLine+randNbLine;numLine++){
-			for (int numCol=randCol;numCol<=randCol+randNbCol;numCol++){
-				this.grid[numLine][numCol]=null;
-				this.grid[numLine][numCol]= new Cell(CellState.WATER_SQUARE);
-			}
-		}
-		
-		// adds Sand area around water
-		for (int numLine=randLine-2;numLine<=randLine+randNbLine+2;numLine++){
-			for (int numCol=randCol-2;numCol<=randCol+randNbCol+2;numCol++){
-				if (this.grid[numLine][numCol].cellState!=CellState.WATER_SQUARE){
+			
+			// adds a water area
+			for (int numLine=randNumLine;numLine<randNumLine+randNbLines;numLine++){
+				for (int numCol=randNumCol;numCol<randNumCol+randNbCols;numCol++){
 					this.grid[numLine][numCol]=null;
-					this.grid[numLine][numCol]= new Cell(CellState.SAND_SQUARE);
+					this.grid[numLine][numCol]= new Cell(CellState.WATER_SQUARE);
+					LabelCustom labelFieldColor = (LabelCustom) disp.getPan1().getComponent(getNumLabel(numLine, numCol));
+					labelFieldColor.switchPictureLabel(CellState.WATER_SQUARE);
+				}
+			}
+			
+			int maxLine=0;
+			int maxCol=0;
+			if (randNumLine+randNbLines==NBLINE)
+				maxLine=randNumLine+randNbLines;
+			else
+				maxLine=randNumLine+randNbLines+1;
+			
+			if (randNumCol+randNbCols==NBCOLUMN)
+				maxCol=randNumCol+randNbCols;
+			else
+				maxCol=randNumCol+randNbCols+1;
+			
+			// adds Sand area around water
+			for (int numLine=randNumLine-1;numLine<maxLine;numLine++){
+				for (int numCol=randNumCol-1;numCol<maxCol;numCol++){
+					if (this.grid[numLine][numCol].cellState!=CellState.WATER_SQUARE){
+						this.grid[numLine][numCol]=null;
+						this.grid[numLine][numCol]= new Cell(CellState.SAND_SQUARE);
+						LabelCustom labelFieldColor = (LabelCustom) disp.getPan1().getComponent(getNumLabel(numLine, numCol));
+						labelFieldColor.switchPictureLabel(CellState.SAND_SQUARE);
+					}
 				}
 			}
 		}
 	}
 	
-	
-	
+	/**
+	 * converts a Position (x,y) into the number of a Label
+	 * @param numLine
+	 * @param numCol
+	 * @return the number of a Label
+	 */
+	public int getNumLabel(int numLine, int numCol){
+		int numLabel=0;
+		for (int lineNumber=0;lineNumber<NBLINE;lineNumber++){
+			for (int colNumber=0;colNumber<NBCOLUMN;colNumber++){
+				if (lineNumber==numLine && colNumber==numCol)
+					return numLabel;
+				numLabel++;
+			}
+		}
+		return 0;
+	}
 	
 	/**
 	 * returns true if the cell is out of the Map ; false otherwise
