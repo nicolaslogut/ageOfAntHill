@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
  * class for a interface of the game
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
- * @version 20150526
+ * @version 20150607
  */
 public class Interface implements InterfaceHM, MouseListener {
 	/**

@@ -8,14 +8,18 @@ import javaproject_ageOfAntHill.map.Map;
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
- * @version 20150526
+ * @version 20150607
  */
 public class Game {
 	
+	
+	/**
+	 * map generate 
+	 */
 	private Map theMap;
 	
 	/**
-	 * TOUT DOUX
+	 * creation of the game
 	 */
 	public Game(){
 		this.theMap = new Map();

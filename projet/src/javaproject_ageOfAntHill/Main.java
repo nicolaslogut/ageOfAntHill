@@ -9,7 +9,7 @@ import javaproject_ageOfAntHill.map.Map;
  * launching the game menu etc...
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
- * @version 20150526
+ * @version 20150607
  */
 public class Main {
 	/**

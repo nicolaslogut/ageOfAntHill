@@ -9,7 +9,7 @@ import javaproject_ageOfAntHill.LabelCustom;
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
- * @version 20150526
+ * @version 20150607
  */
 public class Map implements InterfaceMap {
 

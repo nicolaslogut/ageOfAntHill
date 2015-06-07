@@ -1,6 +1,12 @@
 package javaproject_ageOfAntHill.map;
 
 import javaproject_ageOfAntHill.Displaying;
+/**
+ * 
+ *@author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
+ *
+ *@version 20150607
+ */
 
 public interface InterfaceMap {
 	
