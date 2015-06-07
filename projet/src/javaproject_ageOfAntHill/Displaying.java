@@ -42,21 +42,29 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private JFrame window;
 	/**
-	 * 
+	 * item close in the mnu bar		
 	 */
 	private JMenuItem itemAbout;
 	/**
-	 * 
+	 * item about in the menu bar
 	 */
 	private JMenuItem itemClose;
 	/**
 	 * grid of the game
 	 */
 	private JPanel gridOfTheGame;
-
+	
+	/**
+	 *console of the game 
+	 */
 	private JLabel cons;
-
+	/**
+	 * part of the window with the game and the menu bar
+	 */
 	private JSplitPane splitGame;
+	/**
+	 * menu bar of the window
+	 */
 	private JMenuBar menuBar;
 
 	public Displaying(InterfaceHM interfHM) {
