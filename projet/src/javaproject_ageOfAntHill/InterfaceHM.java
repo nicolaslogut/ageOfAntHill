@@ -3,9 +3,10 @@ package javaproject_ageOfAntHill;
 import java.awt.event.MouseEvent;
 
 /**
- * interface that controls the interface ; used by the user to do Actions
+ * Interface which controls the class "Interface" ; used by the user to do many actions.
  * 
- * @author joris
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
+ *         Amaglio, Adrien Arsac
  *
  */
 public interface InterfaceHM {
