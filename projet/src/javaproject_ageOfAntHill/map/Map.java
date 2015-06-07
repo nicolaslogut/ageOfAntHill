@@ -89,9 +89,7 @@ public class Map implements InterfaceMap {
 					this.grid[numLine][numCol] = null;
 					this.grid[numLine][numCol] = new Cell(
 							CellState.WATER_SQUARE);
-					LabelCustom labelFieldColor = (LabelCustom) disp
-							.getGridOfTheGame().getComponent(
-									getNumLabel(numLine, numCol));
+					LabelCustom labelFieldColor = (LabelCustom) disp.getGridOfTheGame().getComponent(getNumLabel(numLine, numCol));
 					labelFieldColor.switchGroundPicture(CellState.WATER_SQUARE);
 				}
 			}
@@ -113,13 +111,9 @@ public class Map implements InterfaceMap {
 				for (int numCol = randNumCol - 1; numCol < maxCol; numCol++) {
 					if (this.grid[numLine][numCol].cellState != CellState.WATER_SQUARE) {
 						this.grid[numLine][numCol] = null;
-						this.grid[numLine][numCol] = new Cell(
-								CellState.SAND_SQUARE);
-						LabelCustom labelFieldColor = (LabelCustom) disp
-								.getGridOfTheGame().getComponent(
-										getNumLabel(numLine, numCol));
-						labelFieldColor
-								.switchGroundPicture(CellState.SAND_SQUARE);
+						this.grid[numLine][numCol] = new Cell(CellState.SAND_SQUARE);
+						LabelCustom labelFieldColor = (LabelCustom) disp.getGridOfTheGame().getComponent(getNumLabel(numLine, numCol));
+						labelFieldColor.switchGroundPicture(CellState.SAND_SQUARE);
 					}
 				}
 			}

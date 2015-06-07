@@ -3,6 +3,8 @@ package javaproject_ageOfAntHill;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javaproject_ageOfAntHill.map.Map;
+
 /**
  * class for a interface of the game
  * 
@@ -12,6 +14,10 @@ import java.awt.event.MouseListener;
  * @version 20150607
  */
 public class Interface implements InterfaceHM, MouseListener {
+	
+	public Interface(){
+	}
+	
 	/**
 	 * Allow the player to select one of multiple entities (Units or Building)
 	 */
@@ -36,7 +42,6 @@ public class Interface implements InterfaceHM, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		// event when clicked on a cell => ....
 		System.out.println("MouseEvents already working");
 	}
 
@@ -44,7 +49,7 @@ public class Interface implements InterfaceHM, MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+				
 	}
 
 	@Override
@@ -55,8 +60,14 @@ public class Interface implements InterfaceHM, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		int numLabel;
+		for (numLabel=0;numLabel<Map.NBCOLUMN*Map.NBLINE;numLabel++){
+			if (e.getSource()==(LabelCustom) e.getComponent().getParent().getComponent(numLabel)){
+				System.out.println("label num "+numLabel);
+			}
+		}
+		// ((LabelCustom) e.getSource()).getJlguard().setOpaque(true);
+		// this one not working
 	}
 
 	@Override

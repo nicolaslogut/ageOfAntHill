@@ -1,5 +1,7 @@
 package javaproject_ageOfAntHill;
 
+import java.awt.event.MouseEvent;
+
 /**
  * interface that controls the interface ; used by the user to do Actions
  * 
@@ -13,5 +15,7 @@ public interface InterfaceHM {
 	public void moveUnit();
 
 	public void createBuilding();
+
+	void mouseEntered(MouseEvent e);
 
 }
