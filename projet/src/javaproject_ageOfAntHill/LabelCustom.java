@@ -11,8 +11,8 @@ import javax.swing.OverlayLayout;
 import javaproject_ageOfAntHill.map.CellState;
 
 /**
- * Used (temporarily) to customize the JButton Class We can then use customized
- * buttons
+ * Used (temporarily) to customize the JButton Class. Then we can use customized
+ * buttons.
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -25,7 +25,7 @@ public class LabelCustom extends JPanel {
 	private JLabel jlguard;
 
 	/**
-	 * TOUT DOUX
+	 * @TODO 
 	 * 
 	 * @param nbLine
 	 * @param nbCol
