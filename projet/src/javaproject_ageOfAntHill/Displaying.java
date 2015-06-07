@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -33,7 +33,7 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * default value of the window's height
 	 */
-	private final static int DEFAULT_WINDOW_HEIGHT = 800;
+	private final static int DEFAULT_WINDOW_HEIGHT = 1000;
 	/**
 	 * 
 	 */
@@ -71,8 +71,13 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * used to change the window's layout (especially the panel of the game)
 	 */
-	private JLayeredPane layeredPan;
-
+	
+	
+	private JSplitPane splitWindow;
+	private JPanel banner;
+	private JLabel imgBanner;
+	
+	
 	public Displaying(InterfaceHM interfHM) {
 
 		this.interfHM = interfHM;
@@ -81,11 +86,12 @@ public class Displaying implements Runnable, ActionListener {
 
 		this.window = new JFrame();
 		this.menuBar = new JMenuBar();
-		this.layeredPan = new JLayeredPane();
-		this.window.setLayeredPane(this.layeredPan);
+		
+	
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
-		
+		this.splitWindow = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		this.banner = new JPanel();
 		this.initGraphInt();
 	}
 
@@ -120,7 +126,7 @@ public class Displaying implements Runnable, ActionListener {
 		this.cons = new JLabel("Console :");
 		console.add(cons);
 		
-		this.layeredPan.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT - console.getHeight() - this.menuBar.getHeight());
+	
 		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
@@ -130,7 +136,7 @@ public class Displaying implements Runnable, ActionListener {
 		// creation of the cells of the game grid
 		for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
 			LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
-			System.out.println(cell.getX()+" et "+cell.getY());
+			//System.out.println(cell.getX()+" et "+cell.getY());
 			if (numCell == 0)
 				cell.getJlguard().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 			cell.addMouseListener((MouseListener) this.interfHM);
@@ -148,8 +154,26 @@ public class Displaying implements Runnable, ActionListener {
 		splitGame.add(console);
 		splitGame.setDividerLocation(600);
 		splitGame.setDividerSize(0);
-
-		this.window.setContentPane(this.splitGame);
+		/*private JSplitPane splitWindow;
+		private JPanel banner;
+		private JLabel imgBanner;*/
+		
+		
+		JLabel JBanner = new JLabel();
+		ImageIcon imgBanner = new ImageIcon("./img/banniere4.jpg");
+		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
+		JBanner.setIcon(imgBanner);
+		banner.add(JBanner);
+		//this.imgBanner = new JLabel(new ImageIcon("./img/banniere4.jpg"));
+		//banner.add(imgBanner);
+		splitWindow.add(banner);
+		splitWindow.add(splitGame);
+		splitWindow.setBorder(null);
+		splitWindow.setDividerSize(0);
+		splitWindow.setEnabled(false);
+		
+		this.window.setContentPane(this.splitWindow);
+		
 		this.window.setVisible(true);
 
 	}
