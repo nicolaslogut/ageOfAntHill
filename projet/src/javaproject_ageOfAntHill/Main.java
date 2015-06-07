@@ -6,7 +6,7 @@ import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Map;
 
 /**
- * launching the game menu etc...
+ * Launching the game menu.
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -15,7 +15,7 @@ import javaproject_ageOfAntHill.map.Map;
  */
 public class Main {
 	/**
-	 * This is the main
+	 * The "main" of the game.
 	 * 
 	 * @param args
 	 */

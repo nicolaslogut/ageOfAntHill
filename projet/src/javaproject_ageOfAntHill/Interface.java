@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import javaproject_ageOfAntHill.map.Map;
 
 /**
- * class for a interface of the game
+ * Class for an interface of the game.
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -19,25 +19,25 @@ public class Interface implements InterfaceHM, MouseListener {
 	}
 	
 	/**
-	 * Allow the player to select one of multiple entities (Units or Building)
+	 * Allow the player to select one of multiple entities (Units or Building).
 	 */
 	public void selectEntities() {
 	}
 
 	/**
-	 * Allows the player to move any Unit
+	 * Allows the player to move any unit.
 	 */
 	public void moveUnit() {
 	}
 
 	/**
-	 * Allows the player to create a building
+	 * Allows the player to create a building.
 	 */
 	public void createBuilding() {
 	}
 
 	/**
-	 * used when clicked on a cell
+	 * Used when the user is clicking on a cell.
 	 */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {

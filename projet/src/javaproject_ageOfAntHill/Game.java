@@ -4,7 +4,7 @@ import javaproject_ageOfAntHill.map.Map;
 
 // I thought it was starting an instance of the game ?
 /**
- * this class allows to launch the game
+ * This class allows the user to launch the game.
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -14,53 +14,51 @@ import javaproject_ageOfAntHill.map.Map;
 public class Game {
 
 	/**
-	 * map generate
+	 * Map generation.
 	 */
 	private Map theMap;
 
 	/**
-	 * creation of the game
+	 * The game creation. 
 	 */
 	public Game() {
 		this.theMap = new Map();
 	}
 
 	/**
-	 * method which allows to play to complete Shouldn't be here though ; will
-	 * check later
+	 * Method which allows to play (To complete ; Shouldn't be here though).
 	 */
 	public void play() {
 	}
 
 	/**
-	 * method which allows to create a new Game with differents specifies :
+	 * Method which allows to create a new Game with different specifies :
 	 * Number of team Duration Difficulty ?
 	 */
 	public void createGame() {
 	}
 
 	/**
-	 * method which init the game with all predefined values and cells state
+	 * method which initialize the game with all predefined values and cells state.
 	 */
 	public void initGame() {
 	}
 
 	/**
-	 * method which allows you to save your current running game
+	 * Method which allows the user to save your current running game.
 	 */
 	public void saveGame() {
 	}
 
 	/**
-	 * method which allows you to leave your current running game With / without
-	 * saving ?
+	 * Method which allows you to leave your current running game with saving.
 	 */
 	public void leaveGame() {
 	}
 
 	/**
-	 * method which allows you to load a saved game and get into it when you
-	 * leave
+	 * Method which allows you to load a saved game and get into it when you
+	 * leave.
 	 */
 	public void loadGame() {
 	}
