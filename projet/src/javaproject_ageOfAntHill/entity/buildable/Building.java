@@ -30,7 +30,7 @@ public class Building extends Buildable {
 		
 		/**
 		 * creates a new building corresponding to a new in-game building...)
-		 * @param  
+		 *   
 		 * @param none
 		 * default builder  
 		 */

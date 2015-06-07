@@ -1,10 +1,13 @@
 package javaproject_ageOfAntHill;
 
 
+import java.awt.Color;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 
 import javaproject_ageOfAntHill.map.CellState;
 
@@ -15,15 +18,39 @@ import javaproject_ageOfAntHill.map.CellState;
  *
  */
 @SuppressWarnings("serial")
-public class LabelCustom extends JLabel {	
+public class LabelCustom extends JPanel {
+	
+	private JLabel jlground;
+	private JLabel jlguard;
+	
 	/**
 	 * TOUT DOUX
 	 * @param nbLine
 	 * @param nbCol
 	 */
+	/**
+	 * @param nbLine
+	 * @param nbCol
+	 */
 	public LabelCustom(int nbLine, int nbCol) {
-		this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
+		
 			// sets grass as default picture
+		setLayout(new OverlayLayout(this));
+		jlground = new JLabel(new ImageIcon("./img/GRASS_SQUARE.png"));
+//		jlguard = new JLabel(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
+		jlguard = new JLabel();
+		add(jlguard,0);
+		add(jlground,1);
+		
+		
+//		this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
+//		setBackground(Color.GREEN);
+//		setOpaque(true);
+//		setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
+	}
+	
+	public JLabel getJlguard() {
+		return jlguard;
 	}
 	
 //	/**
@@ -48,16 +75,16 @@ public class LabelCustom extends JLabel {
 	public void switchPictureLabel(CellState color){
 		switch (color){
 		case SAND_SQUARE:
-			this.setIcon(new ImageIcon("./img/SAND_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/SAND_SQUARE.png"));
 			break;
 		case WATER_SQUARE:
-			this.setIcon(new ImageIcon("./img/WATER_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/WATER_SQUARE.png"));
 			break;
 		case TREE_SQUARE:
-			this.setIcon(new ImageIcon("./img/TREE_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/TREE_SQUARE.png"));
 			break;
 		case GRASS_SQUARE: default:
-			this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
 			break;
 		}
 	}

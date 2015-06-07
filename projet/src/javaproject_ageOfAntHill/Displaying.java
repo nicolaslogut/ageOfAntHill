@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -106,13 +107,19 @@ public class Displaying implements Runnable, ActionListener {
 
 		GridLayout gl = new GridLayout(NBLINE, NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
-
+		
+//		LabelCustom[][] tab = new LabelCustom[10][20];
+		
 		for (int numCell = 0; numCell < NBLINE * NBCOLUMN; numCell++) {
 			LabelCustom cell = new LabelCustom(NBLINE, NBCOLUMN);
+			if(numCell == 0 )
+				cell.getJlguard().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 			cell.addMouseListener((MouseListener) this.interfHM);
 			this.getGridOfTheGame().add(cell);
 			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
 		}
+		
+//		tab[0][1].getJlguard().setIcon(icon);
 		JPanel console = new JPanel();
 		this.cons = new JLabel("Console :");
 		console.add(cons);
