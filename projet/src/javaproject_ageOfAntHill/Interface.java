@@ -3,6 +3,7 @@ package javaproject_ageOfAntHill;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.map.Map;
 
 /**
@@ -15,13 +16,22 @@ import javaproject_ageOfAntHill.map.Map;
  */
 public class Interface implements InterfaceHM, MouseListener {
 	
+	public Entity[] entities;
+	
 	public Interface(){
+		this.entities = null;
 	}
 	
 	/**
 	 * Allow the player to select one of multiple entities (Units or Building).
 	 */
-	public void selectEntities() {
+	public void selectEntities(Entity entity) {
+		for (int i=0;i<20;i++){
+			if (this.entities[i]==null){
+				this.entities[i]=entity;
+				return;
+			}
+		}
 	}
 
 	/**
@@ -74,6 +84,12 @@ public class Interface implements InterfaceHM, MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void selectEntities() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
