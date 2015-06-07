@@ -21,7 +21,7 @@ import javax.swing.WindowConstants;
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
- *
+ *@version 20150607
  */
 public class Displaying implements Runnable, ActionListener {
 	/**
@@ -42,7 +42,7 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private JFrame window;
 	/**
-	 * item close in the mnu bar		
+	 * item close in the menu bar		
 	 */
 	private JMenuItem itemAbout;
 	/**
