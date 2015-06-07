@@ -1,5 +1,6 @@
 package javaproject_ageOfAntHill;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -92,6 +93,7 @@ public class Displaying implements Runnable, ActionListener {
 	private void initGraphInt() {
 		this.window.setTitle("Age Of AntHill **BETA TEST**");
 		this.window.setSize(1200, 1025);
+		this.window.setMinimumSize(new Dimension(800,900));
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

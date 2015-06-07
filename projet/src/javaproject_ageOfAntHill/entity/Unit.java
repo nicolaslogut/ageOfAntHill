@@ -1,6 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 
 import javaproject_ageOfAntHill.map.CellState;
+import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Position;
 /**
  * represents a unit in a game
@@ -86,15 +87,26 @@ public abstract class Unit extends Entity {
 	/**
 	 * return true if the unit moved ; false if it was impossible
 	 */
-	public boolean moveUnit(CellState thisCase){
-		return true;
+	public boolean moveUnit(Position finalPos, Position startingPos, InterfaceMap map){ // movement speed ????
+		if (moveAvailable(finalPos,map)){
+			map.getCell(finalPos).setEntity(this);
+			map.getCell(startingPos).setEntity(null);
+			return true;
+		}
+		return false;
 	}
 	
 	/**
-	 * checks if the given Position is in the Map, and if there is no Entity at this Position
+	 * checks if the given Position is in the Map, and if 
+	 * there is no Entity at this Position
 	 * returns true if it's 'OK' to move ; false otherwise
 	 */
-	private boolean moveAvailable(){
-		return true;	// should use the 'notOutOfTheMap' method from Map
+	private boolean moveAvailable(Position pos, InterfaceMap map){
+		if (map.notOutOfTheMap(pos))
+			if (map.getCell(pos).getEntity()==null)
+				if (map.getCell(pos).getCellState()!=CellState.TREE_SQUARE && map.getCell(pos).getCellState()!=CellState.WATER_SQUARE)
+					return true;
+		return false;
 	}
+
 }

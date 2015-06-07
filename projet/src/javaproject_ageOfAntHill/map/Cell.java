@@ -1,6 +1,6 @@
 package javaproject_ageOfAntHill.map;
 
-import javax.swing.text.html.parser.Entity;
+import javaproject_ageOfAntHill.entity.Entity;
 
 /**
  * Class which allows to create cells
@@ -64,6 +64,12 @@ public class Cell
 	}
 	public CellState getCellState(){
 		return this.cellState;
+	}
+	public Entity getEntity(){
+		return this.entity;
+	}
+	public void setEntity(Entity entity){
+		this.entity=entity;
 	}
 
 }

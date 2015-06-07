@@ -1,8 +1,10 @@
 package javaproject_ageOfAntHill.map;
 
 import java.util.Random;
+
 import javaproject_ageOfAntHill.Displaying;
 import javaproject_ageOfAntHill.LabelCustom;
+import javaproject_ageOfAntHill.entity.Entity;
 
 /**
  * represents the map of the game
@@ -16,7 +18,8 @@ public class Map implements InterfaceMap {
 	private final static int NBLINE = 48;
 	private final static int NBCOLUMN = 48;
 
-	private final static int MAX_WATER_LAKE = 11;
+	private final static int MAX_WATER_LAKE = 8;
+	private final static int MAX_TREE_FOREST = 4;
 
 	/**
 	 * grille de jeu representant toute la carte d'une partie c'est un tableau
@@ -56,15 +59,18 @@ public class Map implements InterfaceMap {
 			int randNbLines = rand.nextInt(9) + 2;
 			boolean randValues = false;
 
-			/* Picks a random location and checks if it is a good idea to place
-			* a water area there
-			*/ 
+			/*
+			 * Picks a random location and checks if it is a good idea to place
+			 * a water area there
+			 */
 			while (!randValues) {
 				randNumCol = rand.nextInt(NBCOLUMN - randNbCols) + 1;
 				randNumLine = rand.nextInt(NBLINE - randNbLines) + 1;
 				randValues = true;
-				for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
-					for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
+				for (int numLine = randNumLine; numLine < randNumLine
+						+ randNbLines; numLine++) {
+					for (int numCol = randNumCol; numCol < randNumCol
+							+ randNbCols; numCol++) {
 						if (this.grid[numLine][numCol].cellState != CellState.GRASS_SQUARE) {
 							randValues = false;
 						}
@@ -76,8 +82,11 @@ public class Map implements InterfaceMap {
 			for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
 				for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
 					this.grid[numLine][numCol] = null;
-					this.grid[numLine][numCol] = new Cell(CellState.WATER_SQUARE);
-					LabelCustom labelFieldColor = (LabelCustom) disp.getGridOfTheGame().getComponent(getNumLabel(numLine, numCol));
+					this.grid[numLine][numCol] = new Cell(
+							CellState.WATER_SQUARE);
+					LabelCustom labelFieldColor = (LabelCustom) disp
+							.getGridOfTheGame().getComponent(
+									getNumLabel(numLine, numCol));
 					labelFieldColor.switchPictureLabel(CellState.WATER_SQUARE);
 				}
 			}
@@ -99,9 +108,13 @@ public class Map implements InterfaceMap {
 				for (int numCol = randNumCol - 1; numCol < maxCol; numCol++) {
 					if (this.grid[numLine][numCol].cellState != CellState.WATER_SQUARE) {
 						this.grid[numLine][numCol] = null;
-						this.grid[numLine][numCol] = new Cell(CellState.SAND_SQUARE);
-						LabelCustom labelFieldColor = (LabelCustom) disp.getGridOfTheGame().getComponent(getNumLabel(numLine, numCol));
-						labelFieldColor.switchPictureLabel(CellState.SAND_SQUARE);
+						this.grid[numLine][numCol] = new Cell(
+								CellState.SAND_SQUARE);
+						LabelCustom labelFieldColor = (LabelCustom) disp
+								.getGridOfTheGame().getComponent(
+										getNumLabel(numLine, numCol));
+						labelFieldColor
+								.switchPictureLabel(CellState.SAND_SQUARE);
 					}
 				}
 			}
@@ -109,49 +122,56 @@ public class Map implements InterfaceMap {
 	}
 
 	/**
-	 * This method add random generatly trees on the map
-	 * TOUT DOUX (je la finirais : Adrien)
+	 * This method add random generatly trees on the map TOUT DOUX (je la
+	 * finirais : Adrien)
 	 */
 	public void generateTree(Displaying disp) {
+		for (int nbBlockForest = 0; nbBlockForest < MAX_TREE_FOREST; nbBlockForest++) {
+			Random rand = new Random();
+			int randNumLine = 0;
+			int randNumCol = 0;
+			int randNbCols = rand.nextInt(8) + 2;
+			int randNbLines = rand.nextInt(9) + 2;
+			boolean randValues = false;
 
-		Random rand = new Random();
-		int randNumLine = 0;
-		int randNumCol = 0;
-		int randNbCols = rand.nextInt(8) + 2;
-		int randNbLines = rand.nextInt(9) + 2;
-		boolean randValues = false;
-
-		/* Picks a random location and checks if it is a good idea to place
-		* a tree there
-		*/ 
-		while (!randValues) {
-			randNumCol = rand.nextInt(NBCOLUMN - randNbCols);
-			randNumLine = rand.nextInt(NBLINE - randNbLines);
-			randValues = true;
-			for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
-				for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
-					if (this.grid[numLine][numCol].cellState != CellState.GRASS_SQUARE) {
-						randValues = false;
+			/*
+			 * Picks a random location and checks if it is a good idea to place
+			 * a tree there
+			 */
+			while (!randValues) {
+				randNumCol = rand.nextInt(NBCOLUMN - randNbCols);
+				randNumLine = rand.nextInt(NBLINE - randNbLines);
+				randValues = true;
+				for (int numLine = randNumLine; numLine < randNumLine
+						+ randNbLines; numLine++) {
+					for (int numCol = randNumCol; numCol < randNumCol
+							+ randNbCols; numCol++) {
+						if (this.grid[numLine][numCol].cellState != CellState.GRASS_SQUARE) {
+							randValues = false;
+						}
 					}
 				}
 			}
-		}
-		
-		// add a tree
-		for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
-			for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
-				if (this.grid[numLine][numCol].cellState != CellState.GRASS_SQUARE) {
-					this.grid[numLine][numCol] = new Cell(CellState.TREE_SQUARE);
+
+			// add a tree
+			for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
+				for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
+					if (this.grid[numLine][numCol].cellState != CellState.GRASS_SQUARE) {
+						this.grid[numLine][numCol] = new Cell(
+								CellState.TREE_SQUARE);
+					}
 				}
 			}
-		}
 
-		for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
-			for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
-				this.grid[numLine][numCol] = null;
-				this.grid[numLine][numCol] = new Cell(CellState.TREE_SQUARE);
-				LabelCustom labelFieldColor = (LabelCustom) disp.getGridOfTheGame().getComponent(getNumLabel(numLine, numCol));
-				labelFieldColor.switchPictureLabel(CellState.TREE_SQUARE);
+			for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
+				for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
+					this.grid[numLine][numCol] = null;
+					this.grid[numLine][numCol] = new Cell(CellState.TREE_SQUARE);
+					LabelCustom labelFieldColor = (LabelCustom) disp
+							.getGridOfTheGame().getComponent(
+									getNumLabel(numLine, numCol));
+					labelFieldColor.switchPictureLabel(CellState.TREE_SQUARE);
+				}
 			}
 		}
 	}
@@ -176,21 +196,32 @@ public class Map implements InterfaceMap {
 	}
 
 	/**
-	 * returns true if the cell is out of the Map ; false otherwise
+	 * returns true if the cell is not out of the Map ; false otherwise
 	 * 
 	 * @param position
 	 * @return
 	 */
+	@Override
 	public boolean notOutOfTheMap(Position position) {
 		if (position.getY() < 0 || position.getY() >= NBLINE
 				|| position.getX() < 0 || position.getX() >= NBCOLUMN)
-			return true;
-		return false;
+			return false;
+		return true;
 	}
-
+	
+	/**
+	 * 
+	 */
+	@Override
+	public Cell getCell(Position pos){
+		return this.grid[pos.getX()][pos.getY()];
+	}
+	
+	
 	/**
 	 * displays a visual representaion of the map (as a grid)
 	 */
+	@Override
 	public String mapToString() {
 		String mapAsciiArt = "-----------------------------------------------------------------------"
 				+ "--------------------------------------------------\n";

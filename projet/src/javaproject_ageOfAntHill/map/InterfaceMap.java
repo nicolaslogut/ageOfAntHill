@@ -20,5 +20,7 @@ public interface InterfaceMap {
 	public boolean notOutOfTheMap(Position position);
 	
 	public String mapToString();
+
+	public Cell getCell(Position pos);
 	
 }
