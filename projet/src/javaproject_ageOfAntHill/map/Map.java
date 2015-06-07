@@ -14,9 +14,14 @@ import javaproject_ageOfAntHill.entity.Entity;
  * @version 20150607
  */
 public class Map implements InterfaceMap {
-
-	private final static int NBLINE = 48;
-	private final static int NBCOLUMN = 48;
+	/**
+	 * A constant integer which contain the total number of lines in the grid of the game
+	 */
+	public final static int NBLINE = 48;
+	/**
+	 * A constant integer which contain the total number of columns in the grid of the game
+	 */
+	public final static int NBCOLUMN = 48;
 
 	private final static int MAX_WATER_LAKE = 8;
 	private final static int MAX_TREE_FOREST = 4;
@@ -87,7 +92,7 @@ public class Map implements InterfaceMap {
 					LabelCustom labelFieldColor = (LabelCustom) disp
 							.getGridOfTheGame().getComponent(
 									getNumLabel(numLine, numCol));
-					labelFieldColor.switchPictureLabel(CellState.WATER_SQUARE);
+					labelFieldColor.switchGroundPicture(CellState.WATER_SQUARE);
 				}
 			}
 
@@ -114,7 +119,7 @@ public class Map implements InterfaceMap {
 								.getGridOfTheGame().getComponent(
 										getNumLabel(numLine, numCol));
 						labelFieldColor
-								.switchPictureLabel(CellState.SAND_SQUARE);
+								.switchGroundPicture(CellState.SAND_SQUARE);
 					}
 				}
 			}
@@ -170,7 +175,7 @@ public class Map implements InterfaceMap {
 					LabelCustom labelFieldColor = (LabelCustom) disp
 							.getGridOfTheGame().getComponent(
 									getNumLabel(numLine, numCol));
-					labelFieldColor.switchPictureLabel(CellState.TREE_SQUARE);
+					labelFieldColor.switchGroundPicture(CellState.TREE_SQUARE);
 				}
 			}
 		}
@@ -208,16 +213,15 @@ public class Map implements InterfaceMap {
 			return false;
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 */
 	@Override
-	public Cell getCell(Position pos){
+	public Cell getCell(Position pos) {
 		return this.grid[pos.getX()][pos.getY()];
 	}
-	
-	
+
 	/**
 	 * displays a visual representaion of the map (as a grid)
 	 */

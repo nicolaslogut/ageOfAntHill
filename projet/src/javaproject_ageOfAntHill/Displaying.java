@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+import javaproject_ageOfAntHill.map.Map;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,26 +19,18 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
 
-
 /**
  * used to (temporarily) display the graphic interface
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
- *@version 20150607
+ * @version 20150607
  */
 public class Displaying implements Runnable, ActionListener {
+	
 	/**
-	 * A constant integer which contain the total number of lines
+	 * 
 	 */
-	private final static int NBLINE = 48; // 64 seems the most adequate as
-											// default value
-	/**
-	 * A constant integer which contain the total number of column
-	 */
-	private final static int NBCOLUMN = 48; // 64 seems the most adequate as
-											// default value
-
 	private InterfaceHM interfHM;
 
 	/**
@@ -44,7 +38,7 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private JFrame window;
 	/**
-	 * item close in the menu bar		
+	 * item close in the menu bar
 	 */
 	private JMenuItem itemAbout;
 	/**
@@ -55,9 +49,9 @@ public class Displaying implements Runnable, ActionListener {
 	 * grid of the game
 	 */
 	private JPanel gridOfTheGame;
-	
+
 	/**
-	 *console of the game 
+	 * console of the game
 	 */
 	private JLabel cons;
 	/**
@@ -92,8 +86,8 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private void initGraphInt() {
 		this.window.setTitle("Age Of AntHill **BETA TEST**");
-		this.window.setSize(1200, 1025);
-		this.window.setMinimumSize(new Dimension(800,900));
+		this.window.setSize(900, 800);
+		this.window.setMinimumSize(new Dimension(900, 800));
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -106,25 +100,31 @@ public class Displaying implements Runnable, ActionListener {
 		this.itemAbout.addActionListener(this);
 		this.itemClose.addActionListener(this);
 		this.menuBar.add(menu);
-
-		GridLayout gl = new GridLayout(NBLINE, NBCOLUMN);
+		
+		this.gridOfTheGame.setBounds(0, 0, 900, 800);
+		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
-		
-//		LabelCustom[][] tab = new LabelCustom[10][20];
-		
-		for (int numCell = 0; numCell < NBLINE * NBCOLUMN; numCell++) {
-			LabelCustom cell = new LabelCustom(NBLINE, NBCOLUMN);
-			if(numCell == 0 )
-				cell.getJlguard().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
+
+		// LabelCustom[][] tab = new LabelCustom[10][20];
+
+		for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
+			LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
+			cell.setSize(new Dimension(5, 5));
+			if (numCell == 0)
+				cell.getJlguard().setIcon(
+						new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 			cell.addMouseListener((MouseListener) this.interfHM);
 			this.getGridOfTheGame().add(cell);
 			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
 		}
-		
-//		tab[0][1].getJlguard().setIcon(icon);
+
+		// tab[0][1].getJlguard().setIcon(icon);
 		JPanel console = new JPanel();
 		this.cons = new JLabel("Console :");
 		console.add(cons);
+
+		// JPanel panGame = new JPanel();
+		// panGame.add(this.gridOfTheGame);
 
 		splitGame.add(this.gridOfTheGame);
 		splitGame.add(console);
@@ -147,15 +147,16 @@ public class Displaying implements Runnable, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		  JMenuItem selectedItem = (JMenuItem) event.getSource();
-		  
-		  String instructions="blablabla"; // TODO => add helping instructions
+		JMenuItem selectedItem = (JMenuItem) event.getSource();
 
-		  if (selectedItem == this.itemAbout) {
-		   JOptionPane.showMessageDialog(this.window, instructions, "About", JOptionPane.INFORMATION_MESSAGE);
-		  }
-		  if (selectedItem == this.itemClose) {
-		   this.window.dispose();
-		  }
-		 }
+		String instructions = "Instructions :\n"; // TODO => add helping instructions
+
+		if (selectedItem == this.itemAbout) {
+			JOptionPane.showMessageDialog(this.window, instructions, "About",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+		if (selectedItem == this.itemClose) {
+			this.window.dispose();
+		}
+	}
 }
