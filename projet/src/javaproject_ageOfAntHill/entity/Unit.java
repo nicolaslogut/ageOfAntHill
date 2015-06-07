@@ -7,7 +7,7 @@ import javaproject_ageOfAntHill.map.Position;
  * this is an entity that has the capacity to move and attack
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian Amaglio, Adrien Arsac
  *
- * @version 20150526
+ * @version 20150706
  */
 
 public abstract class Unit extends Entity {
