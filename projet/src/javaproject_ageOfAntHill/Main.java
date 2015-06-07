@@ -25,6 +25,7 @@ public class Main {
 		disp.run();
 		//SwingUtilities.invokeLater(disp);
 		map.generateSandWater(disp);
+		map.generateTree(disp);
 		
 //		Map map = new Map();
 //		System.out.println("map :\n" + map.mapToString());

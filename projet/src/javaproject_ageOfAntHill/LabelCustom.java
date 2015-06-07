@@ -53,6 +53,9 @@ public class LabelCustom extends JLabel {
 		case WATER_SQUARE:
 			this.setIcon(new ImageIcon("./img/WATER_SQUARE.png"));
 			break;
+		case TREE_SQUARE:
+			this.setIcon(new ImageIcon("./img/TREE_SQUARE.png"));
+			break;
 		case GRASS_SQUARE: default:
 			this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
 			break;

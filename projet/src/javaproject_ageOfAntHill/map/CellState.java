@@ -24,7 +24,12 @@ public enum CellState {
 	/**
 	 * This define the Blue color of the cellState
 	 */
-	WATER_SQUARE("W", "WATER_SQUARE.png");
+	WATER_SQUARE("W", "WATER_SQUARE.png"), 
+	
+	/**
+	 * This define the Tree Specification of the cellState
+	 */
+	TREE_SQUARE("T", "TREE_SQUARE.png");
 	
 	/**
 	 * Name of the file (picture)
