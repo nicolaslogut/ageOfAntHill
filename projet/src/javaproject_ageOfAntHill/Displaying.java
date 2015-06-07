@@ -164,8 +164,7 @@ public class Displaying implements Runnable, ActionListener {
 		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
 		JBanner.setIcon(imgBanner);
 		banner.add(JBanner);
-		//this.imgBanner = new JLabel(new ImageIcon("./img/banniere4.jpg"));
-		//banner.add(imgBanner);
+		
 		splitWindow.add(banner);
 		splitWindow.add(splitGame);
 		splitWindow.setBorder(null);
