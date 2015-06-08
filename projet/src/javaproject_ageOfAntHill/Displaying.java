@@ -29,7 +29,7 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * default value of the window's width
 	 */
-	private final static int DEFAULT_WINDOW_WIDTH = 900;
+	private final static int DEFAULT_WINDOW_WIDTH = 1000;
 	/**
 	 * default value of the window's height
 	 */
@@ -44,18 +44,19 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private JFrame window;
 	/**
-	 * item close in the menu bar
+	 * items in the JMenu bar
 	 */
 	private JMenuItem itemAbout;
-	/**
-	 * item about in the menu bar
-	 */
 	private JMenuItem itemClose;
+	private JMenuItem itemNewGame;
+	private JMenuItem itemSaveGame;
+	private JMenuItem itemLoadGame;
+	
 	/**
 	 * grid of the game
 	 */
 	private JPanel gridOfTheGame;
-
+	private JPanel ressourcesOfThePlayer;
 	/**
 	 * console of the game
 	 */
@@ -65,9 +66,14 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private JSplitPane splitGame;
 	/**
+	 * part of the window with the ressources of the player
+	 */
+	private JSplitPane splitRessources;
+	/**
 	 * menu bar of the window
 	 */
 	private JMenuBar menuBar;
+	
 	/**
 	 * used to change the window's layout (especially the panel of the game)
 	 */
@@ -82,6 +88,7 @@ public class Displaying implements Runnable, ActionListener {
 		this.interfHM = interfHM;
 
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 
 		this.window = new JFrame();
 		this.menuBar = new JMenuBar();
@@ -89,6 +96,7 @@ public class Displaying implements Runnable, ActionListener {
 	
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
+		this.ressourcesOfThePlayer = new JPanel();
 		this.splitWindow = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.banner = new JPanel();
 		this.initGraphInt();
@@ -103,22 +111,52 @@ public class Displaying implements Runnable, ActionListener {
 	 * The main frame of the game, contain the size and a bunch of parameters
 	 */
 	private void initGraphInt() {
-		this.window.setTitle("Age Of AntHill **BETA TEST**");
+		this.window.setTitle("Age Of AntHill **ALPHA INDEV 0.0000001**");
+		
 		this.window.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		this.window.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
+		this.window.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
+		
+		this.gridOfTheGame.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
+		this.gridOfTheGame.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
+		this.gridOfTheGame.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
+		
+		this.ressourcesOfThePlayer.setSize(100, DEFAULT_WINDOW_HEIGHT);
+		this.ressourcesOfThePlayer.setMinimumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
+		this.ressourcesOfThePlayer.setMaximumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
+		
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
+		this.window.setResizable(false);
+		
 		// creation of the MenuBar
-		JMenu menu = new JMenu("Menu");
-		this.itemAbout = new JMenuItem("About");
-		this.itemClose = new JMenuItem("Close");
-		menu.add(this.itemAbout);
-		menu.add(this.itemClose);
-		this.itemAbout.addActionListener(this);
-		this.itemClose.addActionListener(this);
-		this.menuBar.add(menu);
+			JMenu menu = new JMenu("Menu");
+			this.itemAbout = new JMenuItem("About");
+			this.itemClose = new JMenuItem("Close");
+
+			menu.add(this.itemAbout);
+			menu.add(this.itemClose);
+
+			this.itemAbout.addActionListener(this);
+			this.itemClose.addActionListener(this);
+			this.menuBar.add(menu);
+		
+		//creation of the game Menu
+			JMenu game = new JMenu("Game");
+			this.itemNewGame = new JMenuItem("Nouvelle partie");
+			this.itemSaveGame = new JMenuItem("Sauvegarder la partie");
+			this.itemLoadGame = new JMenuItem("Charger une partie");
+		
+			game.add(this.itemNewGame);
+			game.add(this.itemSaveGame);
+			game.add(this.itemLoadGame);
+			
+			this.itemNewGame.addActionListener(this);
+			this.itemSaveGame.addActionListener(this);
+			this.itemLoadGame.addActionListener(this);
+			this.menuBar.add(game);
 		
 		// creation of the console
 		JPanel console = new JPanel();
@@ -129,6 +167,8 @@ public class Displaying implements Runnable, ActionListener {
 		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
+		
+		this.ressourcesOfThePlayer.setBounds(0, 0, 100, DEFAULT_WINDOW_HEIGHT);
 		
 		// LabelCustom[][] tab = new LabelCustom[10][20];
 		
@@ -151,11 +191,16 @@ public class Displaying implements Runnable, ActionListener {
 
 		splitGame.add(this.gridOfTheGame);
 		splitGame.add(console);
-		splitGame.setDividerLocation(600);
+		splitGame.setDividerLocation(900);
 		splitGame.setDividerSize(0);
 		/*private JSplitPane splitWindow;
 		private JPanel banner;
 		private JLabel imgBanner;*/
+		
+		splitRessources.add(this.ressourcesOfThePlayer);
+		splitRessources.add(console);
+		splitRessources.setDividerLocation(100);
+		splitRessources.setDividerSize(0);
 		
 		
 		JLabel JBanner = new JLabel();
@@ -166,6 +211,7 @@ public class Displaying implements Runnable, ActionListener {
 		
 		splitWindow.add(banner);
 		splitWindow.add(splitGame);
+		//splitWindow.add(splitRessources);
 		splitWindow.setBorder(null);
 		splitWindow.setDividerSize(0);
 		splitWindow.setEnabled(false);

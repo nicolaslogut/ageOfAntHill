@@ -2,6 +2,8 @@ package javaproject_ageOfAntHill.map;
 
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 import javaproject_ageOfAntHill.Displaying;
 import javaproject_ageOfAntHill.LabelCustom;
 import javaproject_ageOfAntHill.entity.Entity;
