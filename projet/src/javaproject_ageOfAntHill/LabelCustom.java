@@ -1,10 +1,5 @@
 package javaproject_ageOfAntHill;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.util.Random;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -42,8 +37,8 @@ public class LabelCustom extends JPanel {
 		jlentity = new JLabel();
 		add(jlentity, 0);
 		jlground = new JLabel(new ImageIcon("./img/tiles/GRASS_SQUARE.png"));
-		jlguard = new JLabel();
-		add(jlguard, 0);
+		jlentity = new JLabel();
+		add(jlentity, 0);
 		add(jlground, 1);
 
 		// this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
