@@ -26,7 +26,7 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	private static final long DELAY_MOUSE_DRAGGED_CLICKED = 300;
  
 	private long delayDraggredMouse = DEFAULT_VALUE_DELAY_MOUSE_DRAGGED;
-	private boolean draggredMouse = false;
+	//private boolean draggredMouse = false;
 	
 	/**
 	 * 	value changing according to the situation: 
@@ -101,10 +101,10 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 					if (System.currentTimeMillis() - delayDraggredMouse > DELAY_MOUSE_DRAGGED_CLICKED) {
 							// each "dragged" cell
 						// Component labelEntity = (JLabel) e.getComponent().getParent().tab[0][0];
-						
-						//System.out.println(((LabelCustom) e.getSource()).getJlguard());
-						//this.selectUnits(((LabelCustom) e.getSource()).getJlguard());
-						draggredMouse = true;
+						//Component labelEntity = (JLabel) e.getComponent().getParent();
+						// System.out.println(((LabelCustom) e.getSource()).getJlguard());
+						// this.selectUnits(((LabelCustom) e.getSource()).getJlguard());
+						// draggredMouse = true;
 					}
 				}
 			}

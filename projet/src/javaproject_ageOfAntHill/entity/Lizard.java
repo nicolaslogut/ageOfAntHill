@@ -8,7 +8,7 @@ package javaproject_ageOfAntHill.entity;
  * @version 20150526
  */
 
-class Lizard extends Unit {
+public class Lizard extends Unit {
 	/**
 	 * lizard's default movement speed
 	 */

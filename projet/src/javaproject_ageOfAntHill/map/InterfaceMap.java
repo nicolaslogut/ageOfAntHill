@@ -19,7 +19,9 @@ public interface InterfaceMap {
 	public void generateSandWater(Displaying disp);
 
 	public void generateTree(Displaying disp);
-
+	
+	public void generateAntHill(Displaying disp);
+	
 	public boolean notOutOfTheMap(Position position);
 
 	public String mapToString();

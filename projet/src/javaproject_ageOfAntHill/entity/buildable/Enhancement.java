@@ -1,4 +1,4 @@
-package javaproject_ageOfAntHill.entity;
+package javaproject_ageOfAntHill.entity.buildable;
 
 /**
  * 
@@ -6,8 +6,7 @@ package javaproject_ageOfAntHill.entity;
  *
  * @version 20150526
  */
-import javaproject_ageOfAntHill.entity.buildable.Buildable;
 
-class Enhancement extends Buildable {
+public class Enhancement extends Buildable {
 
 }

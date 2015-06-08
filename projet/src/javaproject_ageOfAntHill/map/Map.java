@@ -7,6 +7,9 @@ import javax.swing.ImageIcon;
 import javaproject_ageOfAntHill.Displaying;
 import javaproject_ageOfAntHill.LabelCustom;
 import javaproject_ageOfAntHill.entity.Entity;
+import javaproject_ageOfAntHill.entity.Queen;
+import javaproject_ageOfAntHill.entity.Worker;
+import javaproject_ageOfAntHill.entity.buildable.AntHill;
 
 /**
  * represents the map of the game
@@ -74,10 +77,8 @@ public class Map implements InterfaceMap {
 				randNumCol = rand.nextInt(NBCOLUMN - randNbCols) + 1;
 				randNumLine = rand.nextInt(NBLINE - randNbLines) + 1;
 				randValues = true;
-				for (int numLine = randNumLine; numLine < randNumLine
-						+ randNbLines; numLine++) {
-					for (int numCol = randNumCol; numCol < randNumCol
-							+ randNbCols; numCol++) {
+				for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
+					for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
 						if (this.grid[numLine][numCol].cellState != CellState.GRASS_SQUARE) {
 							randValues = false;
 						}
@@ -89,8 +90,7 @@ public class Map implements InterfaceMap {
 			for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
 				for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
 					this.grid[numLine][numCol] = null;
-					this.grid[numLine][numCol] = new Cell(
-							CellState.WATER_SQUARE);
+					this.grid[numLine][numCol] = new Cell(CellState.WATER_SQUARE);
 					LabelCustom labelFieldColor = (LabelCustom) disp.getGridOfTheGame().getComponent(getNumLabel(numLine, numCol));
 					labelFieldColor.switchGroundPicture(CellState.WATER_SQUARE);
 				}
@@ -143,10 +143,8 @@ public class Map implements InterfaceMap {
 				randNumCol = rand.nextInt(NBCOLUMN - randNbCols);
 				randNumLine = rand.nextInt(NBLINE - randNbLines);
 				randValues = true;
-				for (int numLine = randNumLine; numLine < randNumLine
-						+ randNbLines; numLine++) {
-					for (int numCol = randNumCol; numCol < randNumCol
-							+ randNbCols; numCol++) {
+				for (int numLine = randNumLine; numLine < randNumLine + randNbLines; numLine++) {
+					for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
 						if (this.grid[numLine][numCol].cellState != CellState.GRASS_SQUARE) {
 							randValues = false;
 						}
@@ -168,27 +166,34 @@ public class Map implements InterfaceMap {
 				for (int numCol = randNumCol; numCol < randNumCol + randNbCols; numCol++) {
 					this.grid[numLine][numCol] = null;
 					this.grid[numLine][numCol] = new Cell(CellState.TREE_SQUARE);
-					LabelCustom labelFieldColor = (LabelCustom) disp
-							.getGridOfTheGame().getComponent(
-									getNumLabel(numLine, numCol));
+					LabelCustom labelFieldColor = (LabelCustom) disp.getGridOfTheGame().getComponent(getNumLabel(numLine, numCol));
 					labelFieldColor.switchGroundPicture(CellState.TREE_SQUARE);
 				}
 			}
 		}
 	}
-/*	public void generateAntHill(Displaying disp){
+	
+	/**
+	 * Generates a Queen and an ant Worker to start the game
+	 * @param disp
+	 */
+	public void generateAntHill(Displaying disp){
 		for (int numLine = 0; numLine < NBLINE; numLine++) {
 			for (int numCol = 0; numCol < NBCOLUMN; numCol++) {
-				if (this.grid[numLine][numCol].cellState == CellState.GRASS_SQUARE) {
-					this.grid[numLine][numCol] = new Cell(
-							CellState.ANTHILL_SQUARE);
+				if (this.grid[numLine][numCol].cellState == CellState.GRASS_SQUARE 
+						&& this.grid[numLine][numCol+1].cellState == CellState.GRASS_SQUARE) {
+					Queen queen = new Queen(1);
+					Worker worker = new Worker(1);
+					this.grid[numLine][numCol].setEntity(queen);
+					this.grid[numLine][numCol+1].setEntity(worker);
+					disp.getLabelTab(numLine, numCol).addEntityMap(queen);
+					disp.getLabelTab(numLine, numCol+1).addEntityMap(worker);					
 					return;
-				
-					}
-		
+				}
 			}
 		}
-	}*/
+	}
+	
 	/**
 	 * converts a Position (x,y) into the number of a Label
 	 * 

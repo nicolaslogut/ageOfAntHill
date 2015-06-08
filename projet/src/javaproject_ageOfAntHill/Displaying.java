@@ -1,5 +1,6 @@
 package javaproject_ageOfAntHill;
 
+import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.map.Map;
 
 import java.awt.Dimension;
@@ -17,7 +18,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.OverlayLayout;
 import javax.swing.WindowConstants;
 
 import java.awt.BorderLayout;
@@ -78,7 +78,7 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * used to place units images (they're stored inside this grid of the game)
 	 */
-	private JLabel[][] tab;
+	private LabelCustom[][] tab;
 	/**
 	 * used to change the window's layout (especially the panel of the game)
 	 */
@@ -96,7 +96,7 @@ public class Displaying implements Runnable, ActionListener {
 		
 		this.window = new JFrame();
 		this.menuBar = new JMenuBar();
-		this.tab = new JLabel[Map.NBLINE][Map.NBCOLUMN];
+		this.tab = new LabelCustom[Map.NBLINE][Map.NBCOLUMN];
 	
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
@@ -244,9 +244,13 @@ public class Displaying implements Runnable, ActionListener {
 		}
 	}
 	
-	public void addCellTab(int numCell, JLabel[][] tabEntity, LabelCustom cell){
+	public void addCellTab(int numCell, LabelCustom[][] tabEntity, LabelCustom cell){
 		int col=numCell%Map.NBCOLUMN;
 		int line=numCell/Map.NBLINE;
-		tabEntity[line][col]=cell.getJlentity();
+		tabEntity[line][col]=cell;
+	}
+	
+	public LabelCustom getLabelTab(int line, int col){
+		return this.tab[line][col];
 	}
 }

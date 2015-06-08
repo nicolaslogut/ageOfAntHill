@@ -54,6 +54,14 @@ public class LabelCustom extends JPanel {
 		return jlentity;
 	}
 	
+	/**
+	 * returns the Entity 
+	 * @return
+	 */
+	public Entity getLabEntity(){
+		return this.entity;
+	}
+	
 	public void addEntityMap(Entity entity){
 		this.entity=entity;
 		switch (this.entity.getType()){
@@ -85,7 +93,7 @@ public class LabelCustom extends JPanel {
 			jlentity.setIcon(new ImageIcon("./img/mobs/worker/worker-hd.png"));
 			break;
 		case "AHILL":
-			jlentity.setIcon(new ImageIcon("./img/ANTHILL_SQUARE.png"));
+			jlentity.setIcon(new ImageIcon("./img/buildings/anthill.png"));
 			break;
 		default:
 		}
