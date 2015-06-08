@@ -31,10 +31,8 @@ public enum CellState {
 	 * This define the Tree Specification of the cellState
 	 */
 	TREE_SQUARE("T", "TREE_SQUARE.png");
-	/**
-	 * This define the AntHill Specification of the cellState
-	 */
-	/*ANTHILL_SQUARE("A", "ANTHILL_SQUARE.png");*/
+	
+	
 
 	/**
 	 * Name of the file (picture)
