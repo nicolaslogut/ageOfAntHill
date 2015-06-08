@@ -7,7 +7,7 @@ package javaproject_ageOfAntHill.entity.buildable;
  *         Amaglio, Adrien Arsac
  *
  */
-public class Building extends Buildable {
+public abstract class Building extends Buildable {
 
 	/**
 	 * defined the healPoints of a building

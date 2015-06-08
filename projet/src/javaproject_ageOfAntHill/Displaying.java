@@ -17,7 +17,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.OverlayLayout;
 import javax.swing.WindowConstants;
+
+import java.awt.BorderLayout;
 
 /**
  * used to (temporarily) display the graphic interface
@@ -30,11 +33,11 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * default value of the window's width
 	 */
-	private final static int DEFAULT_WINDOW_WIDTH = 1000;
+	private final static int DEFAULT_WINDOW_WIDTH = 950;
 	/**
 	 * default value of the window's height
 	 */
-	private final static int DEFAULT_WINDOW_HEIGHT = 1000;
+	private final static int DEFAULT_WINDOW_HEIGHT = 950;
 	/**
 	 * 
 	 */
@@ -44,6 +47,7 @@ public class Displaying implements Runnable, ActionListener {
 	 * window of the game
 	 */
 	private JFrame window;
+	
 	/**
 	 * items in the JMenu bar
 	 */
@@ -58,10 +62,7 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private JPanel gridOfTheGame;
 	private JPanel ressourcesOfThePlayer;
-	/**
-	 * console of the game
-	 */
-	private JLabel cons;
+
 	/**
 	 * part of the window with the game and the menu bar
 	 */
@@ -81,6 +82,7 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * used to change the window's layout (especially the panel of the game)
 	 */
+	private JPanelLeft jpanelLeft;
 	private JSplitPane splitWindow;
 	private JPanel banner;
 	
@@ -91,7 +93,7 @@ public class Displaying implements Runnable, ActionListener {
 
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-
+		
 		this.window = new JFrame();
 		this.menuBar = new JMenuBar();
 		this.tab = new JLabel[Map.NBLINE][Map.NBCOLUMN];
@@ -118,14 +120,6 @@ public class Displaying implements Runnable, ActionListener {
 		this.window.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		this.window.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 		this.window.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
-		
-		this.gridOfTheGame.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
-		this.gridOfTheGame.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
-		this.gridOfTheGame.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
-		
-		this.ressourcesOfThePlayer.setSize(100, DEFAULT_WINDOW_HEIGHT);
-		this.ressourcesOfThePlayer.setMinimumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
-		this.ressourcesOfThePlayer.setMaximumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
 		
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
@@ -159,19 +153,19 @@ public class Displaying implements Runnable, ActionListener {
 			this.itemSaveGame.addActionListener(this);
 			this.itemLoadGame.addActionListener(this);
 			this.menuBar.add(game);
-		
-		// creation of the console
-		JPanel console = new JPanel();
-		this.cons = new JLabel("Console :");
-		console.add(cons);
-		
+
 	
 		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
 		
-		this.ressourcesOfThePlayer.setBounds(0, 0, 100, DEFAULT_WINDOW_HEIGHT);
+		/*this.ressources = new JLabel(new ImageIcon("./img/test.png"));
+		ressourcesOfThePlayer.add(ressources);
+		this.ressources2 = new JLabel("Ressources :");
+		ressourcesOfThePlayer.add(ressources2);*/
 		
+		this.jpanelLeft = new JPanelLeft();
+		ressourcesOfThePlayer.add(this.jpanelLeft);
 		
 		// creation of the cells of the game grid
 		for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
@@ -185,47 +179,38 @@ public class Displaying implements Runnable, ActionListener {
 			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
 		}
 		
-		
-
-		// JPanel panGame = new JPanel();
-		// panGame.add(this.gridOfTheGame);
-
 		splitGame.add(this.gridOfTheGame);
-		splitGame.add(console);
 		splitGame.setDividerLocation(900);
 		splitGame.setDividerSize(0);
-		/*private JSplitPane splitWindow;
-		private JPanel banner;
-		private JLabel imgBanner;*/
 		
-		splitRessources.add(this.ressourcesOfThePlayer);
-		splitRessources.add(console);
+		splitRessources.add(this.jpanelLeft);
+		splitRessources.setSize(100, DEFAULT_WINDOW_HEIGHT);
 		splitRessources.setDividerLocation(100);
 		splitRessources.setDividerSize(0);
 		
-		
 		JLabel JBanner = new JLabel();
-		ImageIcon imgBanner = new ImageIcon("./img/banniere4.jpg");
+		ImageIcon imgBanner = new ImageIcon("./img/BANNER.png");
 		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
 		JBanner.setIcon(imgBanner);
 		banner.add(JBanner);
+		//banner.setBorder(null);
 		
-		splitWindow.add(banner);
-		splitWindow.add(splitGame);
-		//splitWindow.add(splitRessources);
+		splitWindow.setLayout(new BorderLayout());
+		splitWindow.add(splitRessources, BorderLayout.WEST);
+		splitWindow.add(splitGame, BorderLayout.CENTER);
+		splitWindow.add(banner, BorderLayout.NORTH);
 		splitWindow.setBorder(null);
 		splitWindow.setDividerSize(0);
 		splitWindow.setEnabled(false);
 		
 		this.window.setContentPane(this.splitWindow);
-		
 		this.window.setVisible(true);
 
 	}
 
+
 	public JPanel getGridOfTheGame() {
 		return gridOfTheGame;
-
 	}
 
 	public void setGridOfTheGame(JPanel gridOfTheGame) {
@@ -241,11 +226,20 @@ public class Displaying implements Runnable, ActionListener {
 		instructions+="Left click and drag to select up to 10 units\n";
 		instructions+="Right click to move the selected units to the targetted area\n";
 		instructions+="note : some units might not be able to move if there isn't enough room";
-
+		
+		String newGame = "Fonction non implémentée";
+		String saveGame = "Fonction non implémentée";
+		String loadGame = "Fonction non implémentée";
+		
 		if (selectedItem == this.itemAbout) {
 			JOptionPane.showMessageDialog(this.window, instructions, "About",JOptionPane.INFORMATION_MESSAGE);
-		}
-		if (selectedItem == this.itemClose) {
+		}else if (selectedItem == this.itemNewGame) {
+			JOptionPane.showMessageDialog(this.window, newGame, "Nouvelle Partie",JOptionPane.INFORMATION_MESSAGE);
+		}else if (selectedItem == this.itemSaveGame) {
+			JOptionPane.showMessageDialog(this.window, saveGame, "Sauvegarder Partie",JOptionPane.INFORMATION_MESSAGE);
+		}else if (selectedItem == this.itemLoadGame) {
+			JOptionPane.showMessageDialog(this.window, loadGame, "Charger Partie",JOptionPane.INFORMATION_MESSAGE);
+		}else if (selectedItem == this.itemClose) {
 			this.window.dispose();
 		}
 	}

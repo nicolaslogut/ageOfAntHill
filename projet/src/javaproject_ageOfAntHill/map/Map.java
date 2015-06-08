@@ -176,7 +176,19 @@ public class Map implements InterfaceMap {
 			}
 		}
 	}
-
+/*	public void generateAntHill(Displaying disp){
+		for (int numLine = 0; numLine < NBLINE; numLine++) {
+			for (int numCol = 0; numCol < NBCOLUMN; numCol++) {
+				if (this.grid[numLine][numCol].cellState == CellState.GRASS_SQUARE) {
+					this.grid[numLine][numCol] = new Cell(
+							CellState.ANTHILL_SQUARE);
+					return;
+				
+					}
+		
+			}
+		}
+	}*/
 	/**
 	 * converts a Position (x,y) into the number of a Label
 	 * 
