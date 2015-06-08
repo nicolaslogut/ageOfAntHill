@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
+import java.awt.BorderLayout;
 
 /**
  * used to (temporarily) display the graphic interface
@@ -117,10 +118,6 @@ public class Displaying implements Runnable, ActionListener {
 		this.window.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 		this.window.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 		
-		this.gridOfTheGame.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
-		this.gridOfTheGame.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
-		this.gridOfTheGame.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
-		
 		this.ressourcesOfThePlayer.setSize(100, DEFAULT_WINDOW_HEIGHT);
 		this.ressourcesOfThePlayer.setMinimumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
 		this.ressourcesOfThePlayer.setMaximumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
@@ -168,7 +165,7 @@ public class Displaying implements Runnable, ActionListener {
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
 		
-		this.ressourcesOfThePlayer.setBounds(0, 0, 100, DEFAULT_WINDOW_HEIGHT);
+		this.ressourcesOfThePlayer.setBounds(0, 0, 500, DEFAULT_WINDOW_HEIGHT);
 		
 		// LabelCustom[][] tab = new LabelCustom[10][20];
 		
@@ -197,8 +194,8 @@ public class Displaying implements Runnable, ActionListener {
 		private JPanel banner;
 		private JLabel imgBanner;*/
 		
-		splitRessources.add(this.ressourcesOfThePlayer);
-		splitRessources.add(console);
+		splitRessources.add(ressourcesOfThePlayer);
+		splitRessources.setSize(100, DEFAULT_WINDOW_HEIGHT);
 		splitRessources.setDividerLocation(100);
 		splitRessources.setDividerSize(0);
 		
@@ -208,10 +205,12 @@ public class Displaying implements Runnable, ActionListener {
 		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
 		JBanner.setIcon(imgBanner);
 		banner.add(JBanner);
+
 		
-		splitWindow.add(banner);
-		splitWindow.add(splitGame);
-		//splitWindow.add(splitRessources);
+		splitWindow.setLayout(new BorderLayout());
+		splitWindow.add(splitRessources, BorderLayout.WEST);
+		splitWindow.add(splitGame, BorderLayout.CENTER);
+		splitWindow.add(banner, BorderLayout.NORTH);
 		splitWindow.setBorder(null);
 		splitWindow.setDividerSize(0);
 		splitWindow.setEnabled(false);
