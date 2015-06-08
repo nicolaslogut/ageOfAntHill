@@ -2,7 +2,6 @@ package javaproject_ageOfAntHill;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
@@ -19,6 +18,7 @@ public class JPanelLeft extends JPanel{
 	private JLabel foodValue;
 	private JLabel earth;
 	private JLabel earthValue;
+	private JLabel building;
 	
 	private int tamer = 1;
 	
@@ -47,13 +47,16 @@ public class JPanelLeft extends JPanel{
 		earthValue = new JLabel("<html>" + tamer + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		earthValue.setForeground(Color.white);
 		earthValue.setFont(new Font("Sherif", Font.ITALIC, 15));
-
+		
+		building = new JLabel(new ImageIcon("./img/BuildingIcon.png"), JLabel.CENTER);
+		
 		add(ressources, 0);
 		add(food, 1);
 		add(foodValue, 2);
 		add(earth, 3);
 		add(earthValue, 4);
-		add(overlay, 5);
+		add(building, 5);
+		add(overlay, 6);
 	}
 	
 	public JLabel getRessources(){
