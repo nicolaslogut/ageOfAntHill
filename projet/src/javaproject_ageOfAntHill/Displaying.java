@@ -171,8 +171,6 @@ public class Displaying implements Runnable, ActionListener {
 		// creation of the cells of the game grid
 		for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
 			LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
-			if (numCell == 0)
-			cell.getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 			cell.addMouseListener((MouseListener) this.interfHM);
 			cell.addMouseMotionListener((MouseMotionListener) this.interfHM);
 			this.getGridOfTheGame().add(cell);

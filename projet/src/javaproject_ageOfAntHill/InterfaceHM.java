@@ -18,7 +18,7 @@ import javaproject_ageOfAntHill.map.Position;
  */
 public interface InterfaceHM {
 
-	public void selectUnits(JLabel labelUnit);
+	public void selectUnits(LabelCustom labelUnit1, LabelCustom labelUnit2, MouseEvent e);
 	
 	public void selectBuilding(Building building);
 
