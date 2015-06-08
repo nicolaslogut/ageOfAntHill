@@ -134,66 +134,68 @@ public class Displaying implements Runnable, ActionListener {
 
 			menu.add(this.itemAbout);
 			menu.add(this.itemClose);
-
+		//add action listener
 			this.itemAbout.addActionListener(this);
 			this.itemClose.addActionListener(this);
 			this.menuBar.add(menu);
 		
 		//creation of the game Menu
 			JMenu game = new JMenu("Game");
-			this.itemNewGame = new JMenuItem("Nouvelle partie");
-			this.itemSaveGame = new JMenuItem("Sauvegarder la partie");
-			this.itemLoadGame = new JMenuItem("Charger une partie");
-		
+			this.itemNewGame = new JMenuItem("New game");
+			this.itemSaveGame = new JMenuItem("Save game");
+			this.itemLoadGame = new JMenuItem("load a game");
+			
+		// add item on the bar menu
 			game.add(this.itemNewGame);
 			game.add(this.itemSaveGame);
 			game.add(this.itemLoadGame);
 			
+		// add action listener on the items	
 			this.itemNewGame.addActionListener(this);
 			this.itemSaveGame.addActionListener(this);
 			this.itemLoadGame.addActionListener(this);
+			
+		//add a menu option	
 			this.menuBar.add(game);
 
-	
+			
 		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
-		
-		/*this.ressources = new JLabel(new ImageIcon("./img/test.png"));
-		ressourcesOfThePlayer.add(ressources);
-		this.ressources2 = new JLabel("Ressources :");
-		ressourcesOfThePlayer.add(ressources2);*/
-		
 		this.jpanelLeft = new JPanelLeft();
+		
+		//add on the JPanel ressourcesOfThePlayer the JPanel jpanelLeft
 		ressourcesOfThePlayer.add(this.jpanelLeft);
 		
 		// creation of the cells of the game grid
 		for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
 			LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
-			//System.out.println(cell.getX()+" et "+cell.getY());
 			if (numCell == 0)
-				cell.getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
+			cell.getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 			cell.addMouseListener((MouseListener) this.interfHM);
 			this.getGridOfTheGame().add(cell);
 			this.addCellTab(numCell, tab, cell);
 			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
 		}
 		
+		//add on the JSplitpane SplitGame,the gridOfTheGame( map)
 		splitGame.add(this.gridOfTheGame);
 		splitGame.setDividerLocation(900);
 		splitGame.setDividerSize(0);
 		
+		//add on the JSplitpane splitRessource, the jpanelLeft              
 		splitRessources.add(this.jpanelLeft);
 		splitRessources.setSize(100, DEFAULT_WINDOW_HEIGHT);
 		splitRessources.setDividerLocation(100);
 		splitRessources.setDividerSize(0);
 		
+		//creation label with an image(it's the banner on the top of the window) 
 		JLabel JBanner = new JLabel();
 		ImageIcon imgBanner = new ImageIcon("./img/BANNER.png");
 		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
 		JBanner.setIcon(imgBanner);
 		banner.add(JBanner);
-		//banner.setBorder(null);
+		
 		
 		splitWindow.setLayout(new BorderLayout());
 		splitWindow.add(splitRessources, BorderLayout.WEST);
@@ -203,6 +205,7 @@ public class Displaying implements Runnable, ActionListener {
 		splitWindow.setDividerSize(0);
 		splitWindow.setEnabled(false);
 		
+		// add in the JFrame "window", the splitWindow 
 		this.window.setContentPane(this.splitWindow);
 		this.window.setVisible(true);
 
