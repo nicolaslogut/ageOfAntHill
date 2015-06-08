@@ -9,7 +9,7 @@ public class AttackingUnit extends Unit implements InterfaceAttack {
 		if (!(enemy instanceof Unit))
 			System.out.println("AttackingUnit.java -> attack -> The parametter isn't an Unit instance");
 			return;
-		Unit unit = this;
+		Unit unit = (Unit) this;
 		
 		int damages = unit.damages - enemy.armor;
 		if (damages > 0)
