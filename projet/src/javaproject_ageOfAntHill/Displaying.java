@@ -75,7 +75,6 @@ public class Displaying implements Runnable, ActionListener {
 	
 	private JSplitPane splitWindow;
 	private JPanel banner;
-	private JLabel imgBanner;
 	
 	
 	public Displaying(InterfaceHM interfHM) {
@@ -190,11 +189,14 @@ public class Displaying implements Runnable, ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		JMenuItem selectedItem = (JMenuItem) event.getSource();
 
-		String instructions = "Instructions :\n"; // TODO => add helping instructions
+		String instructions = "Instructions :\n";
+		instructions+="Left click to select one unit or one building\n";
+		instructions+="Left click and drag to select up to 10 units\n";
+		instructions+="Right click to move the selected units to the targetted area\n";
+		instructions+="note : some units might not be able to move if there isn't enough room";
 
 		if (selectedItem == this.itemAbout) {
-			JOptionPane.showMessageDialog(this.window, instructions, "About",
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this.window, instructions, "About",JOptionPane.INFORMATION_MESSAGE);
 		}
 		if (selectedItem == this.itemClose) {
 			this.window.dispose();
