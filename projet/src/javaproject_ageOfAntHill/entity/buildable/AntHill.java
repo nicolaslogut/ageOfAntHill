@@ -6,7 +6,7 @@ public class AntHill extends Building {
 	  */
 	 private final static String ANTHILL_TYPE = "AHILL";
 	 
-	/* public AntHill(){
+	public AntHill(){
 		 this.setType(ANTHILL_TYPE);
-	 }*/
+	 }
 }
