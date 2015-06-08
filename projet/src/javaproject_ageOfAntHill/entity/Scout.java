@@ -13,6 +13,10 @@ class Scout extends Unit {
 	 * This is the default move range
 	 */
 	private final static int DEFAULT_SCOUT_SPEED = 6;
+	/**
+	 * Just like a serial name, it's used to identify a scout's type
+	 */
+	private final static String SCOUT_TYPE = "SCOUT";
 
 	/**
 	 * creates a Shooter with its default stats
@@ -24,5 +28,6 @@ class Scout extends Unit {
 		this.healthPoints = DEFAULT_LIGHT_UNIT_HP;
 		this.deplacements = DEFAULT_SCOUT_SPEED;
 		this.team = teamNumber;
+		this.setType(SCOUT_TYPE);
 	}
 }

@@ -28,6 +28,10 @@ class Guardian extends Unit {
 	 * Default health
 	 */
 	private static final int DEFAULT_HEAVY_UNIT_HP = 0;
+	/**
+	 * Just like a serial name, it's used to identify a guardian's type
+	 */
+	private final static String GUARDIAN_TYPE = "GUARD";
 
 	/**
 	 * creates a guardian with its default stats
@@ -39,6 +43,7 @@ class Guardian extends Unit {
 		this.healthPoints = DEFAULT_HEAVY_UNIT_HP;
 		this.deplacements = DEFAULT_GUARDIAN_SPEED;
 		this.team = teamNumber;
+		this.setType(GUARDIAN_TYPE);
 	}
 
 	/**

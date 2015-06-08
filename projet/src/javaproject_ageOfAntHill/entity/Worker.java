@@ -13,6 +13,10 @@ public class Worker extends Unit {
 	 * a worker's default movement speed
 	 */
 	private final static int DEFAULT_WORKER_SPEED = 4;
+	/**
+	 * Just like a serial name, it's used to identify a worker's type
+	 */
+	private final static String WORKER_TYPE = "WORK";
 
 	/**
 	 * creates a worker with its default stats
@@ -24,6 +28,7 @@ public class Worker extends Unit {
 		this.healthPoints = DEFAULT_PEACEFUL_UNIT_HP;
 		this.deplacements = DEFAULT_WORKER_SPEED;
 		this.team = teamNumber;
+		this.setType(WORKER_TYPE);
 	}
 
 	/**

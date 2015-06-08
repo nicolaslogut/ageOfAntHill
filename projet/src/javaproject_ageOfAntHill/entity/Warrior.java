@@ -13,6 +13,10 @@ class Warrior extends Unit {
 	 * warrior's moving speed
 	 */
 	private final static int DEFAULT_WARRIOR_SPEED = 3;
+	/**
+	 * Just like a serial name, it's used to identify a warrior's type
+	 */
+	private final static String WARRIOR_TYPE = "WARR";
 
 	/**
 	 * creates a warrior with all its default stats
@@ -24,6 +28,7 @@ class Warrior extends Unit {
 		this.healthPoints = DEFAULT_MEDIUM_UNIT_HP;
 		this.deplacements = DEFAULT_WARRIOR_SPEED;
 		this.team = teamNumber;
+		this.setType(WARRIOR_TYPE);
 	}
 
 	public void attack() {

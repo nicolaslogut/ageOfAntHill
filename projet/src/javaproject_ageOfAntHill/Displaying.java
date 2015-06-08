@@ -1,15 +1,16 @@
 package javaproject_ageOfAntHill;
 
 import javaproject_ageOfAntHill.map.Map;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -73,12 +74,13 @@ public class Displaying implements Runnable, ActionListener {
 	 * menu bar of the window
 	 */
 	private JMenuBar menuBar;
-	
+	/**
+	 * used to place units images (they're stored inside this grid of the game)
+	 */
+	private JLabel[][] tab;
 	/**
 	 * used to change the window's layout (especially the panel of the game)
 	 */
-	
-	
 	private JSplitPane splitWindow;
 	private JPanel banner;
 	
@@ -92,7 +94,7 @@ public class Displaying implements Runnable, ActionListener {
 
 		this.window = new JFrame();
 		this.menuBar = new JMenuBar();
-		
+		this.tab = new JLabel[Map.NBLINE][Map.NBCOLUMN];
 	
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
@@ -170,20 +172,19 @@ public class Displaying implements Runnable, ActionListener {
 		
 		this.ressourcesOfThePlayer.setBounds(0, 0, 100, DEFAULT_WINDOW_HEIGHT);
 		
-		// LabelCustom[][] tab = new LabelCustom[10][20];
 		
 		// creation of the cells of the game grid
 		for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
 			LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
 			//System.out.println(cell.getX()+" et "+cell.getY());
 			if (numCell == 0)
-				cell.getJlguard().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
+				cell.getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 			cell.addMouseListener((MouseListener) this.interfHM);
 			this.getGridOfTheGame().add(cell);
+			this.addCellTab(numCell, tab, cell);
 			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
 		}
-
-		// tab[0][1].getJlguard().setIcon(icon);
+		
 		
 
 		// JPanel panGame = new JPanel();
@@ -247,5 +248,11 @@ public class Displaying implements Runnable, ActionListener {
 		if (selectedItem == this.itemClose) {
 			this.window.dispose();
 		}
+	}
+	
+	public void addCellTab(int numCell, JLabel[][] tabEntity, LabelCustom cell){
+		int col=numCell%Map.NBCOLUMN;
+		int line=numCell/Map.NBLINE;
+		tabEntity[line][col]=cell.getJlentity();
 	}
 }

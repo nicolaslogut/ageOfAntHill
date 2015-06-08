@@ -13,6 +13,10 @@ class Scarab extends Unit {
 	 * Scarab's default movement speed
 	 */
 	private final static int DEFAULT_BEETLE_SPEED = 2;
+	/**
+	 * Just like a serial name, it's used to identify a scarab's type
+	 */
+	private final static String SCARAB_TYPE = "SCAR";
 
 	/**
 	 * creates a scarab with its default stats
@@ -24,5 +28,6 @@ class Scarab extends Unit {
 		this.healthPoints = DEFAULT_HEAVY_UNIT_HP;
 		this.deplacements = DEFAULT_BEETLE_SPEED;
 		this.team = teamNumber;
+		this.setType(SCARAB_TYPE);
 	}
 }

@@ -1,13 +1,16 @@
 package javaproject_ageOfAntHill;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.util.Random;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 
+import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.map.CellState;
 
 /**
@@ -21,15 +24,10 @@ import javaproject_ageOfAntHill.map.CellState;
 @SuppressWarnings("serial")
 public class LabelCustom extends JPanel {
 
+	private Entity entity;
 	private JLabel jlground;
-	private JLabel jlguard;
+	private JLabel jlentity;
 
-	/**
-	 * @TODO 
-	 * 
-	 * @param nbLine
-	 * @param nbCol
-	 */
 	/**
 	 * @param nbLine
 	 * @param nbCol
@@ -41,20 +39,61 @@ public class LabelCustom extends JPanel {
 		jlground = new JLabel(new ImageIcon("./img/GRASS_SQUARE.png"));
 		// jlguard = new JLabel(new
 		// ImageIcon("./img/mobs/guardian/guardian-bd.png"));
-		jlguard = new JLabel();
-		add(jlguard, 0);
+		jlentity = new JLabel();
+		add(jlentity, 0);
 		add(jlground, 1);
-
+		
 		// this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
-		// setBackground(Color.GREEN);
 		// setOpaque(true);
 		// setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 	}
-
-	public JLabel getJlguard() {
-		return jlguard;
+	
+	/**
+	 * returns the label containing the entity's picture
+	 * @return
+	 */
+	public JLabel getJlentity() {
+		return jlentity;
 	}
-
+	
+	public void addEntityMap(Entity entity){
+		this.entity=entity;
+		switch (this.entity.getType()){
+		case "FLY":
+			//jlentity.setIcon(new ImageIcon("./img/mobs/guardian/guardian-hd.png"));
+			break;
+		case "GUARD":
+			jlentity.setIcon(new ImageIcon("./img/mobs/guardian/guardian-hd.png"));
+			break;
+		case "LIZ":
+			jlentity.setIcon(new ImageIcon("./img/mobs/lizard/lizard-hd.png"));
+			break;
+		case "QUEEN":
+			jlentity.setIcon(new ImageIcon("./img/mobs/queen/queen-h.png"));
+			break;
+		case "SCAR":
+			jlentity.setIcon(new ImageIcon("./img/mobs/scarab/scarab-hd.png"));
+			break;
+		case "SCOUT":
+			jlentity.setIcon(new ImageIcon("./img/mobs/scout/scout-hd.png"));
+			break;
+		case "SHOOT":
+			jlentity.setIcon(new ImageIcon("./img/mobs/shooter/shooter-hd.png"));
+			break;
+		case "WARR":
+			jlentity.setIcon(new ImageIcon("./img/mobs/warrior/warrior-hd.png"));
+			break;
+		case "WORK":
+			jlentity.setIcon(new ImageIcon("./img/mobs/worker/worker-hd.png"));
+			break;
+		case "AHILL":
+			jlentity.setIcon(new ImageIcon("./img/ANTHILL_SQUARE.png"));
+			break;
+		default:
+		}
+	}
+	
+	
 	public void switchGroundPicture(CellState color) {
 		switch (color) {
 		case SAND_SQUARE:

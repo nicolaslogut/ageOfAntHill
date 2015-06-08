@@ -18,6 +18,10 @@ class Shooter extends Unit {
 	 * shooter's default attack range
 	 */
 	private final static int DEFAULT_SHOOTER_RANGE = 5;
+	/**
+	 * Just like a serial name, it's used to identify a shooter's type
+	 */
+	private final static String SHOOTER_TYPE = "SHOOT";
 
 	/**
 	 * creates a Shooter with its default stats
@@ -30,6 +34,7 @@ class Shooter extends Unit {
 		this.healthPoints = DEFAULT_LIGHT_UNIT_HP;
 		this.deplacements = DEFAULT_SHOOTER_SPEED;
 		this.team = teamNumber;
+		this.setType(SHOOTER_TYPE);
 	}
 
 	/**

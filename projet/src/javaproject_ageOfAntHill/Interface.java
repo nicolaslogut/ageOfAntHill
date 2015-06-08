@@ -1,10 +1,11 @@
 package javaproject_ageOfAntHill;
 
+import java.awt.Component;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
+import javax.swing.JLabel;
 import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.entity.Unit;
 import javaproject_ageOfAntHill.entity.buildable.Building;
@@ -58,13 +59,11 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	/**
 	 * Allow the player to select one of multiple entities (Units or Building).
 	 */
-	public void selectUnits(Unit unit) {
-		for (int numUnit=0;numUnit<20;numUnit++){
-			if (this.units[numUnit]==null){
-				this.units[numUnit]=unit;
-				return;
-			}
-		}
+	public void selectUnits(JLabel labelUnit) {
+//		if (this.units[numUnit]==null){
+//			//this.units[numUnit]=(Unit) labelUnit;
+//			return;
+//		}
 	}
 
 	/**
@@ -76,8 +75,6 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	
 	@Override
 	public void selectBuilding(Building building) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	/**
@@ -89,27 +86,29 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	
 	@Override
 	public void mouseDragged(MouseEvent e){
-		System.out.println(e.getButton());
-		System.out.println(e.getModifiers());
-		if (e.getButton()==1){
-			int numLabel;
-			for (numLabel=0;numLabel<Map.NBCOLUMN*Map.NBLINE;numLabel++){
-				if (e.getSource()==(LabelCustom) e.getComponent().getParent().getComponent(numLabel)){
-					System.out.println("label num "+numLabel);
+//		if (e.getButton()==1){
+//			int numLabel;
+//			for (numLabel=0;numLabel<Map.NBCOLUMN*Map.NBLINE;numLabel++){
+//				if (e.getSource()==(LabelCustom) e.getComponent().getParent().getComponent(numLabel)){
+//					System.out.println("label num "+numLabel);
+//				}
+//			}
+			
+			if ((e.getModifiers() & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK) {
+				if (delayDraggredMouse == DEFAULT_VALUE_DELAY_MOUSE_DRAGGED) {
+					delayDraggredMouse = System.currentTimeMillis();
+				} else {
+					if (System.currentTimeMillis() - delayDraggredMouse > DELAY_MOUSE_DRAGGED_CLICKED) {
+							// each "dragged" cell
+						// Component labelEntity = (JLabel) e.getComponent().getParent().tab[0][0];
+						
+						//System.out.println(((LabelCustom) e.getSource()).getJlguard());
+						//this.selectUnits(((LabelCustom) e.getSource()).getJlguard());
+						draggredMouse = true;
+					}
 				}
 			}
-		}
-		int modif = e.getModifiers();
-		if ((modif & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK) {
-			if (delayDraggredMouse == DEFAULT_VALUE_DELAY_MOUSE_DRAGGED) {
-				delayDraggredMouse = System.currentTimeMillis();
-			} else {
-				if (System.currentTimeMillis() - delayDraggredMouse > DELAY_MOUSE_DRAGGED_CLICKED) {
-					System.out.println("ça drague !");
-					draggredMouse = true;
-				}
-			}
-		}
+//		}
 	}
 	/**
 	 * Used when the user is clicking on a cell.

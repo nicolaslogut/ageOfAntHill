@@ -2,6 +2,8 @@ package javaproject_ageOfAntHill;
 
 import java.awt.event.MouseEvent;
 
+import javax.swing.JLabel;
+
 import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.entity.Unit;
 import javaproject_ageOfAntHill.entity.buildable.Building;
@@ -16,7 +18,7 @@ import javaproject_ageOfAntHill.map.Position;
  */
 public interface InterfaceHM {
 
-	public void selectUnits(Unit unit);
+	public void selectUnits(JLabel labelUnit);
 	
 	public void selectBuilding(Building building);
 
