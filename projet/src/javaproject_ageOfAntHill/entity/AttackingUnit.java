@@ -5,15 +5,15 @@ import javaproject_ageOfAntHill.map.Position;
 
 public class AttackingUnit extends Unit implements InterfaceAttack {
 
-	public void attack(Position unitPos, Position enemyPos, InterfaceMap map) {
-		Unit enemy = map.getCell(enemyPos).getUnit();
-		Unit unit = map.getCell(unitPos).getUnit();
-
-		if (enemy.armor < unit.damages)
-			enemy.healthPoints = enemy.healthPoints
-					- (unit.damages - enemy.armor);
-		else
-			enemy.healthPoints--;
+	public void attack(Unit enemy) {
+		if (!(enemy instanceof Unit))
+			System.out.println("AttackingUnit.java -> attack -> The parametter isn't an Unit instance");
+			return;
+		Unit unit = this;
+		
+		int damages = unit.damages - enemy.armor;
+		if (damages > 0)
+			enemy.healthPoints -= damages;
 	}
 
 	@Override
