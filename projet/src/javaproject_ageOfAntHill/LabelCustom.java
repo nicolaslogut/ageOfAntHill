@@ -39,16 +39,9 @@ public class LabelCustom extends JPanel {
 		// sets grass as default picture
 		setLayout(new OverlayLayout(this));
 		jlground = new JLabel(new ImageIcon("./img/GRASS_SQUARE.png"));
-		// jlguard = new JLabel(new
-		// ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 		jlguard = new JLabel();
 		add(jlguard, 0);
 		add(jlground, 1);
-
-		// this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
-		// setBackground(Color.GREEN);
-		// setOpaque(true);
-		// setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 	}
 
 	public JLabel getJlguard() {
