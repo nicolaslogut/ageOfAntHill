@@ -47,6 +47,7 @@ public class Displaying implements Runnable, ActionListener {
 	 * window of the game
 	 */
 	private JFrame window;
+	
 	/**
 	 * items in the JMenu bar
 	 */
@@ -61,11 +62,7 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private JPanel gridOfTheGame;
 	private JPanel ressourcesOfThePlayer;
-	/**
-	 * ressources of the game
-	 */
-	private JLabel ressources;
-	private JLabel ressources2;
+
 	/**
 	 * part of the window with the game and the menu bar
 	 */
@@ -189,10 +186,11 @@ public class Displaying implements Runnable, ActionListener {
 		splitRessources.setDividerSize(0);
 		
 		JLabel JBanner = new JLabel();
-		ImageIcon imgBanner = new ImageIcon("./img/banniere4.jpg");
+		ImageIcon imgBanner = new ImageIcon("./img/BANNER.png");
 		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
 		JBanner.setIcon(imgBanner);
 		banner.add(JBanner);
+		//banner.setBorder(null);
 		
 		splitWindow.setLayout(new BorderLayout());
 		splitWindow.add(splitRessources, BorderLayout.WEST);
@@ -210,7 +208,6 @@ public class Displaying implements Runnable, ActionListener {
 
 	public JPanel getGridOfTheGame() {
 		return gridOfTheGame;
-
 	}
 
 	public void setGridOfTheGame(JPanel gridOfTheGame) {
@@ -226,11 +223,20 @@ public class Displaying implements Runnable, ActionListener {
 		instructions+="Left click and drag to select up to 10 units\n";
 		instructions+="Right click to move the selected units to the targetted area\n";
 		instructions+="note : some units might not be able to move if there isn't enough room";
-
+		
+		String newGame = "Fonction non implémentée";
+		String saveGame = "Fonction non implémentée";
+		String loadGame = "Fonction non implémentée";
+		
 		if (selectedItem == this.itemAbout) {
 			JOptionPane.showMessageDialog(this.window, instructions, "About",JOptionPane.INFORMATION_MESSAGE);
-		}
-		if (selectedItem == this.itemClose) {
+		}else if (selectedItem == this.itemNewGame) {
+			JOptionPane.showMessageDialog(this.window, newGame, "Nouvelle Partie",JOptionPane.INFORMATION_MESSAGE);
+		}else if (selectedItem == this.itemSaveGame) {
+			JOptionPane.showMessageDialog(this.window, saveGame, "Sauvegarder Partie",JOptionPane.INFORMATION_MESSAGE);
+		}else if (selectedItem == this.itemLoadGame) {
+			JOptionPane.showMessageDialog(this.window, loadGame, "Charger Partie",JOptionPane.INFORMATION_MESSAGE);
+		}else if (selectedItem == this.itemClose) {
 			this.window.dispose();
 		}
 	}
