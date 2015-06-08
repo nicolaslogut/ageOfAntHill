@@ -38,7 +38,7 @@ public class LabelCustom extends JPanel {
 
 		// sets grass as default picture
 		setLayout(new OverlayLayout(this));
-		jlground = new JLabel(new ImageIcon("./img/GRASS_SQUARE.png"));
+		jlground = new JLabel(new ImageIcon("./img/tiles/GRASS_SQUARE.png"));
 		jlguard = new JLabel();
 		add(jlguard, 0);
 		add(jlground, 1);
@@ -51,17 +51,17 @@ public class LabelCustom extends JPanel {
 	public void switchGroundPicture(CellState color) {
 		switch (color) {
 		case SAND_SQUARE:
-			jlground.setIcon(new ImageIcon("./img/SAND_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/tiles/SAND_SQUARE.png"));
 			break;
 		case WATER_SQUARE:
-			jlground.setIcon(new ImageIcon("./img/WATER_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/tiles/WATER_SQUARE.png"));
 			break;
 		case TREE_SQUARE:
-			jlground.setIcon(new ImageIcon("./img/TREE_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/tiles/TREE_SQUARE.png"));
 			break;
 		case GRASS_SQUARE:
 		default:
-			jlground.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
+			jlground.setIcon(new ImageIcon("./img/tiles/GRASS_SQUARE.png"));
 			break;
 		}
 	}
