@@ -14,7 +14,7 @@ public class JPanelLeft extends JPanel{
 	
 	public JPanelLeft(){
 		setLayout(new OverlayLayout(this));
-		image = new JLabel(new ImageIcon("./img/test.png"));
+		image = new JLabel(new ImageIcon("./img/LeftPaneOverlay.png"));
 		ressources = new JLabel("<html>Ressources :<br>");
 		//nourriture = new JLabel("<html>Nourriture :<br>", new ImageIcon("./img/Nourriture.png"), 0);
 

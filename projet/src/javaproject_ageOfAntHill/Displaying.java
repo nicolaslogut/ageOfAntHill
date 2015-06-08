@@ -122,10 +122,6 @@ public class Displaying implements Runnable, ActionListener {
 		this.window.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 		this.window.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
 		
-		this.ressourcesOfThePlayer.setSize(100, DEFAULT_WINDOW_HEIGHT);
-		this.ressourcesOfThePlayer.setMinimumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
-		this.ressourcesOfThePlayer.setMaximumSize(new Dimension(100, DEFAULT_WINDOW_HEIGHT));
-		
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
