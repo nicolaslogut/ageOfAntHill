@@ -9,7 +9,7 @@ package javaproject_ageOfAntHill.entity;
  * @version 20150526
  */
 
-class Shooter extends Unit {
+public class Shooter extends Unit {
 	/**
 	 * shooter's default movement speed
 	 */

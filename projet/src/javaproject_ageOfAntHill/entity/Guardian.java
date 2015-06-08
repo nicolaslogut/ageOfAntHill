@@ -8,7 +8,7 @@ package javaproject_ageOfAntHill.entity;
  * @version 20150526
  */
 
-class Guardian extends Unit {
+public class Guardian extends Unit {
 	/**
 	 * Default speed
 	 */

@@ -8,7 +8,7 @@ package javaproject_ageOfAntHill.entity;
  * @version 20150526
  */
 
-class Scarab extends Unit {
+public class Scarab extends Unit {
 	/**
 	 * Scarab's default movement speed
 	 */

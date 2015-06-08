@@ -8,7 +8,7 @@ package javaproject_ageOfAntHill.entity;
  * @version 20150526
  */
 
-class Warrior extends Unit {
+public class Warrior extends Unit {
 	/**
 	 * warrior's moving speed
 	 */

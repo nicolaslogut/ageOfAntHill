@@ -33,7 +33,7 @@ public class Cell {
 	}
 
 	public Cell(Entity entity) {
-		this(null, CellState.GRASS_SQUARE);
+		this(entity, CellState.GRASS_SQUARE);
 	}
 
 	/**

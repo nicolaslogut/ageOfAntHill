@@ -28,7 +28,8 @@ public class Main {
 		// SwingUtilities.invokeLater(disp);
 		map.generateSandWater(disp);
 		map.generateTree(disp);
-		map.generateAntHill(disp);
+		map.generateStartingUnits(disp);
+		map.generateIAUnits(disp);
 		// Map map = new Map();
 		// System.out.println("map :\n" + map.mapToString());
 	}

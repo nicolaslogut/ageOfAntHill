@@ -7,7 +7,7 @@ package javaproject_ageOfAntHill.entity;
  * @version 20150526
  */
 
-class Fly extends Unit {
+public class Fly extends Unit {
 	/**
 	 * a fly's movement speed
 	 */

@@ -2,14 +2,13 @@ package javaproject_ageOfAntHill.map;
 
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-
 import javaproject_ageOfAntHill.Displaying;
 import javaproject_ageOfAntHill.LabelCustom;
-import javaproject_ageOfAntHill.entity.Entity;
+import javaproject_ageOfAntHill.entity.Fly;
+import javaproject_ageOfAntHill.entity.Lizard;
 import javaproject_ageOfAntHill.entity.Queen;
+import javaproject_ageOfAntHill.entity.Scarab;
 import javaproject_ageOfAntHill.entity.Worker;
-import javaproject_ageOfAntHill.entity.buildable.AntHill;
 
 /**
  * represents the map of the game
@@ -27,9 +26,26 @@ public class Map implements InterfaceMap {
 	 * A constant integer which contain the total number of columns in the grid of the game
 	 */
 	public final static int NBCOLUMN = 48;
-
+	/**
+	 * number of water lakes in the map
+	 */
 	private final static int MAX_WATER_LAKE = 8;
+	/**
+	 * number of tree forests in the map
+	 */
 	private final static int MAX_TREE_FOREST = 4;
+	/**
+	 * initial number of flies (enemy unit)
+	 */
+	private final static int MAX_FLIES_NUMBER = 15;
+	/**
+	 * initial number of lizards (enemy unit)
+	 */
+	private final static int MAX_LIZARDS_NUMBER = 15;
+	/**
+	 * initial number of scarabs (enemy unit)
+	 */
+	private final static int MAX_SCARABS_NUMBER = 15;
 
 	/**
 	 * grille de jeu representant toute la carte d'une partie c'est un tableau
@@ -174,10 +190,10 @@ public class Map implements InterfaceMap {
 	}
 	
 	/**
-	 * Generates a Queen and an ant Worker to start the game
+	 *  generates the player's starting units : a Queen and a Worker
 	 * @param disp
 	 */
-	public void generateAntHill(Displaying disp){
+	public void generateStartingUnits(Displaying disp){
 		for (int numLine = 0; numLine < NBLINE; numLine++) {
 			for (int numCol = 0; numCol < NBCOLUMN; numCol++) {
 				if (this.grid[numLine][numCol].cellState == CellState.GRASS_SQUARE 
@@ -187,9 +203,78 @@ public class Map implements InterfaceMap {
 					this.grid[numLine][numCol].setEntity(queen);
 					this.grid[numLine][numCol+1].setEntity(worker);
 					disp.getLabelTab(numLine, numCol).addEntityMap(queen);
-					disp.getLabelTab(numLine, numCol+1).addEntityMap(worker);					
+					disp.getLabelTab(numLine, numCol+1).addEntityMap(worker);
 					return;
 				}
+			}
+		}
+	}
+	
+	/**
+	 * Generates all the enemy units at the start of the game
+	 * @param disp
+	 */
+	public void generateIAUnits(Displaying disp) {
+		int startLine=0, startCol=0;
+		// checking position of the player's starting units
+		for (int numLine = 0; numLine < NBLINE; numLine++) {
+			for (int numCol = 0; numCol < NBCOLUMN; numCol++) {
+				if (this.grid[numLine][numCol].getEntity()!=null){
+					startLine=numLine+5;	// so that there won't be any enemy within 5 lines of the player's starting units
+					startCol=numCol+5;		// so that there won't be any enemy within 4 columns of the player's starting units
+				}
+			}
+		}
+		
+		Random rand = new Random();
+		// adds a defined number of enemy units of each type randomly in the remaining places of the map
+		// adds the flies randomly on the map
+		int nbEnemies = 0;
+		while (nbEnemies<MAX_FLIES_NUMBER){
+			rand = new Random();
+			int randNbLines = rand.nextInt(NBLINE-startLine) + startLine;
+			int randNbCols = rand.nextInt(NBCOLUMN);
+			if (randNbLines<startLine && randNbCols<startCol)
+				randNbCols = rand.nextInt(NBCOLUMN-startCol) + startCol;
+			
+			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE 
+					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
+				Fly fly = new Fly(1);
+				this.grid[randNbLines][randNbCols].setEntity(fly);
+				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(fly);
+				nbEnemies++;
+			}
+		}
+		// adds the lizards randomly on the map
+		nbEnemies=0;
+		while (nbEnemies<MAX_LIZARDS_NUMBER){
+			rand = new Random();
+			int randNbLines = rand.nextInt(NBLINE-startLine) + startLine;
+			int randNbCols = rand.nextInt(NBCOLUMN);
+			if (randNbLines<startLine && randNbCols<startCol)
+				randNbCols = rand.nextInt(NBCOLUMN-startCol) + startCol;
+			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE 
+					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
+				Lizard lizard = new Lizard(1);
+				this.grid[randNbLines][randNbCols].setEntity(lizard);
+				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(lizard);
+				nbEnemies++;
+			}
+		}
+		// adds the scarabs randomly on the map
+		nbEnemies=0;
+		while (nbEnemies<MAX_SCARABS_NUMBER){
+			rand = new Random();
+			int randNbLines = rand.nextInt(NBLINE-startLine) + startLine;
+			int randNbCols = rand.nextInt(NBCOLUMN);
+			if (randNbLines<startLine && randNbCols<startCol)
+				randNbCols = rand.nextInt(NBCOLUMN-startCol) + startCol;
+			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE 
+					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
+				Scarab scarab = new Scarab(1);
+				this.grid[randNbLines][randNbCols].setEntity(scarab);
+				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(scarab);
+				nbEnemies++;
 			}
 		}
 	}
@@ -256,4 +341,5 @@ public class Map implements InterfaceMap {
 		}
 		return mapAsciiArt;
 	}
+
 }

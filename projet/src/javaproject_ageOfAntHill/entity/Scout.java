@@ -8,7 +8,7 @@ package javaproject_ageOfAntHill.entity;
  *
  * @version 20150526
  */
-class Scout extends Unit {
+public class Scout extends Unit {
 	/**
 	 * This is the default move range
 	 */
