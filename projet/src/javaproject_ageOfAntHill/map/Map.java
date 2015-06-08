@@ -239,7 +239,7 @@ public class Map implements InterfaceMap {
 			
 			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE 
 					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
-				Fly fly = new Fly(1);
+				Fly fly = new Fly(2);
 				this.grid[randNbLines][randNbCols].setEntity(fly);
 				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(fly);
 				nbEnemies++;
@@ -255,7 +255,7 @@ public class Map implements InterfaceMap {
 				randNbCols = rand.nextInt(NBCOLUMN-startCol) + startCol;
 			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE 
 					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
-				Lizard lizard = new Lizard(1);
+				Lizard lizard = new Lizard(2);
 				this.grid[randNbLines][randNbCols].setEntity(lizard);
 				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(lizard);
 				nbEnemies++;
@@ -271,7 +271,7 @@ public class Map implements InterfaceMap {
 				randNbCols = rand.nextInt(NBCOLUMN-startCol) + startCol;
 			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE 
 					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
-				Scarab scarab = new Scarab(1);
+				Scarab scarab = new Scarab(2);
 				this.grid[randNbLines][randNbCols].setEntity(scarab);
 				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(scarab);
 				nbEnemies++;

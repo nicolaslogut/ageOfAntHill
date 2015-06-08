@@ -22,12 +22,13 @@ public class Warrior extends Unit {
 	 * creates a warrior with all its default stats
 	 */
 	public Warrior(int teamNumber) {
-		this.armor = DEFAULT_MEDIUM_UNIT_ARMOR;
-		this.damages = DEFAULT_MEDIUM_UNIT_DAMAGE;
-		this.maxHealthPoints = DEFAULT_MEDIUM_UNIT_HP;
-		this.healthPoints = DEFAULT_MEDIUM_UNIT_HP;
-		this.deplacements = DEFAULT_WARRIOR_SPEED;
-		this.team = teamNumber;
+		this.setRange(DEFAULT_UNIT_RANGE);
+		this.setArmor(DEFAULT_MEDIUM_UNIT_ARMOR);
+		this.setDamages(DEFAULT_MEDIUM_UNIT_DAMAGE);
+		this.setMaxHealthPoints(DEFAULT_MEDIUM_UNIT_HP);
+		this.setHealthPoints(DEFAULT_MEDIUM_UNIT_HP);
+		this.setDeplacements(DEFAULT_WARRIOR_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(WARRIOR_TYPE);
 	}
 

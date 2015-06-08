@@ -24,12 +24,12 @@ public class Queen extends Unit {
 	 * creates a queen ant with its default stats
 	 */
 	public Queen(int teamNumber) {
-		this.damages = DEFAULT_PEACEFUL_UNIT_DAMAGE;
-		this.armor = DEFAULT_PEACEFUL_UNIT_ARMOR;
-		this.maxHealthPoints = DEFAULT_PEACEFUL_UNIT_HP;
-		this.healthPoints = DEFAULT_PEACEFUL_UNIT_HP;
-		this.deplacements = DEFAULT_QUEEN_SPEED;
-		this.team = teamNumber;
+		this.setDamages(DEFAULT_PEACEFUL_UNIT_DAMAGE);
+		this.setArmor(DEFAULT_PEACEFUL_UNIT_ARMOR);
+		this.setMaxHealthPoints(DEFAULT_PEACEFUL_UNIT_HP);
+		this.setHealthPoints(DEFAULT_PEACEFUL_UNIT_HP);
+		this.setDeplacements(DEFAULT_QUEEN_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(QUEEN_TYPE);
 	}
 }

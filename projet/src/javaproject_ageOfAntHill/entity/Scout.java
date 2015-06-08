@@ -22,12 +22,13 @@ public class Scout extends Unit {
 	 * creates a Shooter with its default stats
 	 */
 	public Scout(int teamNumber) {
-		this.armor = DEFAULT_LIGHT_UNIT_ARMOR;
-		this.damages = DEFAULT_LIGHT_UNIT_DAMAGE;
-		this.maxHealthPoints = DEFAULT_LIGHT_UNIT_HP;
-		this.healthPoints = DEFAULT_LIGHT_UNIT_HP;
-		this.deplacements = DEFAULT_SCOUT_SPEED;
-		this.team = teamNumber;
+		this.setRange(DEFAULT_UNIT_RANGE);
+		this.setArmor(DEFAULT_LIGHT_UNIT_ARMOR);
+		this.setDamages(DEFAULT_LIGHT_UNIT_DAMAGE);
+		this.setMaxHealthPoints(DEFAULT_LIGHT_UNIT_HP);
+		this.setHealthPoints(DEFAULT_LIGHT_UNIT_HP);
+		this.setDeplacements(DEFAULT_SCOUT_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(SCOUT_TYPE);
 	}
 }

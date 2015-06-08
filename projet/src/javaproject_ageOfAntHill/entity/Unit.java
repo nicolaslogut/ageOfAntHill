@@ -18,6 +18,10 @@ public abstract class Unit extends Entity {
 	// eventuellement creer une nouvelle classe (abstraite ?) pour stocker
 	// toutes ces constantes
 	/**
+	 * default range for all units (except Shooter)
+	 */
+	protected final static int DEFAULT_UNIT_RANGE = 1;
+	/**
 	 * default armor, damages and HP for non-attacking units (queen, workers...)
 	 */
 	protected final static int DEFAULT_PEACEFUL_UNIT_ARMOR = 1;
@@ -48,32 +52,32 @@ public abstract class Unit extends Entity {
 	/**
 	 * The units armor : It reduce the damages taken.
 	 */
-	protected int armor;
+	private int armor;
 
 	/**
 	 * The damages amount that the unit can inflict.
 	 */
-	protected int damages;
+	private int damages;
 
-	/**
-	 * The maximum health points for the unit.
-	 */
-	protected int maxHealthPoints;
-
-	/**
-	 * The current health points
-	 */
-	protected int healthPoints;
+//	/**
+//	 * The maximum health points for the unit.
+//	 */
+//	private int maxHealthPoints;
+//
+//	/**
+//	 * The current health points
+//	 */
+//	private int healthPoints;
 
 	/**
 	 * The unit movement range
 	 */
-	protected int deplacements;
+	private int deplacements;
 
 	/**
 	 * The attack range
 	 */
-	protected int range;
+	private int range;
 
 	/**
 	 * new unit
@@ -114,6 +118,38 @@ public abstract class Unit extends Entity {
 						&& map.getCell(pos).getCellState() != CellState.WATER_SQUARE)
 					return true;
 		return false;
+	}
+
+	public int getDamages() {
+		return damages;
+	}
+
+	public void setDamages(int damages) {
+		this.damages = damages;
+	}
+
+	public int getArmor() {
+		return armor;
+	}
+
+	public void setArmor(int armor) {
+		this.armor = armor;
+	}
+
+	public int getDeplacements() {
+		return deplacements;
+	}
+
+	public void setDeplacements(int deplacements) {
+		this.deplacements = deplacements;
+	}
+
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
 	}
 
 }

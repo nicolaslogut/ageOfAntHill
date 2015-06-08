@@ -37,12 +37,13 @@ public class Guardian extends Unit {
 	 * creates a guardian with its default stats
 	 */
 	public Guardian(int teamNumber) {
-		this.armor = DEFAULT_HEAVY_UNIT_ARMOR;
-		this.damages = DEFAULT_HEAVY_UNIT_DAMAGE;
-		this.maxHealthPoints = DEFAULT_HEAVY_UNIT_HP;
-		this.healthPoints = DEFAULT_HEAVY_UNIT_HP;
-		this.deplacements = DEFAULT_GUARDIAN_SPEED;
-		this.team = teamNumber;
+		this.setRange(DEFAULT_UNIT_RANGE);
+		this.setArmor(DEFAULT_HEAVY_UNIT_ARMOR);
+		this.setDamages(DEFAULT_HEAVY_UNIT_DAMAGE);
+		this.setMaxHealthPoints(DEFAULT_HEAVY_UNIT_HP);
+		this.setHealthPoints(DEFAULT_HEAVY_UNIT_HP);
+		this.setDeplacements(DEFAULT_GUARDIAN_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(GUARDIAN_TYPE);
 	}
 

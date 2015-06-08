@@ -22,12 +22,12 @@ public class Worker extends Unit {
 	 * creates a worker with its default stats
 	 */
 	public Worker(int teamNumber) {
-		this.damages = DEFAULT_PEACEFUL_UNIT_DAMAGE;
-		this.armor = DEFAULT_PEACEFUL_UNIT_ARMOR;
-		this.maxHealthPoints = DEFAULT_PEACEFUL_UNIT_HP;
-		this.healthPoints = DEFAULT_PEACEFUL_UNIT_HP;
-		this.deplacements = DEFAULT_WORKER_SPEED;
-		this.team = teamNumber;
+		this.setDamages(DEFAULT_PEACEFUL_UNIT_DAMAGE);
+		this.setArmor(DEFAULT_PEACEFUL_UNIT_ARMOR);
+		this.setMaxHealthPoints(DEFAULT_PEACEFUL_UNIT_HP);
+		this.setHealthPoints(DEFAULT_PEACEFUL_UNIT_HP);
+		this.setDeplacements(DEFAULT_WORKER_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(WORKER_TYPE);
 	}
 

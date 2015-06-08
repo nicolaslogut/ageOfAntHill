@@ -13,9 +13,9 @@ public class AttackingUnit extends Unit implements InterfaceAttack {
 		}
 		Unit unit = this;
 
-		int damages = unit.damages - enemy.armor;
+		int damages = unit.getDamages() - enemy.getArmor();
 		if (damages > 0)
-			enemy.healthPoints -= damages;
+			enemy.setHealthPoints(enemy.getHealthPoints() - damages);
 	}
 
 	@Override

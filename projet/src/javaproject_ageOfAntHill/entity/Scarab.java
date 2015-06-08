@@ -22,12 +22,13 @@ public class Scarab extends Unit {
 	 * creates a scarab with its default stats
 	 */
 	public Scarab(int teamNumber) {
-		this.armor = DEFAULT_HEAVY_UNIT_ARMOR;
-		this.damages = DEFAULT_HEAVY_UNIT_DAMAGE;
-		this.maxHealthPoints = DEFAULT_HEAVY_UNIT_HP;
-		this.healthPoints = DEFAULT_HEAVY_UNIT_HP;
-		this.deplacements = DEFAULT_BEETLE_SPEED;
-		this.team = teamNumber;
+		this.setRange(DEFAULT_UNIT_RANGE);
+		this.setArmor(DEFAULT_HEAVY_UNIT_ARMOR);
+		this.setDamages(DEFAULT_HEAVY_UNIT_DAMAGE);
+		this.setMaxHealthPoints(DEFAULT_HEAVY_UNIT_HP);
+		this.setHealthPoints(DEFAULT_HEAVY_UNIT_HP);
+		this.setDeplacements(DEFAULT_BEETLE_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(SCARAB_TYPE);
 	}
 }

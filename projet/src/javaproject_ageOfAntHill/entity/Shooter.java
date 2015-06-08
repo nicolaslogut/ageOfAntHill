@@ -27,13 +27,13 @@ public class Shooter extends Unit {
 	 * creates a Shooter with its default stats
 	 */
 	public Shooter(int teamNumber) {
-		this.range = DEFAULT_SHOOTER_RANGE;
-		this.armor = DEFAULT_LIGHT_UNIT_ARMOR;
-		this.damages = DEFAULT_LIGHT_UNIT_DAMAGE;
-		this.maxHealthPoints = DEFAULT_LIGHT_UNIT_HP;
-		this.healthPoints = DEFAULT_LIGHT_UNIT_HP;
-		this.deplacements = DEFAULT_SHOOTER_SPEED;
-		this.team = teamNumber;
+		this.setRange(DEFAULT_SHOOTER_RANGE);
+		this.setArmor(DEFAULT_LIGHT_UNIT_ARMOR);
+		this.setDamages(DEFAULT_LIGHT_UNIT_DAMAGE);
+		this.setMaxHealthPoints(DEFAULT_LIGHT_UNIT_HP);
+		this.setHealthPoints(DEFAULT_LIGHT_UNIT_HP);
+		this.setDeplacements(DEFAULT_SHOOTER_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(SHOOTER_TYPE);
 	}
 

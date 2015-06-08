@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -173,6 +174,7 @@ public class Displaying implements Runnable, ActionListener {
 			if (numCell == 0)
 			cell.getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 			cell.addMouseListener((MouseListener) this.interfHM);
+			cell.addMouseMotionListener((MouseMotionListener) this.interfHM);
 			this.getGridOfTheGame().add(cell);
 			this.addCellTab(numCell, tab, cell);
 			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
@@ -226,7 +228,8 @@ public class Displaying implements Runnable, ActionListener {
 
 		String instructions = "Instructions :\n";
 		instructions+="Left click to select one unit or one building\n";
-		instructions+="Left click and drag to select up to 10 units\n";
+		instructions+="Middle click on a cell then middle click again to\n"
+					+ " select all thein the selected area\n";
 		instructions+="Right click to move the selected units to the targetted area\n";
 		instructions+="note : some units might not be able to move if there isn't enough room";
 		

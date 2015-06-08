@@ -21,12 +21,13 @@ public class Fly extends Unit {
 	 * creates a fly with all its default stats values
 	 */
 	public Fly(int teamNumber) {
-		this.armor = DEFAULT_LIGHT_UNIT_ARMOR;
-		this.damages = DEFAULT_LIGHT_UNIT_DAMAGE;
-		this.maxHealthPoints = DEFAULT_LIGHT_UNIT_HP;
-		this.healthPoints = DEFAULT_LIGHT_UNIT_HP;
-		this.deplacements = DEFAULT_FLY_SPEED;
-		this.team = teamNumber;
+		this.setRange(DEFAULT_UNIT_RANGE);
+		this.setArmor(DEFAULT_LIGHT_UNIT_ARMOR);
+		this.setDamages(DEFAULT_LIGHT_UNIT_DAMAGE);
+		this.setMaxHealthPoints(DEFAULT_LIGHT_UNIT_HP);
+		this.setHealthPoints(DEFAULT_LIGHT_UNIT_HP);
+		this.setDeplacements(DEFAULT_FLY_SPEED);
+		this.setTeam(teamNumber);
 		this.setType(FLY_TYPE);
 	}
 }

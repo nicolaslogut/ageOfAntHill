@@ -12,15 +12,15 @@ public abstract class Entity {
 	/**
 	 * defined the healPoints of a unity
 	 */
-	protected int healthPoints;
+	private int healthPoints;
 	/**
 	 * defined the Maximum Health Points of a unity
 	 */
-	protected int maxHealthPoints;
+	private int maxHealthPoints;
 	/**
 	 * defined the Team of an entity
 	 */
-	protected int team;
+	private int team;
 	/**
 	 * defines the Entity's type (Warrior, Fly, AntHill, ...)
 	 */
@@ -38,6 +38,10 @@ public abstract class Entity {
 		return this.type;
 	}
 	
+	public int getTeam(){
+		return this.team;
+	}
+	
 	public void setType(String type){
 		this.type=type;
 	}
@@ -47,6 +51,26 @@ public abstract class Entity {
 	 */
 	public void openMenu() {
 
+	}
+
+	public int getHealthPoints() {
+		return healthPoints;
+	}
+
+	public void setHealthPoints(int healthPoints) {
+		this.healthPoints = healthPoints;
+	}
+
+	public int getMaxHealthPoints() {
+		return maxHealthPoints;
+	}
+
+	public void setMaxHealthPoints(int maxHealthPoints) {
+		this.maxHealthPoints = maxHealthPoints;
+	}
+
+	public void setTeam(int team) {
+		this.team = team;
 	}
 
 }
