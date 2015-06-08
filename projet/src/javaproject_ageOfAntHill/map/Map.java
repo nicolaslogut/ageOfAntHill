@@ -187,7 +187,7 @@ public class Map implements InterfaceMap {
 					}
 		
 			}
-			}
+		}
 	}*/
 	/**
 	 * converts a Position (x,y) into the number of a Label
