@@ -119,7 +119,7 @@ public abstract class Unit extends Entity {
 					return true;
 		return false;
 	}
-
+	
 	public int getDamages() {
 		return damages;
 	}
