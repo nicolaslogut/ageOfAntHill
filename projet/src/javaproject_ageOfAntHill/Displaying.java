@@ -40,7 +40,7 @@ public class Displaying implements Runnable, ActionListener {
 	 * Window of the game.
 	 */
 	private Window window;
-	
+
 	/**
 	 * Items in the JMenu bar.
 	 */
@@ -49,7 +49,7 @@ public class Displaying implements Runnable, ActionListener {
 	private JMenuItem itemNewGame;
 	private JMenuItem itemSaveGame;
 	private JMenuItem itemLoadGame;
-	
+
 	/**
 	 * Grid of the game.
 	 */
@@ -70,7 +70,7 @@ public class Displaying implements Runnable, ActionListener {
 	 * Menu bar of the window.
 	 */
 	private JMenuBar menuBar;
-	
+
 	/**
 	 * Used to change the window's layout (especially the panel of the game).
 	 */
@@ -79,21 +79,20 @@ public class Displaying implements Runnable, ActionListener {
 	private JPanel banner;
 	/**
 	 * interface etc...
-	 */ 
+	 */
 	private InterfaceHM interfHM;
-	
-	
+
 	public Displaying(InterfaceHM interfHM) {
 		this.saveManager = new SaveManager();
-		
+
 		this.window = new Window(interfHM);
-		this.interfHM=interfHM;
+		this.interfHM = interfHM;
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		
+
 		this.menuBar = new JMenuBar();
 		this.jpanelLeft = new JPanelLeft(interfHM);
-	
+
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
 		this.ressourcesOfThePlayer = new JPanel();
@@ -112,85 +111,85 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	private void initGraphInt() {
 		this.window.setTitle("Age Of AntHill **ALPHA INDEV 0.0000001**");
-		
+
 		/**
-		 * This is the minimum and maximum width and height of the window. 
+		 * This is the minimum and maximum width and height of the window.
 		 * 
 		 **/
-		
+
 		this.window.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
-		this.window.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
-		this.window.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
-		
+		this.window.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH,
+				DEFAULT_WINDOW_HEIGHT));
+		this.window.setMaximumSize(new Dimension(DEFAULT_WINDOW_WIDTH,
+				DEFAULT_WINDOW_HEIGHT));
+
 		this.window.setLocationRelativeTo(null);
 		this.window.setAlwaysOnTop(true);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
+
 		this.window.setResizable(false);
-		
+
 		// creation of the MenuBar
-			JMenu menu = new JMenu("Menu");
-			this.itemAbout = new JMenuItem("About");
-			this.itemClose = new JMenuItem("Close");
+		JMenu menu = new JMenu("Menu");
+		this.itemAbout = new JMenuItem("About");
+		this.itemClose = new JMenuItem("Close");
 
-			menu.add(this.itemAbout);
-			menu.add(this.itemClose);
-			
-		//add action listener
-			this.itemAbout.addActionListener(this);
-			this.itemClose.addActionListener(this);
-			this.menuBar.add(menu);
-		
-		//creation of the game Menu
-			JMenu game = new JMenu("Game");
-			this.itemNewGame = new JMenuItem("New game");
-			this.itemSaveGame = new JMenuItem("Save game");
-			this.itemLoadGame = new JMenuItem("load a game");
-			
+		menu.add(this.itemAbout);
+		menu.add(this.itemClose);
+
+		// add action listener
+		this.itemAbout.addActionListener(this);
+		this.itemClose.addActionListener(this);
+		this.menuBar.add(menu);
+
+		// creation of the game Menu
+		JMenu game = new JMenu("Game");
+		this.itemNewGame = new JMenuItem("New game");
+		this.itemSaveGame = new JMenuItem("Save game");
+		this.itemLoadGame = new JMenuItem("load a game");
+
 		// add item on the bar menu
-			game.add(this.itemNewGame);
-			game.add(this.itemSaveGame);
-			game.add(this.itemLoadGame);
-			
-		// add action listener on the items	
-			this.itemNewGame.addActionListener(this);
-			this.itemSaveGame.addActionListener(this);
-			this.itemLoadGame.addActionListener(this);
-			
-		//add a menu option	
-			this.menuBar.add(game);
+		game.add(this.itemNewGame);
+		game.add(this.itemSaveGame);
+		game.add(this.itemLoadGame);
 
-		
-		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
+		// add action listener on the items
+		this.itemNewGame.addActionListener(this);
+		this.itemSaveGame.addActionListener(this);
+		this.itemLoadGame.addActionListener(this);
+
+		// add a menu option
+		this.menuBar.add(game);
+
+		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH,
+				DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
-		
+
 		this.window.addGameGrid(this.gridOfTheGame);
-		
-		//add on the JPanel ressourcesOfThePlayer the JPanel jpanelLeft
+
+		// add on the JPanel ressourcesOfThePlayer the JPanel jpanelLeft
 		ressourcesOfThePlayer.add(this.jpanelLeft);
-		
-		
-		
-		//add on the JSplitpane SplitGame,the gridOfTheGame( map)
+
+		// add on the JSplitpane SplitGame,the gridOfTheGame( map)
 		splitGame.add(this.gridOfTheGame);
 		splitGame.setDividerLocation(900);
 		splitGame.setDividerSize(0);
-		
-		//add on the JSplitpane splitRessource, the jpanelLeft              
+
+		// add on the JSplitpane splitRessource, the jpanelLeft
 		splitRessources.add(this.jpanelLeft);
 		splitRessources.setSize(100, DEFAULT_WINDOW_HEIGHT);
 		splitRessources.setDividerLocation(100);
 		splitRessources.setDividerSize(0);
-		
-		//creation label with an image(it's the banner on the top of the window) 
+
+		// creation label with an image(it's the banner on the top of the
+		// window)
 		JLabel JBanner = new JLabel();
 		ImageIcon imgBanner = new ImageIcon("./img/overlay/BANNER_OVERLAY.png");
-		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
+		JBanner.setSize(imgBanner.getIconWidth(), imgBanner.getIconHeight());
 		JBanner.setIcon(imgBanner);
 		banner.add(JBanner);
-		
-		
+
 		splitWindow.setLayout(new BorderLayout());
 		splitWindow.add(splitRessources, BorderLayout.WEST);
 		splitWindow.add(splitGame, BorderLayout.CENTER);
@@ -198,13 +197,12 @@ public class Displaying implements Runnable, ActionListener {
 		splitWindow.setBorder(null);
 		splitWindow.setDividerSize(0);
 		splitWindow.setEnabled(false);
-		
-		// add in the JFrame "window", the splitWindow 
+
+		// add in the JFrame "window", the splitWindow
 		this.window.setContentPane(this.splitWindow);
 		this.window.setVisible(true);
 
 	}
-
 
 	public JPanel getGridOfTheGame() {
 		return gridOfTheGame;
@@ -219,30 +217,31 @@ public class Displaying implements Runnable, ActionListener {
 		JMenuItem selectedItem = (JMenuItem) event.getSource();
 
 		String instructions = "Instructions :\n";
-		instructions+="Left click to select one unit or one building\n";
-		instructions+="Middle click on a cell then middle click again to\n"
-					+ " select all thein the selected area\n";
-		instructions+="Right click to move the selected units to the targetted area\n";
-		instructions+="note : some units might not be able to move if there isn't enough room";
-		
-		
+		instructions += "Left click to select one unit or one building\n";
+		instructions += "Middle click on a cell then middle click again to\n"
+				+ " select all thein the selected area\n";
+		instructions += "Right click to move the selected units to the targetted area\n";
+		instructions += "note : some units might not be able to move if there isn't enough room";
+
 		if (selectedItem == this.itemAbout) {
-			JOptionPane.showMessageDialog(this.window, instructions, "About",JOptionPane.INFORMATION_MESSAGE);
-		}else if (selectedItem == this.itemNewGame) {
+			JOptionPane.showMessageDialog(this.window, instructions, "About",
+					JOptionPane.INFORMATION_MESSAGE);
+		} else if (selectedItem == this.itemNewGame) {
 			this.game = new Game(interfHM);
 			this.game.createGame(this);
-		}else if (selectedItem == this.itemSaveGame) {
+		} else if (selectedItem == this.itemSaveGame) {
 			this.saveManager.addSave(this.game.getMap().getGrid());
-		}else if (selectedItem == this.itemLoadGame) {
-			JOptionPane.showMessageDialog(this.window, this.saveManager.listSaves(), "Charger Partie", JOptionPane.INFORMATION_MESSAGE);
-			
-		}else if (selectedItem == this.itemClose) {
+		} else if (selectedItem == this.itemLoadGame) {
+			JOptionPane.showMessageDialog(this.window,
+					this.saveManager.listSaves(), "Charger Partie",
+					JOptionPane.INFORMATION_MESSAGE);
+		} else if (selectedItem == this.itemClose) {
 			this.window.dispose();
 		}
 	}
-	
-	public Window getFrame(){
+
+	public Window getFrame() {
 		return this.window;
 	}
-	
+
 }
