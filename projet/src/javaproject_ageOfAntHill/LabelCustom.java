@@ -37,8 +37,6 @@ public class LabelCustom extends JPanel {
 		jlentity = new JLabel();
 		add(jlentity, 0);
 		jlground = new JLabel(new ImageIcon("./img/tiles/GRASS_SQUARE.png"));
-		jlentity = new JLabel();
-		add(jlentity, 0);
 		add(jlground, 1);
 
 		// this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
