@@ -30,25 +30,20 @@ public class SaveManager {
 	}
 
 	private void readSaves() {
-		// Reading the file		
-		LinkedList<String> saves = new LinkedList<String>();
+		// Reading the file
 		try {
 			BufferedReader in = new BufferedReader(
 					new FileReader(this.filename));
 			String str;
 
 			while ((str = in.readLine()) != null) {
-				saves.add(str);
+				this.saves.add(new Save(str));
 			}
 			in.close();
 		} catch (IOException e) {
 			System.out.println("Error reading file : " + e);
 			return;
 		}
-
-		// Parsing the output
-
-		System.out.println();
 
 		return;
 	}

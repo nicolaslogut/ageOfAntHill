@@ -232,7 +232,6 @@ public class Displaying implements Runnable, ActionListener {
 			this.game = new Game(interfHM);
 			this.game.createGame(this);
 		}else if (selectedItem == this.itemSaveGame) {
-			
 			this.saveManager.addSave(this.game.getMap().getGrid());
 		}else if (selectedItem == this.itemLoadGame) {
 			JOptionPane.showMessageDialog(this.window, this.saveManager.listSaves(), "Charger Partie", JOptionPane.INFORMATION_MESSAGE);
