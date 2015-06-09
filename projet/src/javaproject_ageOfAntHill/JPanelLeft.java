@@ -28,7 +28,7 @@ public class JPanelLeft extends JPanel {
 	private JLabel selection;
 	
 	private int tamer = 1;
-	
+
 	public JPanelLeft(InterfaceHM interfHM){
 		
 		setLayout(new OverlayLayout(this));
