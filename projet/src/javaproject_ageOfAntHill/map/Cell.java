@@ -60,7 +60,9 @@ public class Cell {
 	public Cell(Entity entity, CellState cellstate) {
 		this.entity = entity;
 		this.cellState = cellstate;
-		this.ressource = null;
+		if (cellstate == CellState.GRASS_SQUARE)
+			this.ressource = new Ressource();
+		else this.ressource = null;
 	}
 
 	/**

@@ -4,34 +4,48 @@ import javaproject_ageOfAntHill.map.CellState;
 import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Position;
 
-public abstract class Ressource {
+public class Ressource {
 	/**
-	 * quantity of this ressource
+	 * initial amount of food on a cell : 0
 	 */
-	private int quantity;
+	private final static int DEFAULT_FOOD = 0;
 	/**
-	 * the type of ressource (dirt or food)
+	 * initial amount of dirt : 150
 	 */
-	private String type;
+	private final static int DEFAULT_DIRT=150;
+	/**
+	 * quantity of this ressource (dirt is used to create new buildings)
+	 */
+	private int dirtQuantity;
+	/**
+	 * quantity of this ressource (food is used to create new units)
+	 */
+	private int foodQuantity;
 	
-	public Ressource(){
-		
+	
+	/**
+	 * creates the ressources in a cell with the (default) initial amounts
+	 */
+	public Ressource() {
+		this.dirtQuantity = DEFAULT_DIRT;
+		this.foodQuantity = DEFAULT_FOOD;
 	}
 	
-	public void setQuantity(int quantity){
-		this.quantity = quantity;
+	
+	public void setDirtQuantity(int dirtQuantity){
+		this.dirtQuantity = dirtQuantity;
 	}
 	
-	public int getQuantity(){
-		return this.quantity;
+	public int getDirtQuantity(){
+		return this.dirtQuantity;
 	}
 	
-	public void setType(String type){
-		this.type = type;
+	public void setFoodQuantity(int foodQuantity){
+		this.foodQuantity = foodQuantity;
 	}
 	
-	public String getType(){
-		return this.type; 
+	public int getFoodQuantity(){
+		return this.foodQuantity; 
 	}
 	
 	/**

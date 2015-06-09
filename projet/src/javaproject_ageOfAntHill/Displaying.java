@@ -228,11 +228,14 @@ public class Displaying implements Runnable, ActionListener {
 		JMenuItem selectedItem = (JMenuItem) event.getSource();
 
 		String instructions = "Instructions :\n";
-		instructions += "Left click to select one unit or one building\n";
-		instructions += "Middle click on a cell then middle click again to\n"
-				+ " select all thein the selected area\n";
+		instructions += "Double click to select one unit or one building\n";
+		instructions += "(Left or middle) click on a cell then click again on another cell\n";
+		instructions += " to select all the units of the same team in a rectangle area\n";
 		instructions += "Right click to move the selected units to the targetted area\n";
-		instructions += "note : some units might not be able to move if there isn't enough room";
+		instructions += "note : some units might not be able to move if there isn't enough room\n\n";
+		instructions += "You can use your worker ants in order to gather food (spawns when a unit dies)";
+		instructions += " or to gather dirt (by digging in an empty area with grass)";
+		
 
 		if (selectedItem == this.itemAbout) {
 			JOptionPane.showMessageDialog(this.window, instructions, "About",
