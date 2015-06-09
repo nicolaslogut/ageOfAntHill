@@ -39,7 +39,7 @@ public class menu extends JFrame implements ActionListener {
 	buttonNewGame.addActionListener(this);
 	buttonLoadGame.addActionListener(this);
 	buttonClose.addActionListener(this);
-	//this.getContentPane().add(button4);
+	
 	
 	this.setVisible(true);
 	}
