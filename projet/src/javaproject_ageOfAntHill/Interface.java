@@ -29,6 +29,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * 		=> 1 when waiting for the end cell of group selection
 	 * 		=> 2 when 1 (or more) unit is selected; 
 	 * 		=> 3 when the destination cell has been selected
+	 * 		=> check if there is a fight ? then => 0
 	 */
 	private volatile int clickState;
 	/**
@@ -51,6 +52,10 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * used to store the current position of selected units
 	 */
 	private LinkedList<Position> unitsPos;
+	/**
+	 * window of the game
+	 */
+	private Window wind;
 	
 	/**
 	 * creates new interface with all attributes non-existent
@@ -59,6 +64,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		this.units = new LinkedList<Unit>();
 		this.unitsPos = new LinkedList<Position>();
 		this.building = null;
+		this.wind = null;
 		clickState=0;
 	}
 	
@@ -86,7 +92,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		
 		this.addUnits(numLabel1/Map.NBLINE, numLabel2/Map.NBLINE, numLabel1%Map.NBCOLUMN, numLabel2%Map.NBCOLUMN, e, team);
 		
-		this.addPictureSelection(e);
+		this.addPictureSelection();
 		
 	}
 	
@@ -102,7 +108,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		int lineNumber;
 		int colNumber;
 			// gets the window of the game through this component's event
-		Window wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
+		
 		if (numLine1 <= numLine2 && numCol1 <= numCol2){
 			for (lineNumber = numLine1 ; lineNumber <= numLine2 ; lineNumber++){
 				for (colNumber = numCol1 ; colNumber <= numCol2 ; colNumber++){
@@ -164,8 +170,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	/**
 	 * changes picture selection unit
 	 */
-	private void addPictureSelection(MouseEvent e) {
-		Window wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
+	private void addPictureSelection() {
 		for (int numUnit= 0; numUnit < this.units.size(); numUnit++){
 			int line = this.unitsPos.get(numUnit).getX();
 			int col = this.unitsPos.get(numUnit).getY();
@@ -208,14 +213,14 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				break;
 			default:
 			}
+			wind.getDisp().getJpanelLeft().selectionEntity(this.units.get(numUnit));
 		}
 	}
 	
 	/**
 	 * changes picture unselection unit
 	 */
-	private void addPictureUnselection(MouseEvent e) {
-		Window wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
+	private void addPictureUnselection() {
 		if (this.units != null){
 			for (int numUnit= 0; numUnit < this.units.size(); numUnit++){
 				int line = this.unitsPos.get(numUnit).getX();
@@ -261,13 +266,16 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				}
 			}
 		}
+		this.event=null;
 	}
 	
 	/**
 	 * Allows the player to move any unit.
 	 */
-	public void moveUnit(Unit[] unit, Position destPos) {
+	public void moveUnit(LabelCustom label) {
+		//Position destPos = label.get;
 		//unit.moveUnit(destPos, startingPos, map);
+		
 	}
 	
 	/**
@@ -282,6 +290,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * Allows the player to create a building.
 	 */
 	public void createBuilding() {
+		// selectionEntity(Entity ent); in JPanelLeft
 	}
 	
 	/**
@@ -290,10 +299,12 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		LabelCustom label=(LabelCustom) e.getComponent();
+		this.wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
+		LabelCustom label = (LabelCustom) e.getComponent();
+		
 		if (label.getLabEntity()==null && e.getButton()!=3){
 				// looses all the selected entities and then select the cell
-			this.addPictureUnselection(this.event);
+			this.addPictureUnselection();
 			this.units=null;
 			this.building=null;
 			this.unitsPos=null;
@@ -301,47 +312,58 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 			clickState=0;
 			return;
 		}
+			// different action depending on which mouse button was pressed
 		switch (e.getButton()){
-		case 3:		// move - attack
-			//this.moveUnit(this.units, destPos);
-			//clickState=3;
-			break;
-		case 1: case 2:
+		case 3:		// move - attack         RIGHT CLICK
+			if (clickState !=2 || this.units == null || this.units.get(0).getTeam() != 1){
+				// no ally unit selected (=> unselect everything)
+				this.reinitializeSelection();
+				break;
+			}
 			
+			this.moveUnit(label);
+			clickState = 3;
+			break;
+			
+		case 1:
+		case 2:		//						LEFT CLICK - MIDDLE CLICK
 			switch (clickState){
 			case 0:
 				this.lab = (LabelCustom) e.getComponent();
 				clickState=1;
 				break;
 			case 1:
-				this.units = null;
-				this.unitsPos = null;
 				this.units = new LinkedList<Unit>();
 				this.unitsPos = new LinkedList<Position>();
 				this.selectUnits(this.lab, label, e);
 				clickState=2;
 				break;
 			case 2:
-				this.addPictureUnselection(this.event);
-				this.units=null;
-				this.building=null;
-				this.unitsPos=null;
-				this.lab=null;
-				clickState=0;
+				this.reinitializeSelection();
 				break;
 			default:	// looses all the selected entities and then select the cell
-				this.units=null;
-				this.building=null;
-				this.addPictureUnselection(this.event);
-				this.lab=null;
-				clickState=0;
+				this.reinitializeSelection();
 			}
 			break;
 			
 		default:	// nothing happening
 		}
 	}
-
+	
+	/**
+	 * reset all the attributes to null,
+	 * except clickState wich is taking the value 0 (=nothing selected)
+	 */
+	public void reinitializeSelection(){
+		if (this.event != null)
+			addPictureUnselection();
+		this.units = null;
+		this.unitsPos = null;
+		this.building = null;
+		this.lab = null;
+		this.clickState = 0;
+	}
+	
 	// these following listeners probably won't be used
 	@Override
 	public void mouseEntered(MouseEvent e) {

@@ -22,7 +22,7 @@ public interface InterfaceHM {
 	
 	public void selectBuilding(Building building);
 
-	public void moveUnit(Unit[] unit, Position destPos);
+	public void moveUnit(LabelCustom label);
 
 	public void createBuilding();
 

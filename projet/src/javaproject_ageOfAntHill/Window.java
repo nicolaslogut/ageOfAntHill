@@ -20,11 +20,16 @@ public class Window extends JFrame {
 	 * main interface of the game (events, etc...)
 	 */
 	private InterfaceHM interfHM;
+	/**
+	 * displaying this window
+	 */
+	private Displaying disp;
 	
 	/**
 	 * Creation of the frame
 	 */
-	Window (InterfaceHM interfHM){
+	Window (Displaying disp, InterfaceHM interfHM){
+		this.disp = disp;
 		this.tab = new LabelCustom[Map.NBLINE][Map.NBCOLUMN];
 		this.interfHM = interfHM;
 	}
@@ -42,13 +47,34 @@ public class Window extends JFrame {
 			}
 	}
 	
+	/**
+	 * adds a cell (LabelCustom) in the grid game
+	 * @param numCell
+	 * @param tabEntity
+	 * @param cell
+	 */
 	public void addCellTab(int numCell, LabelCustom[][] tabEntity, LabelCustom cell){
 		int col=numCell%Map.NBCOLUMN;
 		int line=numCell/Map.NBLINE;
 		tabEntity[line][col]=cell;
 	}
 	
+	/**
+	 * returns the LabelCustom (cell) at the given line/column
+	 * @param line
+	 * @param col
+	 * @return
+	 */
 	public LabelCustom getLabelTab(int line, int col){
 		return this.tab[line][col];
 	}
+	
+	/**
+	 * returns the displaying window
+	 * @return
+	 */
+	public Displaying getDisp(){
+		return this.disp;
+	}
+	
 }

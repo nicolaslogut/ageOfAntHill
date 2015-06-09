@@ -85,7 +85,7 @@ public class Displaying implements Runnable, ActionListener {
 	public Displaying(InterfaceHM interfHM) {
 		this.saveManager = new SaveManager();
 
-		this.window = new Window(interfHM);
+		this.window = new Window(this, interfHM);
 		this.interfHM = interfHM;
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -264,6 +264,14 @@ public class Displaying implements Runnable, ActionListener {
 	public void startNewGame(){
 		this.game = new Game(interfHM);
 		this.game.createGame(this);
+	}
+	
+	/**
+	 * returns the jpanel jpanelLeft
+	 * @return
+	 */
+	public JPanelLeft getJpanelLeft(){
+		return this.jpanelLeft;
 	}
 
 }
