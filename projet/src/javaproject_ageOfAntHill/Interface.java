@@ -1,6 +1,8 @@
 package javaproject_ageOfAntHill;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -28,14 +30,7 @@ import javaproject_ageOfAntHill.Displaying;
  *
  * @version 20150607
  */
-public class Interface implements InterfaceHM, MouseListener, MouseMotionListener {
-	
-	private static final int DEFAULT_VALUE_DELAY_MOUSE_DRAGGED = -1;
-	private static final long DELAY_MOUSE_DRAGGED_CLICKED = 300;
-	
-	private long delayDraggredMouse = DEFAULT_VALUE_DELAY_MOUSE_DRAGGED;
-	//private boolean draggredMouse = false;
-	
+public class Interface implements InterfaceHM, MouseListener, ActionListener {	
 	/**
 	 * 	value changing according to the situation: 
 	 * 		=> 0 when no selected unit;
@@ -97,7 +92,6 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 		
 		this.addPictureSelection(e);
 		
-		// this.addPictureUnselection(e);
 	}
 	
 	/**
@@ -298,22 +292,6 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	public void createBuilding() {
 	}
 	
-	
-	@Override
-	public void mouseDragged(MouseEvent e){		// not enough efficient
-//		if (e.getButton()==1){
-//			if ((e.getModifiers() & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK) {
-//				if (delayDraggredMouse == DEFAULT_VALUE_DELAY_MOUSE_DRAGGED) {
-//					delayDraggredMouse = System.currentTimeMillis();
-//				} else {
-//					if (System.currentTimeMillis() - delayDraggredMouse > DELAY_MOUSE_DRAGGED_CLICKED) {
-//							// each "dragged" cell
-//						// draggredMouse = true;
-//					}
-//				}
-//			}
-//		}
-	}
 	/**
 	 * Used when the user is clicking on a cell.
 	 * its main use is to move units
@@ -321,28 +299,22 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		LabelCustom label=(LabelCustom) e.getComponent();
-		// if there is no entity (either building or unit) on the cell, unselect everything and leave
 		if (label.getLabEntity()==null && e.getButton()!=3){
+				// looses all the selected entities and then select the cell
+			this.addPictureUnselection(this.event);
 			this.units=null;
 			this.building=null;
+			this.unitsPos=null;
 			this.lab=null;
 			clickState=0;
 			return;
 		}
-		
 		switch (e.getButton()){
-		case 1:		// looses all the selected entities and then select the cell
-			this.units=null;
-			this.building=null;
-			this.selectUnit(label);
-			clickState=1;
-			break;
 		case 3:		// move - attack
-			
 			//this.moveUnit(this.units, destPos);
-			clickState=3;
+			//clickState=3;
 			break;
-		case 2:
+		case 1: case 2:
 			
 			switch (clickState){
 			case 0:
@@ -357,9 +329,18 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 				this.selectUnits(this.lab, label, e);
 				clickState=2;
 				break;
-			default:
+			case 2:
+				this.addPictureUnselection(this.event);
 				this.units=null;
 				this.building=null;
+				this.unitsPos=null;
+				this.lab=null;
+				clickState=0;
+				break;
+			default:	// looses all the selected entities and then select the cell
+				this.units=null;
+				this.building=null;
+				this.addPictureUnselection(this.event);
 				this.lab=null;
 				clickState=0;
 			}
@@ -408,10 +389,8 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent e) {
+	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
-		// displays units current HP/maxHP
 		
 	}
 

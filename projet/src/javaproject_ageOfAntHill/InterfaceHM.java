@@ -26,8 +26,6 @@ public interface InterfaceHM {
 
 	public void createBuilding();
 
-	void mouseClicked(MouseEvent e);
-	
-	void mouseDragged(MouseEvent e);
+	public void mouseClicked(MouseEvent e);
 
 }

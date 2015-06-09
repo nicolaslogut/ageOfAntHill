@@ -36,7 +36,6 @@ public class Window extends JFrame {
 			for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
 				LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
 				cell.addMouseListener((MouseListener) this.interfHM);
-				cell.addMouseMotionListener((MouseMotionListener) this.interfHM);
 				panGame.add(cell);
 				this.addCellTab(numCell, tab, cell);
 				panGame.setComponentZOrder(cell, numCell);
