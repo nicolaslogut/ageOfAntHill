@@ -31,11 +31,11 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * Default value of the window's width.
 	 */
-	private final static int DEFAULT_WINDOW_WIDTH = 975;
+	private final static int DEFAULT_WINDOW_WIDTH = 980;
 	/**
 	 * Default value of the window's height.
 	 */
-	private final static int DEFAULT_WINDOW_HEIGHT = 975;
+	private final static int DEFAULT_WINDOW_HEIGHT = 980;
 	/**
 	 * Window of the game.
 	 */
