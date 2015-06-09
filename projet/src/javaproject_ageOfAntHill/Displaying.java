@@ -75,11 +75,15 @@ public class Displaying implements Runnable, ActionListener {
 	private JPanelLeft jpanelLeft;
 	private JSplitPane splitWindow;
 	private JPanel banner;
+	/**
+	 * interface etc...
+	 */
+	private InterfaceHM interfHM;
 	
 	
 	public Displaying(InterfaceHM interfHM) {
 		this.window = new Window(interfHM);
-
+		this.interfHM=interfHM;
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		
@@ -218,18 +222,19 @@ public class Displaying implements Runnable, ActionListener {
 		instructions+="Right click to move the selected units to the targetted area\n";
 		instructions+="note : some units might not be able to move if there isn't enough room";
 		
-		String newGame = "Fonction non implémentée";
 		String saveGame = "Fonction non implémentée";
 		String loadGame = "Fonction non implémentée";
 		
 		if (selectedItem == this.itemAbout) {
 			JOptionPane.showMessageDialog(this.window, instructions, "About",JOptionPane.INFORMATION_MESSAGE);
 		}else if (selectedItem == this.itemNewGame) {
-			JOptionPane.showMessageDialog(this.window, newGame, "Nouvelle Partie",JOptionPane.INFORMATION_MESSAGE);
+			Game game = new Game(interfHM);
+			game.createGame(this);
 		}else if (selectedItem == this.itemSaveGame) {
 			JOptionPane.showMessageDialog(this.window, saveGame, "Sauvegarder Partie",JOptionPane.INFORMATION_MESSAGE);
 		}else if (selectedItem == this.itemLoadGame) {
 			JOptionPane.showMessageDialog(this.window, loadGame, "Charger Partie",JOptionPane.INFORMATION_MESSAGE);
+			
 		}else if (selectedItem == this.itemClose) {
 			this.window.dispose();
 		}
