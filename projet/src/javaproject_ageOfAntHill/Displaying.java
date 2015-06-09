@@ -19,7 +19,7 @@ import javax.swing.WindowConstants;
 import java.awt.BorderLayout;
 
 /**
- * used to (temporarily) display the graphic interface
+ * Used to (temporarily) display the graphic interface.
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -27,20 +27,20 @@ import java.awt.BorderLayout;
  */
 public class Displaying implements Runnable, ActionListener {
 	/**
-	 * default value of the window's width
+	 * Default value of the window's width.
 	 */
 	private final static int DEFAULT_WINDOW_WIDTH = 975;
 	/**
-	 * default value of the window's height
+	 * Default value of the window's height.
 	 */
 	private final static int DEFAULT_WINDOW_HEIGHT = 975;
 	/**
-	 * window of the game
+	 * Window of the game.
 	 */
 	private Window window;
 	
 	/**
-	 * items in the JMenu bar
+	 * Items in the JMenu bar.
 	 */
 	private JMenuItem itemAbout;
 	private JMenuItem itemClose;
@@ -49,28 +49,28 @@ public class Displaying implements Runnable, ActionListener {
 	private JMenuItem itemLoadGame;
 	
 	/**
-	 * grid of the game
+	 * Grid of the game.
 	 */
 	private JPanel gridOfTheGame;
 	/**
-	 * panel that displays informations on the selected units
+	 * Panel that displays informations on the selected units.
 	 */
 	private JPanel ressourcesOfThePlayer;
 	/**
-	 * part of the window with the game and the menu bar
+	 * Part of the window with the game and the menu bar.
 	 */
 	private JSplitPane splitGame;
 	/**
-	 * part of the window with the ressources of the player
+	 * Part of the window with the ressources of the player.
 	 */
 	private JSplitPane splitRessources;
 	/**
-	 * menu bar of the window
+	 * Menu bar of the window.
 	 */
 	private JMenuBar menuBar;
 	
 	/**
-	 * used to change the window's layout (especially the panel of the game)
+	 * Used to change the window's layout (especially the panel of the game).
 	 */
 	private JPanelLeft jpanelLeft;
 	private JSplitPane splitWindow;
@@ -100,10 +100,15 @@ public class Displaying implements Runnable, ActionListener {
 	}
 
 	/**
-	 * The main frame of the game, contain the size and a bunch of parameters
+	 * The main frame of the game, contain the size and a bunch of parameters.
 	 */
 	private void initGraphInt() {
 		this.window.setTitle("Age Of AntHill **ALPHA INDEV 0.0000001**");
+		
+		/**
+		 * This is the minimum and maximum width and height of the window. 
+		 * 
+		 **/
 		
 		this.window.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		this.window.setMinimumSize(new Dimension(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT));
@@ -122,6 +127,7 @@ public class Displaying implements Runnable, ActionListener {
 
 			menu.add(this.itemAbout);
 			menu.add(this.itemClose);
+			
 		//add action listener
 			this.itemAbout.addActionListener(this);
 			this.itemClose.addActionListener(this);
