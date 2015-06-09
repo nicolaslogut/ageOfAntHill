@@ -16,6 +16,23 @@ public class Fly extends Unit {
 	 * Just like a serial name, it's used to identify a fly's type.
 	 */
 	private final static String FLY_TYPE = "FLY";
+	/**
+	 * Default armor
+	 */
+	//TODO
+	private static final int DEFAULT_LIGHT_UNIT_ARMOR = 0;
+
+	/**
+	 * Default damages.
+	 */
+	//TODO
+	private static final int DEFAULT_LIGHT_UNIT_DAMAGE = 0;
+
+	/**
+	 * Default health. 
+	 */
+	//TODO
+	private static final int DEFAULT_LIGHT_UNIT_HP = 0;
 	
 	/**
 	 * That creates a fly with all its default stats values.

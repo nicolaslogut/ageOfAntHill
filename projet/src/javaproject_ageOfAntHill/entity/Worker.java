@@ -19,6 +19,23 @@ public class Worker extends Unit {
 	 * Just like a serial name, it's used to identify a worker's type.
 	 */
 	private final static String WORKER_TYPE = "WORK";
+	/**
+	 * Default armor
+	 */
+	//TODO
+	private static final int DEFAULT_LIGHT_UNIT_ARMOR = 0;
+
+	/**
+	 * Default damages.
+	 */
+	//TODO
+	private static final int DEFAULT_LIGHT_UNIT_DAMAGE = 0;
+
+	/**
+	 * Default health. 
+	 */
+	//TODO
+	private static final int DEFAULT_LIGHT_UNIT_HP = 0;
 
 	/**
 	 * That creates a worker with its default stats.

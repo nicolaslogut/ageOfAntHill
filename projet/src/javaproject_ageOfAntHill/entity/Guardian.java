@@ -17,16 +17,18 @@ public class Guardian extends Unit {
 	/**
 	 * Default armor
 	 */
+	//TODO
 	private static final int DEFAULT_HEAVY_UNIT_ARMOR = 0;
-
 	/**
 	 * Default damages.
 	 */
+	//TODO
 	private static final int DEFAULT_HEAVY_UNIT_DAMAGE = 0;
 
 	/**
 	 * Default health. 
 	 */
+	//TODO
 	private static final int DEFAULT_HEAVY_UNIT_HP = 0;
 	/**
 	 * Just like a serial name, it's used to identify a guardian's type.
