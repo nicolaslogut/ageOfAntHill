@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 @SuppressWarnings("serial")
 public class Menu extends JFrame implements ActionListener {
@@ -31,33 +32,53 @@ public class Menu extends JFrame implements ActionListener {
 	 */
 	private Displaying disp;
 	
+	private JSplitPane split1;
+	private JSplitPane split2;
+	private JSplitPane split3;
+	
+	
 	
 	public Menu(Displaying disp){
 		this.disp = disp;
 		buttonNewGame = new JButton("New game");
 		buttonLoadGame = new JButton("Load a game");
 		buttonClose = new JButton("close");
+		this.split1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		this.split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		//this.split3 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		
 		init();
 	}
 	
 	
 	public void init()
 	{
-	this.setSize(980, 980);
+	this.setSize(300, 400);
 	this.setResizable(false);
 	this.setLocationRelativeTo(null);
-	JPanel pan = new JPanel();
+	JPanel pan1 = new JPanel();
+	JPanel pan2 = new JPanel();
+	JPanel pan3 = new JPanel();
+	//pan.setSize(500,500);
+	//GridLayout gl = new GridLayout(3, 1);
+	//gl.setVgap(30);
 	
-	pan.setSize(500,500);
-	GridLayout gl = new GridLayout(3, 1);
-	gl.setVgap(100);
 	
-	
-	pan.setLayout(gl);
-	pan.add(buttonNewGame);
-	pan.add(buttonLoadGame);
-	pan.add(buttonClose);
-	this.setContentPane(pan);
+	//pan.setLayout(gl);
+	pan1.add(buttonNewGame);
+	pan2.add(buttonLoadGame);
+	pan3.add(buttonClose);
+	split1.add(pan1);
+	split1.add(pan2);
+	split2.add(split1);
+	split2.add(pan3);
+	split1.setDividerLocation(150);
+	split1.setDividerSize(0);
+	split1.setEnabled(true);
+	split2.setDividerLocation(300);
+	split2.setDividerSize(0);
+	split2.setEnabled(true);
+	this.setContentPane(split2);
 	buttonNewGame.addActionListener(this);
 	buttonLoadGame.addActionListener(this);
 	buttonClose.addActionListener(this);
