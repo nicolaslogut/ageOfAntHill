@@ -200,18 +200,29 @@ public class Displaying implements Runnable, ActionListener {
 
 		// add in the JFrame "window", the splitWindow
 		this.window.setContentPane(this.splitWindow);
-		this.window.setVisible(true);
+		this.window.setVisible(false);
 
 	}
-
+	
+	/**
+	 * returns the GridOfTheGame panel
+	 * @return
+	 */
 	public JPanel getGridOfTheGame() {
 		return gridOfTheGame;
 	}
-
+	
+	/**
+	 * panel GridOfTheGame
+	 * @param gridOfTheGame
+	 */
 	public void setGridOfTheGame(JPanel gridOfTheGame) {
 		this.gridOfTheGame = gridOfTheGame;
 	}
-
+	
+	/**
+	 * when clicked on an item of the JMenuBar
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JMenuItem selectedItem = (JMenuItem) event.getSource();
@@ -227,8 +238,7 @@ public class Displaying implements Runnable, ActionListener {
 			JOptionPane.showMessageDialog(this.window, instructions, "About",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (selectedItem == this.itemNewGame) {
-			this.game = new Game(interfHM);
-			this.game.createGame(this);
+			startNewGame();
 		} else if (selectedItem == this.itemSaveGame) {
 			this.saveManager.addSave(this.game.getMap().getGrid());
 		} else if (selectedItem == this.itemLoadGame) {
@@ -239,9 +249,21 @@ public class Displaying implements Runnable, ActionListener {
 			this.window.dispose();
 		}
 	}
-
+	
+	/**
+	 * returns the window of this game
+	 * @return
+	 */
 	public Window getFrame() {
 		return this.window;
+	}
+	
+	/**
+	 * starts a new game
+	 */
+	public void startNewGame(){
+		this.game = new Game(interfHM);
+		this.game.createGame(this);
 	}
 
 }

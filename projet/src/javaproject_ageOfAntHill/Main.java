@@ -21,9 +21,11 @@ public class Main {
 	 */
 	// To check later. Eventually insert into another class.
 	public static void main(String[] args) {
-		
 		InterfaceHM interfHM = new Interface();
 		Displaying disp = new Displaying(interfHM);
+		Menu menu = new Menu(disp);
+		
+
 		disp.run();
 		// SwingUtilities.invokeLater(disp);
 		//map.generateSandWater(disp);
