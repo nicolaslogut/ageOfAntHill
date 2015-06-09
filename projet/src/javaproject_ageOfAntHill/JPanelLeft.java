@@ -57,7 +57,9 @@ public class JPanelLeft extends JPanel {
 		
 		building = new JButton(new ImageIcon("./img/overlay/BUILDING_ICON.png"));
 		building.addActionListener((ActionListener) interfHM);
-		selection = new JLabel("", JLabel.CENTER);
+		building.setBorder(null);
+		
+		selection = new JLabel(new ImageIcon("./img/mobs/worker/workerDisplay.png"), JLabel.CENTER);
 		
 		add(ressources, 0);
 		add(food, 1);
