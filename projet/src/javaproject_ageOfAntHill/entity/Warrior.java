@@ -1,6 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 
 /**
+ * The "Warrior" class which allow to use warrior entity.  
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -10,16 +11,16 @@ package javaproject_ageOfAntHill.entity;
 
 public class Warrior extends Unit {
 	/**
-	 * warrior's moving speed
+	 * Warrior's moving speed.
 	 */
 	private final static int DEFAULT_WARRIOR_SPEED = 3;
 	/**
-	 * Just like a serial name, it's used to identify a warrior's type
+	 * Just like a serial name, it's used to identify a warrior's type.
 	 */
 	private final static String WARRIOR_TYPE = "WARR";
 
 	/**
-	 * creates a warrior with all its default stats
+	 * That creates a warrior with all its default stats.
 	 */
 	public Warrior(int teamNumber) {
 		this.setRange(DEFAULT_UNIT_RANGE);

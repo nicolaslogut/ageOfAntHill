@@ -1,6 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 
 /**
+ * The "Snake" class which allow to use snake entity.  
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -9,16 +10,16 @@ package javaproject_ageOfAntHill.entity;
  */
 public class Snake extends Unit {
 	/**
-	 * Snake's default movement speed
+	 * Snake's default movement speed.
 	 */
 	private final static int DEFAULT_LIZARD_SPEED = 3;
 	/**
-	 * Just like a serial name, it's used to identify a Snake's type
+	 * Just like a serial name, it's used to identify a Snake's type.
 	 */
 	private final static String LIZARD_TYPE = "LIZ";
 
 	/**
-	 * creates a Snake with its default stats
+	 * That creates a Snake with its default stats.
 	 */
 	public Snake(int teamNumber) {
 		this.setRange(DEFAULT_UNIT_RANGE);
