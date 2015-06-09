@@ -8,5 +8,10 @@ package javaproject_ageOfAntHill.entity.buildable;
  */
 
 public class Enhancement extends Buildable {
-
+	/**
+	 * Allow the player to enhance his Anthill
+	 */
+	public void enhanceAnthill(){
+		//TODO add few elements to upgrade the Anthill
+	}
 }

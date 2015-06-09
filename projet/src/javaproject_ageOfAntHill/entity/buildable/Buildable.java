@@ -10,7 +10,7 @@ import javaproject_ageOfAntHill.entity.Entity;
  */
 public class Buildable extends Entity {
 	/**
-	 * 
+	 * allow the player to know the next upgrade level for his building
 	 */
 	private int nextUpgrade;
 
