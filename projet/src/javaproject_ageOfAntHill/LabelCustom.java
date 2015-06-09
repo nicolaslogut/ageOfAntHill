@@ -97,7 +97,7 @@ public class LabelCustom extends JPanel {
 			jlentity.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
 			break;
 		case "WALL":
-			jlentity.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+			jlentity.setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
 			break;
 		default:
 		}

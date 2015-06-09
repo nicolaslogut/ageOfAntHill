@@ -6,6 +6,8 @@ public class AntHill extends Building {
 	  */
 	 private final static String ANTHILL_TYPE = "AHILL";
 	 
+	 private final static int ANTHILL_HP = 1000;
+	 
 	public AntHill(){
 		 this.setType(ANTHILL_TYPE);
 	 }

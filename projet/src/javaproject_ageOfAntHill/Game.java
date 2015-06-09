@@ -1,5 +1,6 @@
 package javaproject_ageOfAntHill;
 
+import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Map;
 
 // I thought it was starting an instance of the game ?
@@ -17,12 +18,24 @@ public class Game {
 	 * Map generation.
 	 */
 	private Map theMap;
+	/**
+	 * interface etc...
+	 */
+	private InterfaceHM interfHM;
+	/**
+	 * int for the quantity of Food
+	 */
+	private int quantityFood;
+	/**
+	 * int for the quantity of Dirt
+	 */
+	private int quantityDirt;
 
 	/**
 	 * The game creation. 
 	 */
-	public Game() {
-		this.theMap = new Map();
+	public Game(InterfaceHM interfHM) {
+		this.interfHM = interfHM;
 	}
 
 	/**
@@ -35,7 +48,12 @@ public class Game {
 	 * Method which allows to create a new Game with different specifies :
 	 * Number of team Duration Difficulty ?
 	 */
-	public void createGame() {
+	public void createGame(Displaying disp) {
+		InterfaceMap map = new Map();
+		map.generateSandWater(disp);
+		map.generateTree(disp);
+		map.generateStartingUnits(disp);
+		map.generateIAUnits(disp);
 	}
 
 	/**

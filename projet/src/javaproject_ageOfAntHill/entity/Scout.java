@@ -1,7 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 
 /**
- * This class is a scout, a pathfinder This unit got a huge move scope
+ * This class is a scout, a pathfinder This unit got a huge move scope.
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -10,16 +10,16 @@ package javaproject_ageOfAntHill.entity;
  */
 public class Scout extends Unit {
 	/**
-	 * This is the default move range
+	 * This is the default move range.
 	 */
 	private final static int DEFAULT_SCOUT_SPEED = 6;
 	/**
-	 * Just like a serial name, it's used to identify a scout's type
+	 * Just like a serial name, it's used to identify a scout's type.
 	 */
 	private final static String SCOUT_TYPE = "SCOUT";
 
 	/**
-	 * creates a Shooter with its default stats
+	 * That creates a Shooter with its default stats.
 	 */
 	public Scout(int teamNumber) {
 		this.setRange(DEFAULT_UNIT_RANGE);

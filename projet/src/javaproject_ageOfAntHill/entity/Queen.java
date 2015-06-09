@@ -1,8 +1,8 @@
 package javaproject_ageOfAntHill.entity;
 
 /**
- * represents a Queen ant in a game Her main characteristic is to give birth to
- * other ants
+ * Represents a Queen ant in a game. Her main characteristic is to give birth to
+ * other ants.
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -12,16 +12,16 @@ package javaproject_ageOfAntHill.entity;
 
 public class Queen extends Unit {
 	/**
-	 * Queen's default movement speed
+	 * Queen's default movement speed. 
 	 */
 	private final static int DEFAULT_QUEEN_SPEED = 0;
 	/**
-	 * Just like a serial name, it's used to identify a queen's type
+	 * Just like a serial name, it's used to identify a queen's type.
 	 */
 	private final static String QUEEN_TYPE = "QUEEN";
 
 	/**
-	 * creates a queen ant with its default stats
+	 * That creates a queen ant with its default stats.
 	 */
 	public Queen(int teamNumber) {
 		this.setDamages(DEFAULT_PEACEFUL_UNIT_DAMAGE);

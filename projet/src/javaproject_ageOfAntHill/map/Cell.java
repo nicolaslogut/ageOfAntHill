@@ -1,5 +1,6 @@
 package javaproject_ageOfAntHill.map;
 
+import javaproject_ageOfAntHill.Ressource;
 import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.entity.Unit;
 
@@ -24,6 +25,11 @@ public class Cell {
 	 */
 	protected CellState cellState;
 
+	/**
+	 * if a ressource is on the cell
+	 */
+	private Ressource ressource;
+	
 	/**
 	 * 
 	 * default constructor.
@@ -54,6 +60,7 @@ public class Cell {
 	public Cell(Entity entity, CellState cellstate) {
 		this.entity = entity;
 		this.cellState = cellstate;
+		this.ressource = null;
 	}
 
 	/**
@@ -80,5 +87,13 @@ public class Cell {
 
 	public Unit getUnit() {
 		return (Unit) this.entity;
+	}
+	
+	public void setRessource(Ressource ressource) {
+		this.ressource = ressource;
+	}
+
+	public Ressource getRessource() {
+		return this.ressource;
 	}
 }

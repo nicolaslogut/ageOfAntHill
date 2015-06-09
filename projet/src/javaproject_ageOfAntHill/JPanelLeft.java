@@ -29,13 +29,13 @@ public class JPanelLeft extends JPanel{
 		
 		setLayout(new OverlayLayout(this));
 		
-		overlay = new JLabel(new ImageIcon("./img/LeftPaneOverlay.png"));
+		overlay = new JLabel(new ImageIcon("./img/overlay/LEFTPANEL_OVERLAY.png"));
 		
 		ressources = new JLabel("<html>Ressources :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		ressources.setForeground(Color.white);
 		ressources.setFont(new Font("Sherif", Font.ITALIC, 20));
 		
-		food = new JLabel("<html>Nourriture :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", new ImageIcon("./img/Nourriture.png"), JLabel.CENTER);
+		food = new JLabel("<html>Nourriture :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", new ImageIcon("./img/miscs/FOOD.png"), JLabel.CENTER);
 		food.setForeground(Color.white);
 		food.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
@@ -51,7 +51,7 @@ public class JPanelLeft extends JPanel{
 		earthValue.setForeground(Color.white);
 		earthValue.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
-		building = new JLabel(new ImageIcon("./img/BuildingIcon.png"), JLabel.CENTER);
+		building = new JLabel(new ImageIcon("./img/overlay/BUILDING_ICON.png"), JLabel.CENTER);
 		
 		selection = new JLabel("", JLabel.CENTER);
 		
