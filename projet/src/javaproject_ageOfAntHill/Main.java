@@ -25,6 +25,7 @@ public class Main {
 		Displaying disp = new Displaying(interfHM);
 		Menu menu = new Menu(disp);
 		
+		
 
 		disp.run();
 		// SwingUtilities.invokeLater(disp);

@@ -13,7 +13,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-
+/**
+ * create a window, with 3 choices (new game, load game, close)
+ * 
+ * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
+ *         Amaglio, Adrien Arsac
+ *         
+ * @version 20150609
+ *
+ */
 @SuppressWarnings("serial")
 public class Menu extends JFrame implements ActionListener {
 	/**
@@ -32,13 +40,20 @@ public class Menu extends JFrame implements ActionListener {
 	 * window of the game
 	 */
 	private Displaying disp;
-	
+	/**
+	 * contains the button "New game" and the button "load game"
+	 */
 	private JSplitPane split1;
+	/**
+	 * contains the JsplitPane split1 and the button "close"
+	 */
 	private JSplitPane split2;
-	private JSplitPane split3;
 	
-	
-	
+	/**
+	 *builder of the menu display
+	 * 
+	 * @param disp
+	 */
 	public Menu(Displaying disp){
 		this.disp = disp;
 		buttonNewGame = new JButton("", new ImageIcon("./img/overlay/BUTTON-NEWGAME.png"));
@@ -49,8 +64,10 @@ public class Menu extends JFrame implements ActionListener {
 		buttonClose.setBorder(null);
 		this.split1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		//this.split3 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		
+	/**
+	 * method to build the menu	
+	 */
 		init();
 	}
 	
@@ -64,12 +81,6 @@ public class Menu extends JFrame implements ActionListener {
 	JPanel pan1 = new JPanel();
 	JPanel pan2 = new JPanel();
 	JPanel pan3 = new JPanel();
-	//pan.setSize(500,500);
-	//GridLayout gl = new GridLayout(3, 1);
-	//gl.setVgap(30);
-	
-	
-	//pan.setLayout(gl);
 	pan1.add(buttonNewGame);
 	pan2.add(buttonLoadGame);
 	pan3.add(buttonClose);
@@ -98,7 +109,10 @@ public class Menu extends JFrame implements ActionListener {
 	
 	
 	
-	
+	/**
+	 * event on the button ( here we have 3 button)
+	 * allow to do something on the click
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	if(e.getSource() == buttonClose){
