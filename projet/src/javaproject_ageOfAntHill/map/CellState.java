@@ -66,6 +66,22 @@ public enum CellState {
 	public String getFileName() {
 		return this.fileName;
 	}
+	
+	public static CellState getCellState(String string){
+		switch (string) {
+		case "S":
+			return CellState.SAND_SQUARE;
+		case "G":
+			return CellState.GRASS_SQUARE;
+		case "W":
+			return CellState.WATER_SQUARE;
+		case "T":
+			return CellState.TREE_SQUARE;
+
+		default:
+			return CellState.GRASS_SQUARE;
+		}
+	}
 
 	/**
 	 * 
