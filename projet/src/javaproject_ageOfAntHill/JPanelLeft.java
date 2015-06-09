@@ -82,31 +82,31 @@ public class JPanelLeft extends JPanel {
 	public void selectionEntity(Entity ent){
 		switch(ent.getType()){
 		case "FLY":
-			selection.setIcon(new ImageIcon("./img/mobs/fly/fly.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/fly/flyDisplay.png"));
 			break;
 		case "GUARD":
-			selection.setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/guardian/guardianDisplay.png"));
 			break;
 		case "LIZ":
-			selection.setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/lizard/lizardDisplay.png"));
 			break;
 		case "QUEEN":
-			selection.setIcon(new ImageIcon("./img/mobs/queen/queen-b.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/queen/queenDisplay.png"));
 			break;
 		case "SCAR":
-			selection.setIcon(new ImageIcon("./img/mobs/scarab/scarab.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/scarab/scarabDisplay.png"));
 			break;
 		case "SCOUT":
-			selection.setIcon(new ImageIcon("./img/mobs/scout/scout.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/scout/scoutDisplay.png"));
 			break;
 		case "SHOOT":
-			selection.setIcon(new ImageIcon("./img/mobs/shooter/shooter.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/shooter/shooterDisplay.png"));
 			break;
 		case "WARR":
-			selection.setIcon(new ImageIcon("./img/mobs/warrior/warrior.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/warrior/warriorDisplay.png"));
 			break;
 		case "WORK":
-			selection.setIcon(new ImageIcon("./img/mobs/worker/worker.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/worker/workerDisplay.png"));
 			break;
 		case "AHILL":
 			selection.setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
