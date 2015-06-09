@@ -44,7 +44,7 @@ public class JPanelLeft extends JPanel {
 	private int dirtValueInt;
 	private int hpUnitValueInt;
 	private int hpMaxUnitValueInt;
-	private int currentArmorValueInt = 60;
+	private int currentArmorValueInt;
 	/**
 	 * The constructor of the JPanelLeft which contain all statistics and information about units etc...
 	 * @param interfHM
@@ -103,7 +103,7 @@ public class JPanelLeft extends JPanel {
 		/**
 		 * Define the current hpUnitValue of the Selected Unit
 		 */
-		hpUnitValue = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + hpUnitValueInt + "/" + hpUnitValueInt, JLabel.CENTER);
+		hpUnitValue = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + hpUnitValueInt + "/" + hpMaxUnitValueInt, JLabel.CENTER);
 		hpUnitValue.setForeground(Color.white);
 		hpUnitValue.setFont(new Font("Sherif", Font.ITALIC, 15));
 		/**
@@ -126,6 +126,7 @@ public class JPanelLeft extends JPanel {
 		stats.setFont(new Font("Sherif", Font.ITALIC, 20));
 		/**
 		 * the default Picture Displayed when the game start
+		 * And selectionType to change the name
 		 */
 		selection = new JLabel(new ImageIcon("./img/mobs/worker/workerDisplay.png"), JLabel.CENTER);
 		selectionType = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + selectionType + "", JLabel.CENTER);
@@ -168,9 +169,17 @@ public class JPanelLeft extends JPanel {
 	 * This method allows you to set the Maximum HP and the current HP of the Entity
 	 * @param hp, maxHp
 	 */
-	public void setValue(int value, int maxValue){
-		this.hpUnitValueInt = value;
-		this.hpMaxUnitValueInt = maxValue;
+	public void setHp(int hp, int maxHp){
+		this.hpUnitValueInt = hp;
+		this.hpMaxUnitValueInt = maxHp;
+	}
+	
+	/**
+	 * This method allows you to set Armor of the Entity
+	 * @param armor
+	 */
+	public void setArmor(int armor){
+		this.currentArmorValueInt = armor;
 	}
 	
 	/**
@@ -250,6 +259,12 @@ public class JPanelLeft extends JPanel {
 			selection.setIcon(new ImageIcon("./img/mobs/worker/workerDisplay.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Worker");
 			break;
+		case "ALLIES":
+			selection.setIcon(new ImageIcon("./img/mobs/alliesDisplay"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Allies");
+		case "ENEMIES":
+			selection.setIcon(new ImageIcon("./img/mobs/enemiesDisplay"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Enemies");
 		case "AHILL":
 			selection.setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Anthill");
