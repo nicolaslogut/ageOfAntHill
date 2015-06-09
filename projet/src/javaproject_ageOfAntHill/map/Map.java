@@ -202,8 +202,8 @@ public class Map implements InterfaceMap {
 					Worker worker = new Worker(1);
 					this.grid[numLine][numCol].setEntity(queen);
 					this.grid[numLine][numCol+1].setEntity(worker);
-					disp.getLabelTab(numLine, numCol).addEntityMap(queen);
-					disp.getLabelTab(numLine, numCol+1).addEntityMap(worker);
+					disp.getFrame().getLabelTab(numLine, numCol).addEntityMap(queen);
+					disp.getFrame().getLabelTab(numLine, numCol+1).addEntityMap(worker);
 					return;
 				}
 			}
@@ -241,7 +241,7 @@ public class Map implements InterfaceMap {
 					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
 				Fly fly = new Fly(2);
 				this.grid[randNbLines][randNbCols].setEntity(fly);
-				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(fly);
+				disp.getFrame().getLabelTab(randNbLines, randNbCols).addEntityMap(fly);
 				nbEnemies++;
 			}
 		}
@@ -257,7 +257,7 @@ public class Map implements InterfaceMap {
 					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
 				Snake snake = new Snake(2);
 				this.grid[randNbLines][randNbCols].setEntity(snake);
-				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(snake);
+				disp.getFrame().getLabelTab(randNbLines, randNbCols).addEntityMap(snake);
 				nbEnemies++;
 			}
 		}
@@ -273,7 +273,7 @@ public class Map implements InterfaceMap {
 					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
 				Scarab scarab = new Scarab(2);
 				this.grid[randNbLines][randNbCols].setEntity(scarab);
-				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(scarab);
+				disp.getFrame().getLabelTab(randNbLines, randNbCols).addEntityMap(scarab);
 				nbEnemies++;
 			}
 		}
