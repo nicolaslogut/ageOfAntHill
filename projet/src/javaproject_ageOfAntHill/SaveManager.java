@@ -2,6 +2,7 @@ package javaproject_ageOfAntHill;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -20,14 +21,16 @@ public class SaveManager {
 
 	public SaveManager() {
 		this.filename = DEFAULT_FILENAME;
+		this.readSaves();
 	}
 
 	public SaveManager(String filename) {
 		this.filename = filename;
+		this.readSaves();
 	}
 
-	public void readSaves() {
-		// Reading the file
+	private void readSaves() {
+		// Reading the file		
 		LinkedList<String> saves = new LinkedList<String>();
 		try {
 			BufferedReader in = new BufferedReader(
