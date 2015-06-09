@@ -59,6 +59,7 @@ public class Map implements InterfaceMap {
 	 */
 	private Cell[][] grid;
 
+
 	/**
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */
@@ -340,6 +341,18 @@ public class Map implements InterfaceMap {
 					+ "--------------------------------------------------\n";
 		}
 		return mapAsciiArt;
+	}
+
+	public static int getNbColumn() {
+		return NBCOLUMN;
+	}
+
+	public static int getNbLine() {
+		return NBLINE;
+	}
+
+	public Cell[][] getGrid() {
+		return this.grid;
 	}
 
 }

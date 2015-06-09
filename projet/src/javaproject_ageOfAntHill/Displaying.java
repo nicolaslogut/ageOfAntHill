@@ -26,14 +26,16 @@ import java.awt.BorderLayout;
  * @version 20150607
  */
 public class Displaying implements Runnable, ActionListener {
+	Game game;
+	SaveManager saveManager;
 	/**
 	 * Default value of the window's width.
 	 */
-	private final static int DEFAULT_WINDOW_WIDTH = 975;
+	private final static int DEFAULT_WINDOW_WIDTH = 980;
 	/**
 	 * Default value of the window's height.
 	 */
-	private final static int DEFAULT_WINDOW_HEIGHT = 975;
+	private final static int DEFAULT_WINDOW_HEIGHT = 980;
 	/**
 	 * Window of the game.
 	 */
@@ -82,13 +84,15 @@ public class Displaying implements Runnable, ActionListener {
 	
 	
 	public Displaying(InterfaceHM interfHM) {
+		this.saveManager = new SaveManager();
+		
 		this.window = new Window(interfHM);
 		this.interfHM=interfHM;
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		
 		this.menuBar = new JMenuBar();
-		
+		this.jpanelLeft = new JPanelLeft(interfHM);
 	
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
@@ -160,7 +164,6 @@ public class Displaying implements Runnable, ActionListener {
 		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
-		this.jpanelLeft = new JPanelLeft();
 		
 		this.window.addGameGrid(this.gridOfTheGame);
 		
@@ -222,18 +225,17 @@ public class Displaying implements Runnable, ActionListener {
 		instructions+="Right click to move the selected units to the targetted area\n";
 		instructions+="note : some units might not be able to move if there isn't enough room";
 		
-		String saveGame = "Fonction non implémentée";
-		String loadGame = "Fonction non implémentée";
 		
 		if (selectedItem == this.itemAbout) {
 			JOptionPane.showMessageDialog(this.window, instructions, "About",JOptionPane.INFORMATION_MESSAGE);
 		}else if (selectedItem == this.itemNewGame) {
-			Game game = new Game(interfHM);
-			game.createGame(this);
+			this.game = new Game(interfHM);
+			this.game.createGame(this);
 		}else if (selectedItem == this.itemSaveGame) {
-			JOptionPane.showMessageDialog(this.window, saveGame, "Sauvegarder Partie",JOptionPane.INFORMATION_MESSAGE);
+			
+			this.saveManager.addSave(this.game.getMap().getGrid());
 		}else if (selectedItem == this.itemLoadGame) {
-			JOptionPane.showMessageDialog(this.window, loadGame, "Charger Partie",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this.window, this.saveManager.listSaves(), "Charger Partie", JOptionPane.INFORMATION_MESSAGE);
 			
 		}else if (selectedItem == this.itemClose) {
 			this.window.dispose();

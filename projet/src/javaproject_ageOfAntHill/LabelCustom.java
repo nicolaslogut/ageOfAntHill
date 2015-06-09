@@ -37,8 +37,6 @@ public class LabelCustom extends JPanel {
 		jlentity = new JLabel();
 		add(jlentity, 0);
 		jlground = new JLabel(new ImageIcon("./img/tiles/GRASS_SQUARE.png"));
-		jlentity = new JLabel();
-		add(jlentity, 0);
 		add(jlground, 1);
 
 		// this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
@@ -66,7 +64,7 @@ public class LabelCustom extends JPanel {
 		this.entity=entity;
 		switch (this.entity.getType()){
 		case "FLY":
-			//jlentity.setIcon(new ImageIcon("./img/mobs/fly/fly-bd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/fly/fly.png"));
 			break;
 		case "GUARD":
 			jlentity.setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
