@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import javaproject_ageOfAntHill.entity.Entity;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +21,7 @@ public class JPanelLeft extends JPanel{
 	private JLabel earth;
 	private JLabel earthValue;
 	private JLabel building;
+	private JLabel selection;
 	
 	private int tamer = 1;
 	
@@ -50,13 +53,16 @@ public class JPanelLeft extends JPanel{
 		
 		building = new JLabel(new ImageIcon("./img/BuildingIcon.png"), JLabel.CENTER);
 		
+		selection = new JLabel("", JLabel.CENTER);
+		
 		add(ressources, 0);
 		add(food, 1);
 		add(foodValue, 2);
 		add(earth, 3);
 		add(earthValue, 4);
-		add(building, 5);
-		add(overlay, 6);
+		add(selection, 5);
+		add(building, 6);
+		add(overlay, 7);
 	}
 	
 	public JLabel getRessources(){
@@ -65,5 +71,47 @@ public class JPanelLeft extends JPanel{
 	
 	public JLabel getImage(){
 		return overlay;
+	}
+	
+	public void selectionEntity(Entity ent){
+		switch(ent.getType()){
+		case "FLY":
+			selection.setIcon(new ImageIcon("./img/mobs/fly/fly.png"));
+			break;
+		case "GUARD":
+			selection.setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
+			break;
+		case "LIZ":
+			selection.setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
+			break;
+		case "QUEEN":
+			selection.setIcon(new ImageIcon("./img/mobs/queen/queen-b.png"));
+			break;
+		case "SCAR":
+			selection.setIcon(new ImageIcon("./img/mobs/scarab/scarab.png"));
+			break;
+		case "SCOUT":
+			selection.setIcon(new ImageIcon("./img/mobs/scout/scout.png"));
+			break;
+		case "SHOOT":
+			selection.setIcon(new ImageIcon("./img/mobs/shooter/shooter.png"));
+			break;
+		case "WARR":
+			selection.setIcon(new ImageIcon("./img/mobs/warrior/warrior.png"));
+			break;
+		case "WORK":
+			selection.setIcon(new ImageIcon("./img/mobs/worker/worker.png"));
+			break;
+		case "AHILL":
+			selection.setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
+			break;
+		case "HOUSE":
+			selection.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+			break;
+		case "WALL":
+			selection.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+			break;
+		default:
+		}
 	}
 }
