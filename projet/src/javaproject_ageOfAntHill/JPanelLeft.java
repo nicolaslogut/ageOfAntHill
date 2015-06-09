@@ -2,11 +2,13 @@ package javaproject_ageOfAntHill;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 
 import javaproject_ageOfAntHill.entity.Entity;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
@@ -20,7 +22,7 @@ public class JPanelLeft extends JPanel{
 	private JLabel foodValue;
 	private JLabel earth;
 	private JLabel earthValue;
-	private JLabel building;
+	private JButton building;
 	private JLabel selection;
 	
 	private int tamer = 1;
@@ -51,7 +53,7 @@ public class JPanelLeft extends JPanel{
 		earthValue.setForeground(Color.white);
 		earthValue.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
-		building = new JLabel(new ImageIcon("./img/overlay/BUILDING_ICON.png"), JLabel.CENTER);
+		building = new JButton(new ImageIcon("./img/overlay/BUILDING_ICON.png"));
 		
 		selection = new JLabel("", JLabel.CENTER);
 		

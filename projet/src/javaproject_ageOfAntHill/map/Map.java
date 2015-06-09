@@ -59,6 +59,10 @@ public class Map implements InterfaceMap {
 	 */
 	private Cell[][] grid;
 
+	public Cell[][] getGrid() {
+		return grid;
+	}
+
 	/**
 	 * creates a new map as a grid (it's a table of Cases with 2dimensions)
 	 */

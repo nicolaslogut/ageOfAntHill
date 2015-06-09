@@ -5,8 +5,13 @@ import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+
 import javax.swing.JLabel;
 import javax.swing.JFrame;
+
 import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.entity.Unit;
 import javaproject_ageOfAntHill.entity.buildable.Building;
@@ -45,7 +50,7 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	/**
 	 * used to store the current selected units
 	 */
-	private Unit[] units;
+	private LinkedList<Unit> units;
 	/**
 	 * current number of elements in the table units 
 	 */
@@ -62,7 +67,7 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 	 * creates new interface with all attributes non-existent
 	 */
 	public Interface(){
-		this.units = null;
+		this.units = new LinkedList<Unit>();
 		this.unitCounter=0;
 		this.building = null;
 		clickState=0;
@@ -86,25 +91,22 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 		}
 		
 		this.addUnits(numLabel1/Map.NBLINE, numLabel2/Map.NBLINE, numLabel1%Map.NBCOLUMN, numLabel2%Map.NBCOLUMN, e);
-		
-		if (labelUnit1.getLabEntity()!=null){
-			this.units[unitCounter]=(Unit) labelUnit1.getLabEntity();
-			unitCounter++;
-		}
-		if (this.units[unitCounter]==null){
-			//this.units[numUnit]=(Unit) labelUnit;
-			return;
-		}
 	}
 	
-	private void addUnits(int numLine1, int numLine2, int numCol1, int numCol2, MouseEvent e){
+	private void addUnits(int numLine1, int numLine2, int numCol1, int numCol2, MouseEvent e){		
 		int lineNumber;
 		int colNumber;
+			// gets the window of the game through this component's event
+		Window wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
+		this.unitCounter=0;
 		if (numLine1 <= numLine2 && numCol1 <= numCol2){
 			for (lineNumber = numLine1 ; lineNumber <= numLine2 ; lineNumber++){
 				for (colNumber = numCol1 ; colNumber <= numCol2 ; colNumber++){
-					JFrame disp;
-					/*this.units[this.unitCounter]*///disp = e.getComponent().getParent()).getParent(); //.getLabelTab(lineNumber, colNumber).getLabEntity();
+					if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+						Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
+						System.out.println(ent.getType());
+						this.units.add((Unit) ent);
+					}
 				}
 			}
 		}
@@ -112,7 +114,11 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 			if (numLine1 <= numLine2 && numCol1 > numCol2){
 				for (lineNumber = numLine1 ; lineNumber <= numLine2 ; lineNumber++){
 					for (colNumber = numCol2 ; colNumber <= numCol1 ; colNumber++){
-						
+						if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+							Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
+							System.out.println(ent.getType());
+							this.units.add((Unit) ent);
+						}
 					}
 				}
 			}
@@ -120,14 +126,22 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 				if (numLine1 > numLine2 && numCol1 <= numCol2){
 					for (lineNumber = numLine2 ; lineNumber <= numLine1 ; lineNumber++){
 						for (colNumber = numCol1 ; colNumber <= numCol2 ; colNumber++){
-							
+							if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+								Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
+								System.out.println(ent.getType());
+								this.units.add((Unit) ent);
+							}
 						}
 					}
 				}
 				else {
 					for (lineNumber = numLine2 ; lineNumber <= numLine1 ; lineNumber++){
 						for (colNumber = numCol2 ; colNumber <= numCol1 ; colNumber++){
-							
+							if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+								Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
+								System.out.println(ent.getType());
+								this.units.add((Unit) ent);
+							}
 						}
 					}
 				}
@@ -218,6 +232,8 @@ public class Interface implements InterfaceHM, MouseListener, MouseMotionListene
 				clickState=1;
 				break;
 			case 1:
+				this.units = null;
+				this.units = new LinkedList<Unit>();
 				this.selectUnits(this.lab, label, e);
 				clickState=2;
 				break;
