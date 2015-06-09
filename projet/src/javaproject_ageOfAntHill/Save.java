@@ -39,10 +39,6 @@ public class Save {
 		
 		return null;
 	}
-	
-	private String entityToStr(Entity ent){
-		return "ent";
-	}
 
 	public String getName() {
 		return this.name;

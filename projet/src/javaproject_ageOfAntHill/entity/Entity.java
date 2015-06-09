@@ -34,6 +34,10 @@ public abstract class Entity {
 
 	}
 	
+	public Entity(String string){
+		
+	}
+	
 	public String getType(){
 		return this.type;
 	}
