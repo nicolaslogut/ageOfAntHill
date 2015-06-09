@@ -1,7 +1,7 @@
 package javaproject_ageOfAntHill.map;
 
+import javaproject_ageOfAntHill.Ressource;
 import javaproject_ageOfAntHill.entity.Entity;
-import javaproject_ageOfAntHill.entity.Ressource;
 import javaproject_ageOfAntHill.entity.Unit;
 
 /**
