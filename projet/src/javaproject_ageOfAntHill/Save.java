@@ -9,6 +9,7 @@ public class Save {
 
 	private String name;
 	private Cell[][] grid;
+	private int nbElem;
 
 	/**
 	 * 
@@ -16,41 +17,50 @@ public class Save {
 	 *            A save file like string
 	 */
 	public Save(String string) {
-		this.grid = new Cell[Map.NBCOLUMN][Map.NBLINE];
-		int nbElem = 0;
+		this.grid = new Cell[Map.getNbColumn()][Map.getNbLine()];
+		this.nbElem = 0;
 
 		this.name = string.split("#####")[0];
 		for (String line : string.split("#####")[1].split("####")) {
 			for (String elem : line.split("###")) {
-				this.grid[nbElem / Map.NBCOLUMN][nbElem % Map.NBLINE] = new Cell(
+				this.grid[this.nbElem / Map.getNbColumn()][this.nbElem % Map.getNbLine()] = new Cell(
 						this.entityFromStr(elem.split("##")[0]),
-						this.cellStateFromStr(elem.split("##")[1]));
+						CellState.getCellState(elem.split("##")[1]));
 			}
 		}
 	}
 
-	private CellState cellStateFromStr(String string) {
-		switch (string) {
-		case "S":
-			return CellState.SAND_SQUARE;
-		case "G":
-			return CellState.GRASS_SQUARE;
-		case "W":
-			return CellState.WATER_SQUARE;
-		case "T":
-			return CellState.TREE_SQUARE;
-
-		default:
-			return CellState.GRASS_SQUARE;
-		}
+	public Save(String name, Cell[][] grid) {
+		this.name = name;
+		this.grid = grid;
 	}
 
 	private Entity entityFromStr(String string) {
-		// TODO Auto-generated method stub
+		
 		return null;
+	}
+	
+	private String entityToStr(Entity ent){
+		return "ent";
 	}
 
 	public String getName() {
 		return this.name;
+	}
+
+	public Cell[][] getSave() {
+		return this.grid;
+	}
+	
+	public String toString() {
+		String ret = this.name + "#####";
+		for (Cell[] column : this.grid) {
+			for (Cell cell : column) {
+				ret += cell.getEntity() + "##" + cell.getCellState()+"###";
+			}
+			ret += "####";
+		}
+		
+		return ret;
 	}
 }

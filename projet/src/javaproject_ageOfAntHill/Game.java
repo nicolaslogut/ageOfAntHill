@@ -80,4 +80,9 @@ public class Game {
 	 */
 	public void loadGame() {
 	}
+
+	public Map getMap() {
+		
+		return this.theMap;
+	}
 }

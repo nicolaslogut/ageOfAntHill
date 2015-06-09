@@ -20,7 +20,6 @@ public class AttackingUnit extends Unit implements InterfaceAttack {
 
 	@Override
 	public void attack(Position unitPos, Position enemyPos) {
-		// TODO Auto-generated method stub
 
 	}
 
