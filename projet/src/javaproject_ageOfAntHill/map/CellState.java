@@ -67,6 +67,12 @@ public enum CellState {
 		return this.fileName;
 	}
 	
+	/**
+	 * A case which allow you to return a Cellstate depending on his String parameter
+	 * (Exemple : parameter "G" -> return "CellState.GRASS_SQUARE")
+	 * @param string
+	 * @return
+	 */
 	public static CellState getCellState(String string){
 		switch (string) {
 		case "S":
@@ -91,6 +97,10 @@ public enum CellState {
 		return this.unreachable;
 	}
 
+	/**
+	 * Method change a CellState into a String
+	 * @return state
+	 */
 	public String cellStateToString() {
 		return this.state;
 	}

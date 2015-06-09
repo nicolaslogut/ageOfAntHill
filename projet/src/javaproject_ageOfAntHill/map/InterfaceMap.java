@@ -27,13 +27,27 @@ public interface InterfaceMap {
 	 * @param disp
 	 */
 	public void generateStartingUnits(Displaying disp);
-	
+	/**
+	 * generate the enemy starting units : Can be a Fly, a Scarab or a Snake
+	 * @param disp
+	 */
 	public void generateIAUnits(Displaying disp);
-	
+	/**
+	 * Check if the current position is not out of the map
+	 * @param position
+	 * @return boolean
+	 */
 	public boolean notOutOfTheMap(Position position);
-
+	/**
+	 * Change the current map into a String by reseting the toString method
+	 * @return String
+	 */
 	public String mapToString();
-
+	/**
+	 * Get the cell with a position and return a CellState
+	 * @param pos
+	 * @return CellState
+	 */
 	public Cell getCell(Position pos);
 
 }

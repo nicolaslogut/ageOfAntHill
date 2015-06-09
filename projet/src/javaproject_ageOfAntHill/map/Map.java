@@ -141,8 +141,7 @@ public class Map implements InterfaceMap {
 	}
 
 	/**
-	 * This method add random generatly trees on the map TOUT DOUX (je la
-	 * finirais : Adrien)
+	 * This method add random generatly trees on the map
 	 */
 	public void generateTree(Displaying disp) {
 		for (int nbBlockForest = 0; nbBlockForest < MAX_TREE_FOREST; nbBlockForest++) {
@@ -369,15 +368,24 @@ public class Map implements InterfaceMap {
 		}
 		return mapAsciiArt;
 	}
-
+	/**
+	 * get the number into the column
+	 * @return NBCOLUMN
+	 */
 	public static int getNbColumn() {
 		return NBCOLUMN;
 	}
-
+	/**
+	 * get the number into the line
+	 * @return NBLINE
+	 */
 	public static int getNbLine() {
 		return NBLINE;
 	}
-
+	/**
+	 * get the grid
+	 * @return grid
+	 */
 	public Cell[][] getGrid() {
 		return this.grid;
 	}

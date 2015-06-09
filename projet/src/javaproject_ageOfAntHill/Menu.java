@@ -74,16 +74,28 @@ public class Menu extends JFrame implements ActionListener {
 	
 	public void init()
 	{
+	/**
+	 * Set the basic of the "launcher" window
+	 */
 	this.setTitle("Age Of AntHill");	
 	this.setSize(300, 450);
 	this.setResizable(false);
 	this.setLocationRelativeTo(null);
+	/**
+	 * Set the 3 different Panel to set the 3 JButtons
+	 */
 	JPanel pan1 = new JPanel();
 	JPanel pan2 = new JPanel();
 	JPanel pan3 = new JPanel();
+	/**
+	 * Add JButtons to JPanel
+	 */
 	pan1.add(buttonNewGame);
 	pan2.add(buttonLoadGame);
 	pan3.add(buttonClose);
+	/**
+	 * split the different buttons
+	 */
 	split1.add(pan1);
 	split1.add(pan2);
 	split2.add(split1);
@@ -94,7 +106,12 @@ public class Menu extends JFrame implements ActionListener {
 	split2.setDividerLocation(300);
 	split2.setDividerSize(0);
 	split2.setEnabled(true);
+	
 	this.setContentPane(split2);
+	
+	/**
+	 * add the 3 Action Listener to the JButtons
+	 */
 	buttonNewGame.addActionListener(this);
 	buttonLoadGame.addActionListener(this);
 	buttonClose.addActionListener(this);

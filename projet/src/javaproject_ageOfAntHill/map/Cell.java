@@ -10,7 +10,7 @@ import javaproject_ageOfAntHill.entity.Unit;
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
  *
- * @version 20150526
+ * @version 2015/09/06
  */
 public class Cell {
 
@@ -38,6 +38,10 @@ public class Cell {
 		this(null, CellState.GRASS_SQUARE);
 	}
 
+	/**
+	 * Constructor with a parameter (Entity)
+	 * @param entity
+	 */
 	public Cell(Entity entity) {
 		this(entity, CellState.GRASS_SQUARE);
 	}
@@ -75,18 +79,34 @@ public class Cell {
 		return this.cellState.cellStateToString();
 	}
 
+	/**
+	 * Method to get the current State of the cell
+	 * @return cellState
+	 */
 	public CellState getCellState() {
 		return this.cellState;
 	}
-
+	
+	/**
+	 * Method to get the current Entity
+	 * @return
+	 */
 	public Entity getEntity() {
 		return this.entity;
 	}
 
+	/**
+	 * Method to set an Entity with a type Entity
+	 * @param entity
+	 */
 	public void setEntity(Entity entity) {
 		this.entity = entity;
 	}
 
+	/**
+	 * Method to get a Unit
+	 * @return unit
+	 */
 	public Unit getUnit() {
 		return (Unit) this.entity;
 	}
