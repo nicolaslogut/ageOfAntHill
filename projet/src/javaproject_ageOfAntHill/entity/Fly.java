@@ -9,7 +9,7 @@ package javaproject_ageOfAntHill.entity;
 
 public class Fly extends Unit {
 	/**
-	 * A fly's movement speed.
+	 * A fly's movement speed. 
 	 */
 	private final static int DEFAULT_FLY_SPEED = 6;
 	/**

@@ -12,7 +12,7 @@ package javaproject_ageOfAntHill.entity;
 
 public class Queen extends Unit {
 	/**
-	 * Queen's default movement speed.
+	 * Queen's default movement speed. 
 	 */
 	private final static int DEFAULT_QUEEN_SPEED = 0;
 	/**

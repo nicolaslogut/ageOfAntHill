@@ -25,7 +25,7 @@ public class Guardian extends Unit {
 	private static final int DEFAULT_HEAVY_UNIT_DAMAGE = 0;
 
 	/**
-	 * Default health.
+	 * Default health. 
 	 */
 	private static final int DEFAULT_HEAVY_UNIT_HP = 0;
 	/**

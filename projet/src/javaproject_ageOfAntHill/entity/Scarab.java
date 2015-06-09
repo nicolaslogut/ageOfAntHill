@@ -11,7 +11,7 @@ package javaproject_ageOfAntHill.entity;
 
 public class Scarab extends Unit {
 	/**
-	 * Scarab's default movement speed.
+	 * Scarab's default movement speed. 
 	 */
 	private final static int DEFAULT_BEETLE_SPEED = 2;
 	/**
