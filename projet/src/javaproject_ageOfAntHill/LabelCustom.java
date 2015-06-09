@@ -69,31 +69,31 @@ public class LabelCustom extends JPanel {
 			//jlentity.setIcon(new ImageIcon("./img/mobs/fly/fly-bd.png"));
 			break;
 		case "GUARD":
-			jlentity.setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
 			break;
 		case "LIZ":
-			jlentity.setIcon(new ImageIcon("./img/mobs/lizard/lizard-hd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
 			break;
 		case "QUEEN":
 			jlentity.setIcon(new ImageIcon("./img/mobs/queen/queen-b.png"));
 			break;
 		case "SCAR":
-			jlentity.setIcon(new ImageIcon("./img/mobs/scarab/scarab-bd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/scarab/scarab.png"));
 			break;
 		case "SCOUT":
-			jlentity.setIcon(new ImageIcon("./img/mobs/scout/scout-bd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/scout/scout.png"));
 			break;
 		case "SHOOT":
-			jlentity.setIcon(new ImageIcon("./img/mobs/shooter/shooter-bd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/shooter/shooter.png"));
 			break;
 		case "WARR":
-			jlentity.setIcon(new ImageIcon("./img/mobs/warrior/warrior-bd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/warrior/warrior.png"));
 			break;
 		case "WORK":
-			jlentity.setIcon(new ImageIcon("./img/mobs/worker/worker-bd.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/worker/worker.png"));
 			break;
 		case "AHILL":
-			jlentity.setIcon(new ImageIcon("./img/buildings/anthill.png"));
+			jlentity.setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
 			break;
 		default:
 		}
