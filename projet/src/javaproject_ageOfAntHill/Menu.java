@@ -10,10 +10,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Menu extends JFrame implements ActionListener {
-
 	/**
 	 * used to start a new game
 	 */
@@ -43,13 +43,21 @@ public class Menu extends JFrame implements ActionListener {
 	
 	public void init()
 	{
-	this.setSize(800, 600);
+	this.setSize(980, 980);
+	this.setResizable(false);
+	this.setLocationRelativeTo(null);
+	JPanel pan = new JPanel();
+	
+	pan.setSize(500,500);
 	GridLayout gl = new GridLayout(3, 1);
 	gl.setVgap(100);
-	this.setLayout(gl);
-	this.getContentPane().add(buttonNewGame);
-	this.getContentPane().add(buttonLoadGame);
-	this.getContentPane().add(buttonClose);
+	
+	
+	pan.setLayout(gl);
+	pan.add(buttonNewGame);
+	pan.add(buttonLoadGame);
+	pan.add(buttonClose);
+	this.setContentPane(pan);
 	buttonNewGame.addActionListener(this);
 	buttonLoadGame.addActionListener(this);
 	buttonClose.addActionListener(this);
