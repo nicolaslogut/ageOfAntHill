@@ -18,58 +18,103 @@ import javax.swing.OverlayLayout;
 @SuppressWarnings("serial")
 public class JPanelLeft extends JPanel {
 	
+	/**
+	 * Few JLabels contain all JLabels + the JButton
+	 */
 	private JLabel overlay;
 	private JLabel ressources;
 	private JLabel food;
 	private JLabel foodValue;
 	private JLabel earth;
 	private JLabel dirtValue;
-	private JButton building;
 	private JLabel selection;
+	private JLabel hpUnit;
+	private JLabel currentArmor;
+	private JButton building;
 	
+	/**
+	 * Set the type of the food and the dirt values
+	 */
 	private int foodValueInt;
 	private int dirtValueInt;
 
+	/**
+	 * The constructor of the JPanelLeft which contain all statistics and information about units etc...
+	 * @param interfHM
+	 */
 	public JPanelLeft(InterfaceHM interfHM){
 		
 		setLayout(new OverlayLayout(this));
-		
+		/**
+		 * Create the overlay for the JPanelLeft
+		 */
 		overlay = new JLabel(new ImageIcon("./img/overlay/LEFTPANEL_OVERLAY.png"));
-		
+		/**
+		 * Define the current ressources of the player
+		 */
 		ressources = new JLabel("<html>Ressources :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		ressources.setForeground(Color.white);
 		ressources.setFont(new Font("Sherif", Font.ITALIC, 20));
-		
+		/**
+		 * Define the sample text for the food of the player
+		 */
 		food = new JLabel("<html>Food :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", new ImageIcon("./img/miscs/FOOD.png"), JLabel.CENTER);
 		food.setForeground(Color.white);
 		food.setFont(new Font("Sherif", Font.ITALIC, 15));
-		
+		/**
+		 * Define the current FoodValue of the player
+		 */
 		foodValue = new JLabel("<html>" + foodValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		foodValue.setForeground(Color.white);
 		foodValue.setFont(new Font("Sherif", Font.ITALIC, 15));
-		
+		/**
+		 * Define the sample text for the dirt of the player
+		 */
 		earth = new JLabel("<html>Dirt :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		earth.setForeground(Color.white);
 		earth.setFont(new Font("Sherif", Font.ITALIC, 15));
-		
+		/**
+		 * Define the current dirtValue of the player
+		 */
 		dirtValue = new JLabel("<html>" + dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		dirtValue.setForeground(Color.white);
 		dirtValue.setFont(new Font("Sherif", Font.ITALIC, 15));
-		
+		/**
+		 * Define the JButton to build a new building
+		 */
 		building = new JButton(new ImageIcon("./img/overlay/BUILDING_ICON.png"));
 		building.addActionListener((ActionListener) interfHM);
 		building.setBorder(null);
-		
+		/**
+		 * Define the current hp of the selected Unit (not working for a multiple selection)
+		 */
+		hpUnit = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>HP :", JLabel.CENTER);
+		hpUnit.setForeground(Color.white);
+		hpUnit.setFont(new Font("Sherif", Font.ITALIC, 15));
+		/**
+		 * Define the current armor of the selected Unit (not working for a multiple selection)
+		 */
+		currentArmor = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>ARMOR :", JLabel.CENTER);
+		currentArmor.setForeground(Color.white);
+		currentArmor.setFont(new Font("Sherif", Font.ITALIC, 15));
+		/**
+		 * the default Picture Displayed when the game start
+		 */
 		selection = new JLabel(new ImageIcon("./img/mobs/worker/workerDisplay.png"), JLabel.CENTER);
 		
+		/**
+		 * Those add the different JLabel / JButton to the layout
+		 */
 		add(ressources, 0);
 		add(food, 1);
 		add(foodValue, 2);
 		add(earth, 3);
 		add(dirtValue, 4);
-		add(selection, 5);
-		add(building, 6);
-		add(overlay, 7);
+		add(hpUnit, 5);
+		add(currentArmor, 6);
+		add(selection, 7);
+		add(building, 8);
+		add(overlay, 9);
 	}
 	/**
 	 * This method get the Ressources (food & dirt)
@@ -123,7 +168,10 @@ public class JPanelLeft extends JPanel {
 	
 	
 	
-	
+	/**
+	 * change the state of the Displayed picture (Basic : Worker, changed with Fly, Scarab, Guardian, Shooter etc...) 
+	 * @param ent
+	 */
 	public void selectionEntity(Entity ent){
 		switch(ent.getType()){
 		case "FLY":
