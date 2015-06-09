@@ -1,26 +1,18 @@
 package javaproject_ageOfAntHill;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JFrame;
 
 import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.entity.Unit;
 import javaproject_ageOfAntHill.entity.buildable.Building;
 import javaproject_ageOfAntHill.map.Map;
 import javaproject_ageOfAntHill.map.Position;
-import javaproject_ageOfAntHill.Displaying;
 
 /**
  * Class for an interface of the game.
@@ -88,7 +80,11 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 			}
 		}
 		
-		this.addUnits(numLabel1/Map.NBLINE, numLabel2/Map.NBLINE, numLabel1%Map.NBCOLUMN, numLabel2%Map.NBCOLUMN, e);
+		int team = labelUnit1.getLabEntity().getTeam();		// only select units of the same team as the first selected one
+		
+		
+		
+		this.addUnits(numLabel1/Map.NBLINE, numLabel2/Map.NBLINE, numLabel1%Map.NBCOLUMN, numLabel2%Map.NBCOLUMN, e, team);
 		
 		this.addPictureSelection(e);
 		
@@ -102,7 +98,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * @param numCol2
 	 * @param e
 	 */
-	private void addUnits(int numLine1, int numLine2, int numCol1, int numCol2, MouseEvent e){		
+	private void addUnits(int numLine1, int numLine2, int numCol1, int numCol2, MouseEvent e, int team){		
 		int lineNumber;
 		int colNumber;
 			// gets the window of the game through this component's event
@@ -110,7 +106,8 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		if (numLine1 <= numLine2 && numCol1 <= numCol2){
 			for (lineNumber = numLine1 ; lineNumber <= numLine2 ; lineNumber++){
 				for (colNumber = numCol1 ; colNumber <= numCol2 ; colNumber++){
-					if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+					if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null 
+							&& team == wind.getLabelTab(lineNumber, colNumber).getLabEntity().getTeam()){
 						Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
 						Position pos = new Position(lineNumber, colNumber);
 						this.unitsPos.add(pos);
@@ -123,7 +120,8 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 			if (numLine1 <= numLine2 && numCol1 > numCol2){
 				for (lineNumber = numLine1 ; lineNumber <= numLine2 ; lineNumber++){
 					for (colNumber = numCol2 ; colNumber <= numCol1 ; colNumber++){
-						if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+						if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null 
+								&& team == wind.getLabelTab(lineNumber, colNumber).getLabEntity().getTeam()){
 							Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
 							Position pos = new Position(lineNumber, colNumber);
 							this.unitsPos.add(pos);
@@ -136,7 +134,8 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				if (numLine1 > numLine2 && numCol1 <= numCol2){
 					for (lineNumber = numLine2 ; lineNumber <= numLine1 ; lineNumber++){
 						for (colNumber = numCol1 ; colNumber <= numCol2 ; colNumber++){
-							if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+							if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null 
+									&& team == wind.getLabelTab(lineNumber, colNumber).getLabEntity().getTeam()){
 								Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
 								Position pos = new Position(lineNumber, colNumber);
 								this.unitsPos.add(pos);
@@ -148,7 +147,8 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				else {
 					for (lineNumber = numLine2 ; lineNumber <= numLine1 ; lineNumber++){
 						for (colNumber = numCol2 ; colNumber <= numCol1 ; colNumber++){
-							if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null){
+							if (wind.getLabelTab(lineNumber, colNumber).getLabEntity() != null 
+									&& team == wind.getLabelTab(lineNumber, colNumber).getLabEntity().getTeam()){
 								Entity ent = wind.getLabelTab(lineNumber, colNumber).getLabEntity();
 								Position pos = new Position(lineNumber, colNumber);
 								this.unitsPos.add(pos);
@@ -180,7 +180,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/lizard/lizardSelect.png"));
 				break;
 			case "QUEEN":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/queen/queen-b.png"));
+				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/queen/queenSelect.png"));
 				break;
 			case "SCAR":
 				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scarab/scarabSelect.png"));
@@ -216,59 +216,51 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 */
 	private void addPictureUnselection(MouseEvent e) {
 		Window wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
-		for (int numUnit= 0; numUnit < this.units.size(); numUnit++){
-			int line = this.unitsPos.get(numUnit).getX();
-			int col = this.unitsPos.get(numUnit).getY();
-			switch (this.units.get(numUnit).getType()){
-			case "FLY":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/fly/fly.png"));
-				break;
-			case "GUARD":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
-				break;
-			case "LIZ":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
-				break;
-			case "QUEEN":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/queen/queen-b.png"));
-				break;
-			case "SCAR":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scarab/scarab.png"));
-				break;
-			case "SCOUT":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scout/scout.png"));
-				break;
-			case "SHOOT":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/shooter/shooter.png"));
-				break;
-			case "WARR":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/warrior/warrior.png"));
-				break;
-			case "WORK":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/worker/worker.png"));
-				break;
-			case "AHILL":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
-				break;
-			case "HOUSE":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
-				break;
-			case "WALL":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
-				break;
-			default:
+		if (this.units != null){
+			for (int numUnit= 0; numUnit < this.units.size(); numUnit++){
+				int line = this.unitsPos.get(numUnit).getX();
+				int col = this.unitsPos.get(numUnit).getY();
+				switch (this.units.get(numUnit).getType()){
+				case "FLY":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/fly/fly.png"));
+					break;
+				case "GUARD":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
+					break;
+				case "LIZ":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
+					break;
+				case "QUEEN":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/queen/queen.png"));
+					break;
+				case "SCAR":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scarab/scarab.png"));
+					break;
+				case "SCOUT":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scout/scout.png"));
+					break;
+				case "SHOOT":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/shooter/shooter.png"));
+					break;
+				case "WARR":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/warrior/warrior.png"));
+					break;
+				case "WORK":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/worker/worker.png"));
+					break;
+				case "AHILL":
+					//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
+					break;
+				case "HOUSE":
+					//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+					break;
+				case "WALL":
+					//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
+					break;
+				default:
+				}
 			}
 		}
-	}
-	
-	/**
-	 * Allow the player to select one unit
-	 */
-	public void selectUnit(LabelCustom labelUnit){
-		Unit unit = (Unit) labelUnit.getLabEntity();
-		
-		// ...
-		
 	}
 	
 	/**

@@ -73,7 +73,7 @@ public class LabelCustom extends JPanel {
 			jlentity.setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
 			break;
 		case "QUEEN":
-			jlentity.setIcon(new ImageIcon("./img/mobs/queen/queen-b.png"));
+			jlentity.setIcon(new ImageIcon("./img/mobs/queen/queen.png"));
 			break;
 		case "SCAR":
 			jlentity.setIcon(new ImageIcon("./img/mobs/scarab/scarab.png"));
