@@ -43,7 +43,7 @@ public class JPanelLeft extends JPanel {
 	private int foodValueInt;
 	private int dirtValueInt;
 	private int hpUnitValueInt = 30;
-	private int currentArmorValueInt = 060;
+	private int currentArmorValueInt = 60;
 	/**
 	 * The constructor of the JPanelLeft which contain all statistics and information about units etc...
 	 * @param interfHM
@@ -129,7 +129,7 @@ public class JPanelLeft extends JPanel {
 		selection = new JLabel(new ImageIcon("./img/mobs/worker/workerDisplay.png"), JLabel.CENTER);
 		selectionType = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + selectionType + "", JLabel.CENTER);
 		selectionType.setForeground(Color.white);
-		selectionType.setFont(new Font("Sherif", Font.ITALIC, 25));
+		selectionType.setFont(new Font("Sherif", Font.BOLD, 25));
 		
 		/**
 		 * Those add the different JLabel / JButton to the layout
