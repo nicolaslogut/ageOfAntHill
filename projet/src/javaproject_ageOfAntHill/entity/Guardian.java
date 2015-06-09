@@ -20,21 +20,21 @@ public class Guardian extends Unit {
 	private static final int DEFAULT_HEAVY_UNIT_ARMOR = 0;
 
 	/**
-	 * Default damages
+	 * Default damages.
 	 */
 	private static final int DEFAULT_HEAVY_UNIT_DAMAGE = 0;
 
 	/**
-	 * Default health
+	 * Default health.
 	 */
 	private static final int DEFAULT_HEAVY_UNIT_HP = 0;
 	/**
-	 * Just like a serial name, it's used to identify a guardian's type
+	 * Just like a serial name, it's used to identify a guardian's type.
 	 */
 	private final static String GUARDIAN_TYPE = "GUARD";
 
 	/**
-	 * creates a guardian with its default stats
+	 * That creates a guardian with its default stats.
 	 */
 	public Guardian(int teamNumber) {
 		this.setRange(DEFAULT_UNIT_RANGE);
@@ -48,7 +48,7 @@ public class Guardian extends Unit {
 	}
 
 	/**
-	 * The guardian's armor is momentarily strenghened
+	 * The guardian's armor is momentarily strenghened.
 	 */
 	public void resister() { // si le 'momentanement' (le temps) est trop dur a
 								// gerer, trouver autre chose

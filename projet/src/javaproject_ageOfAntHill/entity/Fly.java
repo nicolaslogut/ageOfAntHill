@@ -9,16 +9,16 @@ package javaproject_ageOfAntHill.entity;
 
 public class Fly extends Unit {
 	/**
-	 * a fly's movement speed
+	 * A fly's movement speed.
 	 */
 	private final static int DEFAULT_FLY_SPEED = 6;
 	/**
-	 * Just like a serial name, it's used to identify a fly's type
+	 * Just like a serial name, it's used to identify a fly's type.
 	 */
 	private final static String FLY_TYPE = "FLY";
 	
 	/**
-	 * creates a fly with all its default stats values
+	 * That creates a fly with all its default stats values.
 	 */
 	public Fly(int teamNumber) {
 		this.setRange(DEFAULT_UNIT_RANGE);

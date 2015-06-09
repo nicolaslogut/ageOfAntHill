@@ -1,6 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 
 /**
+ * The "Scarab" class which allow to use scarab entity. 
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac
@@ -10,16 +11,16 @@ package javaproject_ageOfAntHill.entity;
 
 public class Scarab extends Unit {
 	/**
-	 * Scarab's default movement speed
+	 * Scarab's default movement speed.
 	 */
 	private final static int DEFAULT_BEETLE_SPEED = 2;
 	/**
-	 * Just like a serial name, it's used to identify a scarab's type
+	 * Just like a serial name, it's used to identify a scarab's type.
 	 */
 	private final static String SCARAB_TYPE = "SCAR";
 
 	/**
-	 * creates a scarab with its default stats
+	 * Creates a scarab with its default stats.
 	 */
 	public Scarab(int teamNumber) {
 		this.setRange(DEFAULT_UNIT_RANGE);
