@@ -178,7 +178,7 @@ public class Displaying implements Runnable, ActionListener {
 		
 		//creation label with an image(it's the banner on the top of the window) 
 		JLabel JBanner = new JLabel();
-		ImageIcon imgBanner = new ImageIcon("./img/BANNER.png");
+		ImageIcon imgBanner = new ImageIcon("./img/overlay/BANNER_OVERLAY.png");
 		JBanner.setSize(imgBanner.getIconWidth(),imgBanner.getIconHeight());
 		JBanner.setIcon(imgBanner);
 		banner.add(JBanner);
