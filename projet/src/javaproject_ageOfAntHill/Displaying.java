@@ -34,11 +34,11 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * default value of the window's width
 	 */
-	private final static int DEFAULT_WINDOW_WIDTH = 950;
+	private final static int DEFAULT_WINDOW_WIDTH = 975;
 	/**
 	 * default value of the window's height
 	 */
-	private final static int DEFAULT_WINDOW_HEIGHT = 950;
+	private final static int DEFAULT_WINDOW_HEIGHT = 975;
 	/**
 	 * 
 	 */
