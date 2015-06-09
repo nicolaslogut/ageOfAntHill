@@ -42,7 +42,8 @@ public class JPanelLeft extends JPanel {
 	 */
 	private int foodValueInt;
 	private int dirtValueInt;
-	private int hpUnitValueInt = 30;
+	private int hpUnitValueInt;
+	private int hpMaxUnitValueInt;
 	private int currentArmorValueInt = 60;
 	/**
 	 * The constructor of the JPanelLeft which contain all statistics and information about units etc...
@@ -102,7 +103,7 @@ public class JPanelLeft extends JPanel {
 		/**
 		 * Define the current hpUnitValue of the Selected Unit
 		 */
-		hpUnitValue = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + hpUnitValueInt, JLabel.CENTER);
+		hpUnitValue = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + hpUnitValueInt + "/" + hpUnitValueInt, JLabel.CENTER);
 		hpUnitValue.setForeground(Color.white);
 		hpUnitValue.setFont(new Font("Sherif", Font.ITALIC, 15));
 		/**
@@ -163,8 +164,14 @@ public class JPanelLeft extends JPanel {
 	public JLabel getImage(){
 		return overlay;
 	}
-	
-	
+	/**
+	 * This method allows you to set the Maximum HP and the current HP of the Entity
+	 * @param hp, maxHp
+	 */
+	public void setValue(int value, int maxValue){
+		this.hpUnitValueInt = value;
+		this.hpMaxUnitValueInt = maxValue;
+	}
 	
 	/**
 	 * Add food in the JPanelLeft
