@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.OverlayLayout;
 
 @SuppressWarnings("serial")
@@ -29,7 +30,11 @@ public class JPanelLeft extends JPanel {
 	private JLabel dirtValue;
 	private JLabel selection;
 	private JLabel hpUnit;
+	private JLabel hpUnitValue;
 	private JLabel currentArmor;
+	private JLabel currentArmorValue;
+	private JLabel stats;
+	private JLabel selectionType;
 	private JButton building;
 	
 	/**
@@ -37,7 +42,8 @@ public class JPanelLeft extends JPanel {
 	 */
 	private int foodValueInt;
 	private int dirtValueInt;
-
+	private int hpUnitValueInt = 30;
+	private int currentArmorValueInt = 060;
 	/**
 	 * The constructor of the JPanelLeft which contain all statistics and information about units etc...
 	 * @param interfHM
@@ -64,6 +70,7 @@ public class JPanelLeft extends JPanel {
 		/**
 		 * Define the current FoodValue of the player
 		 */
+		foodValueInt = 800;
 		foodValue = new JLabel("<html>" + foodValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		foodValue.setForeground(Color.white);
 		foodValue.setFont(new Font("Sherif", Font.ITALIC, 15));
@@ -76,6 +83,7 @@ public class JPanelLeft extends JPanel {
 		/**
 		 * Define the current dirtValue of the player
 		 */
+		dirtValueInt = 400;
 		dirtValue = new JLabel("<html>" + dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		dirtValue.setForeground(Color.white);
 		dirtValue.setFont(new Font("Sherif", Font.ITALIC, 15));
@@ -88,19 +96,40 @@ public class JPanelLeft extends JPanel {
 		/**
 		 * Define the current hp of the selected Unit (not working for a multiple selection)
 		 */
-		hpUnit = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>HP :", JLabel.CENTER);
+		hpUnit = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>HP :", JLabel.CENTER);
 		hpUnit.setForeground(Color.white);
 		hpUnit.setFont(new Font("Sherif", Font.ITALIC, 15));
 		/**
+		 * Define the current hpUnitValue of the Selected Unit
+		 */
+		hpUnitValue = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + hpUnitValueInt, JLabel.CENTER);
+		hpUnitValue.setForeground(Color.white);
+		hpUnitValue.setFont(new Font("Sherif", Font.ITALIC, 15));
+		/**
 		 * Define the current armor of the selected Unit (not working for a multiple selection)
 		 */
-		currentArmor = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>ARMOR :", JLabel.CENTER);
+		currentArmor = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + "ARMOR :", JLabel.CENTER);
 		currentArmor.setForeground(Color.white);
 		currentArmor.setFont(new Font("Sherif", Font.ITALIC, 15));
+		/**
+		 * Define the current currentArmorValue of the Selected Unit
+		 */
+		currentArmorValue = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + currentArmorValueInt, JLabel.CENTER);
+		currentArmorValue.setForeground(Color.white);
+		currentArmorValue.setFont(new Font("Sherif", Font.ITALIC, 15));
+		/**
+		 * Define the current statistics of the player
+		 */
+		stats = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Statistics :", JLabel.CENTER);
+		stats.setForeground(Color.white);
+		stats.setFont(new Font("Sherif", Font.ITALIC, 20));
 		/**
 		 * the default Picture Displayed when the game start
 		 */
 		selection = new JLabel(new ImageIcon("./img/mobs/worker/workerDisplay.png"), JLabel.CENTER);
+		selectionType = new JLabel("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" + selectionType + "", JLabel.CENTER);
+		selectionType.setForeground(Color.white);
+		selectionType.setFont(new Font("Sherif", Font.ITALIC, 25));
 		
 		/**
 		 * Those add the different JLabel / JButton to the layout
@@ -110,11 +139,15 @@ public class JPanelLeft extends JPanel {
 		add(foodValue, 2);
 		add(earth, 3);
 		add(dirtValue, 4);
-		add(hpUnit, 5);
-		add(currentArmor, 6);
-		add(selection, 7);
-		add(building, 8);
-		add(overlay, 9);
+		add(stats, 5);
+		add(hpUnit, 6);
+		add(hpUnitValue, 7);
+		add(currentArmor, 8);
+		add(currentArmorValue, 9);
+		add(selectionType, 10);
+		add(selection, 11);
+		add(building, 12);
+		add(overlay, 13);
 	}
 	/**
 	 * This method get the Ressources (food & dirt)
@@ -176,39 +209,51 @@ public class JPanelLeft extends JPanel {
 		switch(ent.getType()){
 		case "FLY":
 			selection.setIcon(new ImageIcon("./img/mobs/fly/flyDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Fly");
 			break;
 		case "GUARD":
 			selection.setIcon(new ImageIcon("./img/mobs/guardian/guardianDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Guardian");
 			break;
 		case "LIZ":
 			selection.setIcon(new ImageIcon("./img/mobs/lizard/lizardDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Snake");
 			break;
 		case "QUEEN":
 			selection.setIcon(new ImageIcon("./img/mobs/queen/queenDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Queen");
 			break;
 		case "SCAR":
 			selection.setIcon(new ImageIcon("./img/mobs/scarab/scarabDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Scarab");
 			break;
 		case "SCOUT":
 			selection.setIcon(new ImageIcon("./img/mobs/scout/scoutDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Scout");
 			break;
 		case "SHOOT":
 			selection.setIcon(new ImageIcon("./img/mobs/shooter/shooterDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Shooter");
 			break;
 		case "WARR":
 			selection.setIcon(new ImageIcon("./img/mobs/warrior/warriorDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Warrior");
 			break;
 		case "WORK":
 			selection.setIcon(new ImageIcon("./img/mobs/worker/workerDisplay.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Worker");
 			break;
 		case "AHILL":
 			selection.setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Anthill");
 			break;
 		case "HOUSE":
 			selection.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>House");
 			break;
-		case "WALL":
-			selection.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+		case "POSTGUARD":
+			selection.setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>PostGuard");
 			break;
 		default:
 		}
