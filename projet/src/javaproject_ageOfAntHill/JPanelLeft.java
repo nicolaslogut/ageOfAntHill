@@ -23,11 +23,12 @@ public class JPanelLeft extends JPanel {
 	private JLabel food;
 	private JLabel foodValue;
 	private JLabel earth;
-	private JLabel earthValue;
+	private JLabel dirtValue;
 	private JButton building;
 	private JLabel selection;
 	
-	private int tamer = 1;
+	private int foodValueInt;
+	private int dirtValueInt;
 
 	public JPanelLeft(InterfaceHM interfHM){
 		
@@ -39,21 +40,21 @@ public class JPanelLeft extends JPanel {
 		ressources.setForeground(Color.white);
 		ressources.setFont(new Font("Sherif", Font.ITALIC, 20));
 		
-		food = new JLabel("<html>Nourriture :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", new ImageIcon("./img/miscs/FOOD.png"), JLabel.CENTER);
+		food = new JLabel("<html>Food :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", new ImageIcon("./img/miscs/FOOD.png"), JLabel.CENTER);
 		food.setForeground(Color.white);
 		food.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
-		foodValue = new JLabel("<html>" + tamer + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
+		foodValue = new JLabel("<html>" + foodValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		foodValue.setForeground(Color.white);
 		foodValue.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
-		earth = new JLabel("<html>Terre :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
+		earth = new JLabel("<html>Dirt :<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		earth.setForeground(Color.white);
 		earth.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
-		earthValue = new JLabel("<html>" + tamer + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
-		earthValue.setForeground(Color.white);
-		earthValue.setFont(new Font("Sherif", Font.ITALIC, 15));
+		dirtValue = new JLabel("<html>" + dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
+		dirtValue.setForeground(Color.white);
+		dirtValue.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
 		building = new JButton(new ImageIcon("./img/overlay/BUILDING_ICON.png"));
 		building.addActionListener((ActionListener) interfHM);
@@ -65,19 +66,63 @@ public class JPanelLeft extends JPanel {
 		add(food, 1);
 		add(foodValue, 2);
 		add(earth, 3);
-		add(earthValue, 4);
+		add(dirtValue, 4);
 		add(selection, 5);
 		add(building, 6);
 		add(overlay, 7);
 	}
-	
+	/**
+	 * This method get the Ressources (food & dirt)
+	 * @return
+	 */
 	public JLabel getRessources(){
 		return ressources;
 	}
-	
+	/**
+	 * This method get the background Picture
+	 * @return overlay
+	 */
 	public JLabel getImage(){
 		return overlay;
 	}
+	
+	
+	
+	/**
+	 * Add food in the JPanelLeft
+	 * @param foodValue
+	 */
+	public void addFoodValue(int foodValue){
+		this.foodValueInt += foodValue;
+		this.foodValue.setText("<html>" + this.foodValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
+	}
+	/**
+	 * Remove food in the JPanelLeft
+	 * @param foodValue
+	 */
+	public void removeFoodValue(int foodValue){
+		this.foodValueInt -= foodValue;
+		this.foodValue.setText("<html>" + this.foodValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
+	}
+	/**
+	 * Add dirt in the JPanelLeft
+	 * @param dirtValue
+	 */
+	public void addDirtValue(int dirtValue){
+		this.dirtValueInt += dirtValue;
+		this.dirtValue.setText("<html>" + this.dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
+	}
+	/**
+	 * Remove dirt in the JPanelLeft
+	 * @param dirtValue
+	 */
+	public void removeDirtValue(int dirtValue){
+		this.dirtValueInt -= dirtValue;
+		this.dirtValue.setText("<html>" + this.dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
+	}
+	
+	
+	
 	
 	public void selectionEntity(Entity ent){
 		switch(ent.getType()){

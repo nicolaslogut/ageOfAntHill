@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javaproject_ageOfAntHill.Displaying;
 import javaproject_ageOfAntHill.LabelCustom;
+import javaproject_ageOfAntHill.Ressource;
 import javaproject_ageOfAntHill.entity.Fly;
 import javaproject_ageOfAntHill.entity.Snake;
 import javaproject_ageOfAntHill.entity.Queen;
@@ -279,6 +280,32 @@ public class Map implements InterfaceMap {
 			}
 		}
 	}
+	
+	
+	/*public void generateFood(Displaying disp){
+		/**
+		 * Init values of Lines and Cols
+		 */
+		/*int startLine=0;
+		int startCol=0;
+		
+		Random rand = new Random();
+		// adds a defined number of enemy units of each type randomly in the remaining places of the map
+		// adds the flies randomly on the map
+		int nbEnemies = 0;
+		while (nbEnemies<MAX_FLIES_NUMBER){
+			rand = new Random();
+			int randNbLines = rand.nextInt(NBLINE-startLine) + startLine;
+			int randNbCols = rand.nextInt(NBCOLUMN);
+			if (randNbLines<startLine && randNbCols<startCol)randNbCols = rand.nextInt(NBCOLUMN-startCol) + startCol;
+			
+			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE && this.grid[randNbLines][randNbCols].getEntity()==null) {
+				this.grid[randNbLines][randNbCols].getRessource().getFood(150);
+				disp.getJpanelLeft().addFoodValue();
+				nbEnemies++;
+			}
+		}
+	}*/
 	
 	/**
 	 * converts a Position (x,y) into the number of a Label
