@@ -229,8 +229,6 @@ public class Displaying implements Runnable, ActionListener {
 		}
 	}
 	
-	
-	
 	public Window getFrame(){
 		return this.window;
 	}
