@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javaproject_ageOfAntHill.map.Map;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -40,9 +41,12 @@ public class Menu extends JFrame implements ActionListener {
 	
 	public Menu(Displaying disp){
 		this.disp = disp;
-		buttonNewGame = new JButton("New game");
-		buttonLoadGame = new JButton("Load a game");
-		buttonClose = new JButton("close");
+		buttonNewGame = new JButton("", new ImageIcon("./img/overlay/BUTTON-NEWGAME.png"));
+		buttonNewGame.setBorder(null);
+		buttonLoadGame = new JButton("",  new ImageIcon("./img/overlay/BUTTON-LOADGAME.png"));
+		buttonLoadGame.setBorder(null);
+		buttonClose = new JButton("",  new ImageIcon("./img/overlay/BUTTON-CLOSE.png"));
+		buttonClose.setBorder(null);
 		this.split1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		//this.split3 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -53,7 +57,8 @@ public class Menu extends JFrame implements ActionListener {
 	
 	public void init()
 	{
-	this.setSize(300, 400);
+	this.setTitle("Age Of AntHill");	
+	this.setSize(300, 450);
 	this.setResizable(false);
 	this.setLocationRelativeTo(null);
 	JPanel pan1 = new JPanel();
