@@ -92,7 +92,7 @@ public class Displaying implements Runnable, ActionListener {
 		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		
 		this.menuBar = new JMenuBar();
-		
+		this.jpanelLeft = new JPanelLeft(interfHM);
 	
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
@@ -164,7 +164,6 @@ public class Displaying implements Runnable, ActionListener {
 		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
-		this.jpanelLeft = new JPanelLeft();
 		
 		this.window.addGameGrid(this.gridOfTheGame);
 		

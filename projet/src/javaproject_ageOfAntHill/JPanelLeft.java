@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javaproject_ageOfAntHill.entity.Entity;
 
@@ -14,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 
 @SuppressWarnings("serial")
-public class JPanelLeft extends JPanel{
+public class JPanelLeft extends JPanel {
 	
 	private JLabel overlay;
 	private JLabel ressources;
@@ -27,7 +29,7 @@ public class JPanelLeft extends JPanel{
 	
 	private int tamer = 1;
 	
-	public JPanelLeft(){
+	public JPanelLeft(InterfaceHM interfHM){
 		
 		setLayout(new OverlayLayout(this));
 		
@@ -54,7 +56,7 @@ public class JPanelLeft extends JPanel{
 		earthValue.setFont(new Font("Sherif", Font.ITALIC, 15));
 		
 		building = new JButton(new ImageIcon("./img/overlay/BUILDING_ICON.png"));
-		
+		building.addActionListener((ActionListener) interfHM);
 		selection = new JLabel("", JLabel.CENTER);
 		
 		add(ressources, 0);
