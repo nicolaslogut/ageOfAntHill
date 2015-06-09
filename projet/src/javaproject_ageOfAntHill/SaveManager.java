@@ -55,7 +55,7 @@ public class SaveManager {
 				new FileOutputStream(this.filename), "utf-8"))) {
 			for(Save save : this.saves)
 				writer.write(save+"\n");
-		} catch (UnsupportedEncodingException e) {
+		} catch (UnsupportedEncodingException e){
 			System.out.println("Unsupported encoding");
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
