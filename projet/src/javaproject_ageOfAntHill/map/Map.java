@@ -342,4 +342,16 @@ public class Map implements InterfaceMap {
 		return mapAsciiArt;
 	}
 
+	public static int getNbColumn() {
+		return NBCOLUMN;
+	}
+
+	public static int getNbLine() {
+		return NBLINE;
+	}
+
+	public Cell[][] getGrid() {
+		return this.grid;
+	}
+
 }
