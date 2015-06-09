@@ -77,7 +77,7 @@ public class Displaying implements Runnable, ActionListener {
 	private JPanel banner;
 	/**
 	 * interface etc...
-	 */
+	 */ 
 	private InterfaceHM interfHM;
 	
 	
