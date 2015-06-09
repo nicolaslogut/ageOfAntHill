@@ -5,7 +5,7 @@ import java.util.Random;
 import javaproject_ageOfAntHill.Displaying;
 import javaproject_ageOfAntHill.LabelCustom;
 import javaproject_ageOfAntHill.entity.Fly;
-import javaproject_ageOfAntHill.entity.Lizard;
+import javaproject_ageOfAntHill.entity.Snake;
 import javaproject_ageOfAntHill.entity.Queen;
 import javaproject_ageOfAntHill.entity.Scarab;
 import javaproject_ageOfAntHill.entity.Worker;
@@ -39,9 +39,9 @@ public class Map implements InterfaceMap {
 	 */
 	private final static int MAX_FLIES_NUMBER = 15;
 	/**
-	 * initial number of lizards (enemy unit)
+	 * initial number of snakes (enemy unit)
 	 */
-	private final static int MAX_LIZARDS_NUMBER = 15;
+	private final static int MAX_SNAKES_NUMBER = 15;
 	/**
 	 * initial number of scarabs (enemy unit)
 	 */
@@ -245,9 +245,9 @@ public class Map implements InterfaceMap {
 				nbEnemies++;
 			}
 		}
-		// adds the lizards randomly on the map
+		// adds the Snakes randomly on the map
 		nbEnemies=0;
-		while (nbEnemies<MAX_LIZARDS_NUMBER){
+		while (nbEnemies<MAX_SNAKES_NUMBER){
 			rand = new Random();
 			int randNbLines = rand.nextInt(NBLINE-startLine) + startLine;
 			int randNbCols = rand.nextInt(NBCOLUMN);
@@ -255,9 +255,9 @@ public class Map implements InterfaceMap {
 				randNbCols = rand.nextInt(NBCOLUMN-startCol) + startCol;
 			if (this.grid[randNbLines][randNbCols].cellState == CellState.GRASS_SQUARE 
 					&& this.grid[randNbLines][randNbCols].getEntity()==null) {
-				Lizard lizard = new Lizard(2);
-				this.grid[randNbLines][randNbCols].setEntity(lizard);
-				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(lizard);
+				Snake snake = new Snake(2);
+				this.grid[randNbLines][randNbCols].setEntity(snake);
+				disp.getLabelTab(randNbLines, randNbCols).addEntityMap(snake);
 				nbEnemies++;
 			}
 		}

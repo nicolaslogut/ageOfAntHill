@@ -1,17 +1,12 @@
 package javaproject_ageOfAntHill;
 
-import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.map.Map;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -34,20 +29,15 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * default value of the window's width
 	 */
-	private final static int DEFAULT_WINDOW_WIDTH = 950;
+	private final static int DEFAULT_WINDOW_WIDTH = 975;
 	/**
 	 * default value of the window's height
 	 */
-	private final static int DEFAULT_WINDOW_HEIGHT = 950;
-	/**
-	 * 
-	 */
-	private InterfaceHM interfHM;
-
+	private final static int DEFAULT_WINDOW_HEIGHT = 975;
 	/**
 	 * window of the game
 	 */
-	private JFrame window;
+	private Window window;
 	
 	/**
 	 * items in the JMenu bar
@@ -62,8 +52,10 @@ public class Displaying implements Runnable, ActionListener {
 	 * grid of the game
 	 */
 	private JPanel gridOfTheGame;
+	/**
+	 * panel that displays informations on the selected units
+	 */
 	private JPanel ressourcesOfThePlayer;
-
 	/**
 	 * part of the window with the game and the menu bar
 	 */
@@ -76,10 +68,7 @@ public class Displaying implements Runnable, ActionListener {
 	 * menu bar of the window
 	 */
 	private JMenuBar menuBar;
-	/**
-	 * used to place units images (they're stored inside this grid of the game)
-	 */
-	private LabelCustom[][] tab;
+	
 	/**
 	 * used to change the window's layout (especially the panel of the game)
 	 */
@@ -89,15 +78,13 @@ public class Displaying implements Runnable, ActionListener {
 	
 	
 	public Displaying(InterfaceHM interfHM) {
-
-		this.interfHM = interfHM;
+		this.window = new Window(interfHM);
 
 		this.splitGame = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.splitRessources = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		
-		this.window = new JFrame();
 		this.menuBar = new JMenuBar();
-		this.tab = new LabelCustom[Map.NBLINE][Map.NBCOLUMN];
+		
 	
 		this.window.setJMenuBar(this.menuBar);
 		this.gridOfTheGame = new JPanel();
@@ -159,24 +146,18 @@ public class Displaying implements Runnable, ActionListener {
 		//add a menu option	
 			this.menuBar.add(game);
 
-			
+		
 		this.gridOfTheGame.setBounds(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		GridLayout gl = new GridLayout(Map.NBLINE, Map.NBCOLUMN);
 		this.gridOfTheGame.setLayout(gl);
 		this.jpanelLeft = new JPanelLeft();
 		
+		this.window.addGameGrid(this.gridOfTheGame);
+		
 		//add on the JPanel ressourcesOfThePlayer the JPanel jpanelLeft
 		ressourcesOfThePlayer.add(this.jpanelLeft);
 		
-		// creation of the cells of the game grid
-		for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
-			LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
-			cell.addMouseListener((MouseListener) this.interfHM);
-			cell.addMouseMotionListener((MouseMotionListener) this.interfHM);
-			this.getGridOfTheGame().add(cell);
-			this.addCellTab(numCell, tab, cell);
-			this.getGridOfTheGame().setComponentZOrder(cell, numCell);
-		}
+		
 		
 		//add on the JSplitpane SplitGame,the gridOfTheGame( map)
 		splitGame.add(this.gridOfTheGame);
@@ -248,13 +229,10 @@ public class Displaying implements Runnable, ActionListener {
 		}
 	}
 	
-	public void addCellTab(int numCell, LabelCustom[][] tabEntity, LabelCustom cell){
-		int col=numCell%Map.NBCOLUMN;
-		int line=numCell/Map.NBLINE;
-		tabEntity[line][col]=cell;
+	
+	
+	public Window getFrame(){
+		return this.window;
 	}
 	
-	public LabelCustom getLabelTab(int line, int col){
-		return this.tab[line][col];
-	}
 }
