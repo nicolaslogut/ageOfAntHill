@@ -18,19 +18,25 @@ public class JPanelLeft extends JPanel {
 	/**
 	 * Few JLabels contain all JLabels + the JButton
 	 */
-	private JLabel overlay;
 	private JLabel ressources;
 	private JLabel food;
 	private JLabel foodValue;
 	private JLabel earth;
 	private JLabel dirtValue;
+	/**
+	 * Few JLabel which contain the Selected unit + his values
+	 */
 	private JLabel selection;
+	private JLabel selectionType;
+	private JLabel stats;
 	private JLabel hpUnit;
 	private JLabel hpUnitValue;
 	private JLabel currentArmor;
 	private JLabel currentArmorValue;
-	private JLabel stats;
-	private JLabel selectionType;
+	/**
+	 * The JLabel used for the Overlay Background
+	 */
+	private JLabel overlay;
 	/**
 	 * Few JButton contain all building options
 	 */
@@ -99,18 +105,24 @@ public class JPanelLeft extends JPanel {
 		building = new JButton(new ImageIcon("./img/overlay/BUILDING_ICON.png"));
 		building.addActionListener((ActionListener) interfHM);
 		building.setBorder(null);
-		
-		/*house = new JButton(new ImageIcon("./img/overlay/HOUSE_BUTTON.png"));
+		/**
+		 * Set a JButton to create a new Building : House
+		 */
+		house = new JButton(new ImageIcon("./img/overlay/HOUSE_BUTTON.png"));
 		house.addActionListener((ActionListener) interfHM);
 		house.setBorder(null);
-		
+		/**
+		 * Set a JButton to create a new Building : AntHill
+		 */
 		anthill = new JButton(new ImageIcon("./img/overlay/ANTHILL_BUTTON.png"));
 		anthill.addActionListener((ActionListener) interfHM);
 		anthill.setBorder(null);
-		
-		outpost = new JButton(new ImageIcon("./img/overlay/outpost_BUTTON.png"));
+		/**
+		 * Set a JButton to create a new Building : Outpose
+		 */
+		outpost = new JButton(new ImageIcon("./img/overlay/OUTPOST_BUTTON.png"));
 		outpost.addActionListener((ActionListener) interfHM);
-		outpost.setBorder(null);*/
+		outpost.setBorder(null);
 		
 
 		
