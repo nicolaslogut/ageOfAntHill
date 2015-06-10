@@ -409,21 +409,29 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener, Ke
 	 */
 	public void createBuilding(String build) {		
 		Building myBuild;
+		int buildingCost=0;
 		switch (build){
 		case "AHILL":
 			myBuild = new AntHill();
+			buildingCost = 150;
 			break;
 		case "HOUSE":
 			myBuild = new House();
+			buildingCost = 120;
 			break;
 		case "POSTG":
 			myBuild = new PostGuard();
+			buildingCost = 110;
 			break;
 		default:
 			myBuild = null;
 		}
-		this.map.getCell(this.creatingPos).setEntity(myBuild);
-		this.lab.addEntityMap(myBuild);
+		if (buildingCost <= wind.getDisp().getJpanelLeft().getDirtValue()) {
+			this.map.getCell(this.creatingPos).setEntity(myBuild);
+			this.lab.addEntityMap(myBuild);
+			wind.getDisp().getJpanelLeft().removeDirtValue(buildingCost);
+		}
+		
 	}
 	
 	/**

@@ -239,7 +239,7 @@ public class JPanelLeft extends JPanel {
 	 */
 	public void addDirtValue(int dirtValue){
 		this.dirtValueInt += dirtValue;
-		this.dirtValue.setText("<html>" + this.dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
+		this.dirtValue.setText("<html>" + this.dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
 	}
 	/**
 	 * Remove dirt in the JPanelLeft
@@ -247,9 +247,22 @@ public class JPanelLeft extends JPanel {
 	 */
 	public void removeDirtValue(int dirtValue){
 		this.dirtValueInt -= dirtValue;
-		this.dirtValue.setText("<html>" + this.dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
+		this.dirtValue.setText("<html>" + this.dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></html>");
 	}
-	
+	/**
+	 * returns the current amount of Dirt
+	 * @return
+	 */
+	public int getDirtValue(){
+		return this.dirtValueInt;
+	}
+	/**
+	 * returns the current amount of food
+	 * @return
+	 */
+	public int getFoodValue(){
+		return this.foodValueInt;
+	}
 	
 	
 	/**
