@@ -272,6 +272,20 @@ public class Displaying implements Runnable, ActionListener {
 	 * starts a new game
 	 */
 	public void startNewGame(){
+		// reinitialization of the current game
+		if (this.game != null){
+			this.game.reinitMap();
+			this.game = null;
+				// to resset all the labels' pictures one by one
+			for (int numLine =0 ; numLine < Map.NBLINE; numLine++){
+				for (int numCol =0 ; numCol < Map.NBCOLUMN ; numCol++){
+					this.window.getLabelTab(numLine, numCol).rmvEntityMap();
+					this.window.getLabelTab(numLine, numCol).rmvGroundMap();
+				}
+			}
+		}
+		
+		// creating the new game
 		this.game = new Game(interfHM);
 		this.game.createGame(this);
 	}

@@ -126,4 +126,9 @@ public class LabelCustom extends JPanel {
 		}
 	}
 
+	public void rmvGroundMap() {
+		jlground.setIcon(null);
+		jlground.setIcon(new ImageIcon("./img/tiles/GRASS_SQUARE.png"));
+	}
+
 }

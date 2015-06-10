@@ -21,14 +21,6 @@ public class Game {
 	 * interface etc...
 	 */
 	private InterfaceHM interfHM;
-	/**
-	 * int for the quantity of Food
-	 */
-	private int quantityFood;
-	/**
-	 * int for the quantity of Dirt
-	 */
-	private int quantityDirt;
 
 	/**
 	 * The game creation. 
@@ -79,8 +71,19 @@ public class Game {
 	 */
 	public void loadGame() {
 	}
-
+	
+	/**
+	 * returns the map
+	 * @return
+	 */
 	public InterfaceMap getMap() {
 		return this.theMap;
+	}
+	
+	/**
+	 * reinitialize the map
+	 */
+	public void reinitMap(){
+		this.theMap = null;
 	}
 }
