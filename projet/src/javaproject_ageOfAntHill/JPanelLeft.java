@@ -31,7 +31,13 @@ public class JPanelLeft extends JPanel {
 	private JLabel currentArmorValue;
 	private JLabel stats;
 	private JLabel selectionType;
+	/**
+	 * Few JButton contain all building options
+	 */
 	private JButton building;
+	private JButton anthill;
+	private JButton house;
+	private JButton outpost;
 	
 	/**
 	 * Set the type of the food and the dirt values and unit informations
@@ -84,12 +90,30 @@ public class JPanelLeft extends JPanel {
 		dirtValue = new JLabel("<html>" + dirtValueInt + "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", JLabel.CENTER);
 		dirtValue.setForeground(Color.white);
 		dirtValue.setFont(new Font("Sherif", Font.ITALIC, 15));
+		
+		
+		
 		/**
 		 * Define the JButton to build a new building
 		 */
 		building = new JButton(new ImageIcon("./img/overlay/BUILDING_ICON.png"));
 		building.addActionListener((ActionListener) interfHM);
 		building.setBorder(null);
+		
+		/*house = new JButton(new ImageIcon("./img/overlay/HOUSE_BUTTON.png"));
+		house.addActionListener((ActionListener) interfHM);
+		house.setBorder(null);
+		
+		anthill = new JButton(new ImageIcon("./img/overlay/ANTHILL_BUTTON.png"));
+		anthill.addActionListener((ActionListener) interfHM);
+		anthill.setBorder(null);
+		
+		outpost = new JButton(new ImageIcon("./img/overlay/outpost_BUTTON.png"));
+		outpost.addActionListener((ActionListener) interfHM);
+		outpost.setBorder(null);*/
+		
+
+		
 		/**
 		 * Define the current hp of the selected Unit (not working for a multiple selection)
 		 */
@@ -145,6 +169,9 @@ public class JPanelLeft extends JPanel {
 		add(selectionType, 10);
 		add(selection, 11);
 		add(building, 12);
+		//add(house, 13);
+		//add(anthill, 14);
+		//add(outpost, 15);
 		add(overlay, 13);
 	}
 	/**
@@ -227,7 +254,7 @@ public class JPanelLeft extends JPanel {
 			selection.setIcon(new ImageIcon("./img/mobs/guardian/guardianDisplay.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Guardian");
 			break;
-		case "LIZ":
+		case "SNA":
 			selection.setIcon(new ImageIcon("./img/mobs/snake/snakeDisplay.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Snake");
 			break;
@@ -263,9 +290,9 @@ public class JPanelLeft extends JPanel {
 			selection.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>House");
 			break;
-		case "POSTGUARD":
-			selection.setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
-			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>PostGuard");
+		case "outpost":
+			selection.setIcon(new ImageIcon("./img/buildings/OUTPOST_BUILDING.png"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>outpost");
 			break;
 		default:
 		}
@@ -274,11 +301,11 @@ public class JPanelLeft extends JPanel {
 	public void selectionEntity(int team){
 		switch (team){
 		case 1:
-			selection.setIcon(new ImageIcon("./img/mobs/alliesDisplay"));
+			selection.setIcon(new ImageIcon("./img/mobs/alliesDisplay.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Allies");
 			break;
 		case 2:
-			selection.setIcon(new ImageIcon("./img/mobs/enemiesDisplay"));
+			selection.setIcon(new ImageIcon("./img/mobs/enemiesDisplay.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Enemies");
 			break;
 		}
