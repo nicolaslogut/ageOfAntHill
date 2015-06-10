@@ -242,7 +242,8 @@ public class Displaying implements Runnable, ActionListener {
 		instructions += "You get food by killing an enemy unit\n";
 		instructions += "Your initial amount of food is 800 and your initial amount of dirt is 400\n";
 		instructions += "\n\nTo create a building, you first need to select a worker and then press b\n";
-		instructions += "Then choose a building : a=AntHill ; h=House ; p=PostGame";
+		instructions += "Then you need to clic on a near cell\n";
+		instructions += "Finally you have to choose a building : a=AntHill ; h=House ; p=PostGame";
 
 		if (selectedItem == this.itemAbout) {
 			JOptionPane.showMessageDialog(this.window, instructions, "About",
