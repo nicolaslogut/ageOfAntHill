@@ -2,15 +2,22 @@ package javaproject_ageOfAntHill;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
 import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.entity.Unit;
+import javaproject_ageOfAntHill.entity.buildable.AntHill;
 import javaproject_ageOfAntHill.entity.buildable.Building;
+import javaproject_ageOfAntHill.entity.buildable.House;
+import javaproject_ageOfAntHill.entity.buildable.PostGuard;
+import javaproject_ageOfAntHill.map.CellState;
 import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Map;
 import javaproject_ageOfAntHill.map.Position;
@@ -23,7 +30,7 @@ import javaproject_ageOfAntHill.map.Position;
  *
  * @version 20150607
  */
-public class Interface implements InterfaceHM, MouseListener, ActionListener {	
+public class Interface implements InterfaceHM, MouseListener, ActionListener, KeyListener {	
 	/**
 	 * 	value changing according to the situation: 
 	 * 		=> 0 when no selected unit;
@@ -33,6 +40,12 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * 		=> check if there is a fight ? then => 0
 	 */
 	private volatile int clickState;
+	/**
+	 * value of the current state of the key listeners events
+	 * 0 => no key pressed
+	 * 1 => user already chose b (for building) => then he needs to select a type of building to build
+	 */
+	private volatile int keyState;
 	/**
 	 * temporary selected cell
 	 */
@@ -61,6 +74,14 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * window of the game
 	 */
 	private Window wind;
+	/**
+	 * used to store a position (used to create a new building)
+	 */
+	private Position creatingPos;
+	/**
+	 * corresponds to the grid of the map
+	 */
+	private InterfaceMap map;
 	
 	/**
 	 * creates new interface with all attributes non-existent
@@ -73,7 +94,10 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		this.wind = null;
 		this.lab = null;
 		this.event = null;
-		clickState=0;
+		this.creatingPos = null;
+		this.map = null;
+		clickState = 0;
+		keyState = 0;
 	}
 	
 	/**
@@ -383,8 +407,23 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	/**
 	 * Allows the player to create a building.
 	 */
-	public void createBuilding() {
-		// selectionEntity(Entity ent); in JPanelLeft
+	public void createBuilding(String build) {		
+		Building myBuild;
+		switch (build){
+		case "AHILL":
+			myBuild = new AntHill();
+			break;
+		case "HOUSE":
+			myBuild = new House();
+			break;
+		case "POSTG":
+			myBuild = new PostGuard();
+			break;
+		default:
+			myBuild = null;
+		}
+		this.map.getCell(this.creatingPos).setEntity(myBuild);
+		this.lab.addEntityMap(myBuild);
 	}
 	
 	/**
@@ -394,10 +433,26 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		this.wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
+		this.map = wind.getDisp().getGame().getMap();
 		
 		LabelCustom label = (LabelCustom) e.getComponent();
 		
-		if (label.getLabEntity()==null && e.getButton()!=3){
+		if (label.getLabEntity() == null && e.getButton() != 3 && e.getButton() != 2){
+			if (this.units != null && this.units.size() == 1 && this.units.get(0).getType() == "WORK"){
+				label.requestFocusInWindow();
+				// gets focus on label (used for next keylistener)
+				reinitializeSelection();
+				this.lab = label;
+				for (int numLine = 0 ; numLine < Map.NBLINE ; numLine++){
+					for (int numCol = 0 ; numCol < Map.NBCOLUMN ; numCol++){
+						if (wind.getLabelTab(numLine, numCol) == label){
+							this.creatingPos = new Position (numLine, numCol);
+							return;
+						}
+					}
+				}
+			}
+			
 				// looses all the selected entities and then select the cell
 			reinitializeSelection();
 			return;
@@ -415,8 +470,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 			clickState = 3;
 			break;
 			
-		case 1:
-		case 2:		//						LEFT CLICK - MIDDLE CLICK
+		case 1:		// select				LEFT CLICK
 			switch (clickState){
 			case 0:
 				if (label.getLabEntity().getMaxHealthPoints() > 40) { // building
@@ -440,10 +494,18 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 			}
 			break;
 			
+		case 2:		// 	gather dirt			MIDDLE CLICK
+			if (clickState >= 2 && this.units.size()==1 && lab.getLabEntity().getType()=="WORK") {
+				gatherDirt();
+				break;
+			}
+			this.reinitializeSelection();
+			break;
 		default:	// nothing happening
 		}
+		
 	}
-	
+
 	/**
 	 * reset all the attributes to null,
 	 * except clickState wich is taking the value 0 (=nothing selected)
@@ -455,9 +517,29 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		this.unitsPos = null;
 		this.building = null;
 		this.buildingPos = null;
+		this.creatingPos = null;
 		this.lab = null;
 		this.clickState = 0;
+		keyState = 0;
 		this.event = null;
+	}
+	
+	/**
+	 * the worker gathers food (by checking if there is any one cell everywhere around him
+	 */
+	private void gatherDirt() {
+		Position newPos;
+		for (int numPos = 0 ; numPos < 8 ; numPos++){
+			newPos = getNewPosition(this.unitsPos.get(0), numPos, map);
+			if (map.getCell(newPos).getCellState() == CellState.GRASS_SQUARE && map.getCell(newPos).getEntity() == null 
+					&& map.getCell(newPos).getRessource().getDirtQuantity() != 0) {
+				wind.getDisp().getJpanelLeft().addDirtValue(map.getCell(newPos).getRessource().getDirtQuantity());
+				map.getCell(newPos).getRessource().setDirtQuantity(0);
+				numPos = 7;		// same as a break here
+			}
+		}
+		this.reinitializeSelection();
+		
 	}
 	
 	/**
@@ -468,7 +550,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * @return
 	 */
 	public Position getNewPosition(Position pos, int numPos, InterfaceMap map){
-		Position newPos = null;
+		Position newPos = pos;
 		switch (numPos){
 		case 0:
 			if (!(map.notOutOfTheMap(new Position(pos.getX()-1, pos.getY()-1)))){
@@ -573,13 +655,13 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	// these following listeners probably won't be used
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 				
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 	/**
@@ -589,29 +671,60 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
-//		int numLabel;
-//		switch (e.getButton()){
-//		case 1:		// start unit selection
-//			for (numLabel=0;numLabel<Map.NBCOLUMN*Map.NBLINE;numLabel++){
-//				if (e.getSource()==(LabelCustom) e.getComponent().getParent().getComponent(numLabel)){
-//					//System.out.println("label num "+numLabel);
-//				}
-//			}
-//		default:
-//			break;
-//		}
+		// Auto-generated method stub
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent ev) {
+			// first step => open a 'virtual' menu to create a new building
+		if (keyState==0 && (ev.getKeyCode() == 66 || ev.getKeyCode() == 98)) { // if user pressed 'B' or 'b'
+			keyState=1;
+		}
+		else { // second step => choose the building to build by pressing its first letter
+			if (keyState==1 && (ev.getKeyCode() == 65 || ev.getKeyCode() == 97)) { // if user pressed 'A' or 'a'
+				keyState=0;
+				if (this.lab != null && lab.getLabEntity() == null)
+					createBuilding("AHILL");
+			} else if (keyState==1 && (ev.getKeyCode() == 72 || ev.getKeyCode() == 104)) { // if user pressed 'H' or 'h'
+				keyState=0;
+				if (this.lab != null && lab.getLabEntity() == null)
+					createBuilding("HOUSE");
+			} else if (keyState==1 && (ev.getKeyCode() == 80 || ev.getKeyCode() == 112)) { // if user pressed 'P' or 'p'
+				keyState=0;
+				if (this.lab != null && lab.getLabEntity() == null)
+					createBuilding("POSTG");
+			}
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// Auto-generated method stub
+
+	}
+	
+	/**
+	 * used when a key is typed
+	 * its only purpose will be to build a new building
+	 */
+	@Override
+	public void keyTyped(KeyEvent ev) {
+		// Auto-generated method stub
+
 	}
 
 }

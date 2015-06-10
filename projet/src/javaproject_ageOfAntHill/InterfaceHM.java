@@ -24,7 +24,7 @@ public interface InterfaceHM {
 
 	public void moveUnit(LabelCustom label);
 
-	public void createBuilding();
+	public void createBuilding(String build);
 
 	public void mouseClicked(MouseEvent e);
 

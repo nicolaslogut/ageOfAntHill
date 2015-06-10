@@ -38,10 +38,6 @@ public class LabelCustom extends JPanel {
 		add(jlentity, 0);
 		jlground = new JLabel(new ImageIcon("./img/tiles/GRASS_SQUARE.png"));
 		add(jlground, 1);
-
-		// this.setIcon(new ImageIcon("./img/GRASS_SQUARE.png"));
-		// setOpaque(true);
-		// setIcon(new ImageIcon("./img/mobs/guardian/guardian-bd.png"));
 	}
 	
 	/**
@@ -50,6 +46,10 @@ public class LabelCustom extends JPanel {
 	 */
 	public JLabel getJlentity() {
 		return jlentity;
+	}
+	
+	public JLabel getJlground() {
+		return jlground;
 	}
 	
 	/**
@@ -96,8 +96,8 @@ public class LabelCustom extends JPanel {
 		case "HOUSE":
 			jlentity.setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
 			break;
-		case "WALL":
-			jlentity.setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
+		case "POSTG":
+			jlentity.setIcon(new ImageIcon("./img/buildings/OUTPOST_BUILDING.png"));
 			break;
 		default:
 		}

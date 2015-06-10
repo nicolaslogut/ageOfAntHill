@@ -1,5 +1,6 @@
 package javaproject_ageOfAntHill;
 
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
@@ -41,6 +42,8 @@ public class Window extends JFrame {
 			for (int numCell = 0; numCell < Map.NBLINE * Map.NBCOLUMN; numCell++) {
 				LabelCustom cell = new LabelCustom(Map.NBLINE, Map.NBCOLUMN);
 				cell.addMouseListener((MouseListener) this.interfHM);
+				cell.addKeyListener((KeyListener) this.interfHM);
+				cell.setFocusable(true);
 				panGame.add(cell);
 				this.addCellTab(numCell, tab, cell);
 				panGame.setComponentZOrder(cell, numCell);

@@ -279,6 +279,12 @@ public class Map implements InterfaceMap {
 		}
 	}
 	
+	/**
+	 * if there is any enemy next to the unit, attack (range = 1)
+	 */
+	public void checkAttackOrNot() {
+		
+	}
 	
 	/*public void generateFood(Displaying disp){
 		/**
@@ -347,7 +353,7 @@ public class Map implements InterfaceMap {
 	}
 
 	/**
-	 * displays a visual representaion of the map (as a grid)
+	 * displays a visual representation of the map (as a grid)
 	 */
 	@Override
 	public String mapToString() {
