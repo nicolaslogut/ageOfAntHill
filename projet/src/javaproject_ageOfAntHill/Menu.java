@@ -65,13 +65,12 @@ public class Menu extends JFrame implements ActionListener {
 		this.split1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		this.split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		
-	/**
-	 * method to build the menu	
-	 */
 		init();
 	}
 	
-	
+	/**
+	 * method to build the menu	
+	 */
 	public void init()
 	{
 	/**
@@ -119,12 +118,6 @@ public class Menu extends JFrame implements ActionListener {
 	
 	this.setVisible(true);
 	}
-	
-	
-	
-	
-	
-	
 	
 	/**
 	 * event on the button ( here we have 3 button)

@@ -16,7 +16,7 @@ public class Snake extends Unit {
 	/**
 	 * Just like a serial name, it's used to identify a Snake's type.
 	 */
-	private final static String SNAKE_TYPE = "LIZ";
+	private final static String SNAKE_TYPE = "SNA";
 
 	/**
 	 * That creates a Snake with its default stats.

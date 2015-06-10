@@ -49,5 +49,10 @@ public interface InterfaceMap {
 	 * @return CellState
 	 */
 	public Cell getCell(Position pos);
+	/**
+	 * returns a grid of cells representing the map
+	 * @return
+	 */
+	public Cell[][] getGrid();
 
 }

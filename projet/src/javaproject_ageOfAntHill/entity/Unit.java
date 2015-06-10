@@ -1,5 +1,6 @@
 package javaproject_ageOfAntHill.entity;
 
+import javaproject_ageOfAntHill.Window;
 import javaproject_ageOfAntHill.map.CellState;
 import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Position;
@@ -53,22 +54,10 @@ public abstract class Unit extends Entity {
 	 * The units armor : It reduce the damages taken.
 	 */
 	private int armor;
-
 	/**
 	 * The damages amount that the unit can inflict.
 	 */
 	private int damages;
-
-//	/**
-//	 * The maximum health points for the unit.
-//	 */
-//	private int maxHealthPoints;
-//
-//	/**
-//	 * The current health points
-//	 */
-//	private int healthPoints;
-
 	/**
 	 * The unit movement range
 	 */
@@ -83,35 +72,24 @@ public abstract class Unit extends Entity {
 	 * new unit
 	 */
 	public Unit() {
-
 	}
 
 	/**
-	 * this method allow you to get the position of a unit TOUT DOUX :3
+	 * (the tests are done before calling this function)
+	 * moves the unit from a defined position to another defined position
 	 */
-	public Position getUnit() {
-		// TODO later
-		return null;
-	}
-
-	/**
-	 * return true if the unit moved ; false if it was impossible
-	 */
-	public boolean moveUnit(Position finalPos, Position startingPos,
-			InterfaceMap map) { // movement speed ????
-		if (moveAvailable(finalPos, map)) {
-			map.getCell(finalPos).setEntity(this);
-			map.getCell(startingPos).setEntity(null);
-			return true;
-		}
-		return false;
+	public void moveUnit(Position finalPos, Position startingPos, InterfaceMap map, Window wind) {
+		map.getCell(finalPos).setEntity(this);
+		map.getCell(startingPos).setEntity(null);
+		wind.getLabelTab(finalPos.getX(), finalPos.getY()).addEntityMap(this);
+		wind.getLabelTab(startingPos.getX(), startingPos.getY()).rmvEntityMap();
 	}
 
 	/**
 	 * checks if the given Position is in the Map, and if there is no Entity at
 	 * this Position returns true if it's 'OK' to move ; false otherwise
 	 */
-	private boolean moveAvailable(Position pos, InterfaceMap map) {
+	public boolean moveAvailable(Position pos, InterfaceMap map) {
 		if (map.notOutOfTheMap(pos))
 			if (map.getCell(pos).getEntity() == null)
 				if (map.getCell(pos).getCellState() != CellState.TREE_SQUARE
@@ -120,34 +98,59 @@ public abstract class Unit extends Entity {
 		return false;
 	}
 	
+	/**
+	 * returns the attack damages of this unit
+	 * @return
+	 */
 	public int getDamages() {
 		return damages;
 	}
-
+	/**
+	 * sets the attack damages of this unit
+	 * @param damages
+	 */
 	public void setDamages(int damages) {
 		this.damages = damages;
 	}
-
+	/**
+	 * returns the armor of this unit
+	 * @return
+	 */
 	public int getArmor() {
 		return armor;
 	}
-
+	/**
+	 * sets the armor of this unit
+	 * @param armor
+	 */
 	public void setArmor(int armor) {
 		this.armor = armor;
 	}
-
+	/**
+	 * returns the movement speed of this unit
+	 * @return
+	 */
 	public int getDeplacements() {
 		return deplacements;
 	}
-
+	/**
+	 * sets the movement speed of this unit
+	 * @param deplacements
+	 */
 	public void setDeplacements(int deplacements) {
 		this.deplacements = deplacements;
 	}
-
+	/**
+	 * returns the range of this unit
+	 * @return
+	 */
 	public int getRange() {
 		return range;
 	}
-
+	/**
+	 * sets the range of this unit
+	 * @param range
+	 */
 	public void setRange(int range) {
 		this.range = range;
 	}

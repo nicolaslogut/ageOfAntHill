@@ -26,8 +26,12 @@ import java.awt.BorderLayout;
  * @version 20150607
  */
 public class Displaying implements Runnable, ActionListener {
-	Game game;
 	SaveManager saveManager;
+	/**
+	 * represents the 'current' game
+	 * its value is null if there is no current game
+	 */
+	private Game game;
 	/**
 	 * Default value of the window's width.
 	 */
@@ -275,6 +279,14 @@ public class Displaying implements Runnable, ActionListener {
 	 */
 	public JPanelLeft getJpanelLeft(){
 		return this.jpanelLeft;
+	}
+	
+	/**
+	 * returns the current game
+	 * @return
+	 */
+	public Game getGame(){
+		return this.game;
 	}
 
 }

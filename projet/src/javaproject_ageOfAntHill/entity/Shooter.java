@@ -1,7 +1,7 @@
 package javaproject_ageOfAntHill.entity;
 
 /**
- * Represents a Shooter (a special unit with long range attacks).
+ * Represents a Shooter (a special unit which can fly).
  * 
  * @author Maxime Augst, Joris Chalumeau, Nicolas Logut, Mathieu Berthet, Adrian
  *         Amaglio, Adrien Arsac

@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javaproject_ageOfAntHill.entity.Entity;
 import javaproject_ageOfAntHill.entity.Unit;
 import javaproject_ageOfAntHill.entity.buildable.Building;
+import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Map;
 import javaproject_ageOfAntHill.map.Position;
 
@@ -37,7 +38,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 */
 	private LabelCustom lab;
 	/**
-	 * used to store the current selected units
+	 * used to store the current selected unit(s)
 	 */
 	private LinkedList<Unit> units;
 	/**
@@ -49,7 +50,11 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 */
 	private Building building;
 	/**
-	 * used to store the current position of selected units
+	 * corresponds to the current position of the selected building
+	 */
+	private Position buildingPos;
+	/**
+	 * used to store the current position of selected unit(s)
 	 */
 	private LinkedList<Position> unitsPos;
 	/**
@@ -64,7 +69,10 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		this.units = new LinkedList<Unit>();
 		this.unitsPos = new LinkedList<Position>();
 		this.building = null;
+		this.buildingPos = null;
 		this.wind = null;
+		this.lab = null;
+		this.event = null;
 		clickState=0;
 	}
 	
@@ -92,7 +100,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		
 		this.addUnits(numLabel1/Map.NBLINE, numLabel2/Map.NBLINE, numLabel1%Map.NBCOLUMN, numLabel2%Map.NBCOLUMN, e, team);
 		
-		this.addPictureSelection();
+		addPictureSelection();
 		
 	}
 	
@@ -104,7 +112,7 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * @param numCol2
 	 * @param e
 	 */
-	private void addUnits(int numLine1, int numLine2, int numCol1, int numCol2, MouseEvent e, int team){		
+	private void addUnits(int numLine1, int numLine2, int numCol1, int numCol2, MouseEvent e, int team){
 		int lineNumber;
 		int colNumber;
 			// gets the window of the game through this component's event
@@ -168,57 +176,73 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	}
 	
 	/**
-	 * changes picture selection unit
+	 * changes picture selection unit/building
 	 */
 	private void addPictureSelection() {
-		for (int numUnit= 0; numUnit < this.units.size(); numUnit++){
-			int line = this.unitsPos.get(numUnit).getX();
-			int col = this.unitsPos.get(numUnit).getY();
-			switch (this.units.get(numUnit).getType()){
-			case "FLY":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/fly/flySelect.png"));
-				break;
-			case "GUARD":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardianSelect.png"));
-				break;
-			case "LIZ":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/lizard/lizardSelect.png"));
-				break;
-			case "QUEEN":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/queen/queenSelect.png"));
-				break;
-			case "SCAR":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scarab/scarabSelect.png"));
-				break;
-			case "SCOUT":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scout/scoutSelect.png"));
-				break;
-			case "SHOOT":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/shooter/shooterSelect.png"));
-				break;
-			case "WARR":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/warrior/warriorSelect.png"));
-				break;
-			case "WORK":
-				wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/worker/workerSelect.png"));
-				break;
+		if (this.units != null){
+			for (int numUnit= 0; numUnit < this.units.size(); numUnit++){
+				int line = this.unitsPos.get(numUnit).getX();
+				int col = this.unitsPos.get(numUnit).getY();
+				switch (this.units.get(numUnit).getType()){
+				case "FLY":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/fly/flySelect.png"));
+					break;
+				case "GUARD":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardianSelect.png"));
+					break;
+				case "SNA":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/snake/snakeSelect.png"));
+					break;
+				case "QUEEN":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/queen/queenSelect.png"));
+					break;
+				case "SCAR":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scarab/scarabSelect.png"));
+					break;
+				case "SCOUT":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/scout/scoutSelect.png"));
+					break;
+				case "SHOOT":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/shooter/shooterSelect.png"));
+					break;
+				case "WARR":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/warrior/warriorSelect.png"));
+					break;
+				case "WORK":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/worker/workerSelect.png"));
+					break;
+				default:
+				}
+			}
+				// displays the unit's hp in case only one unit was selected
+			if (this.units.size()==1){
+				wind.getDisp().getJpanelLeft().selectionEntity(this.units.get(0));
+				wind.getDisp().getJpanelLeft().setHp(this.units.get(0).getHealthPoints(), this.units.get(0).getMaxHealthPoints());
+				wind.getDisp().getJpanelLeft().setArmor(this.units.get(0).getArmor());
+			}
+			else
+				wind.getDisp().getJpanelLeft().selectionEntity(this.units.get(0).getTeam());
+		}
+		else if (this.building != null){
+			switch (this.building.getType()){
 			case "AHILL":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
+				wind.getLabelTab(this.buildingPos.getX(), this.buildingPos.getY()).getJlentity().setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
 				break;
 			case "HOUSE":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+				wind.getLabelTab(this.buildingPos.getX(), this.buildingPos.getY()).getJlentity().setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
 				break;
-			case "WALL":
-				//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
+			case "POSTGUARD":
+				wind.getLabelTab(this.buildingPos.getX(), this.buildingPos.getY()).getJlentity().setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
 				break;
 			default:
 			}
-			wind.getDisp().getJpanelLeft().selectionEntity(this.units.get(numUnit));
+			wind.getDisp().getJpanelLeft().setHp(this.building.getHealthPoints(), this.building.getMaxHealthPoints());
+			wind.getDisp().getJpanelLeft().setArmor(0); // buildings have no armor
 		}
 	}
 	
 	/**
-	 * changes picture unselection unit
+	 * changes picture unselection unit/building
 	 */
 	private void addPictureUnselection() {
 		if (this.units != null){
@@ -232,8 +256,8 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				case "GUARD":
 					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
 					break;
-				case "LIZ":
-					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
+				case "SNA":
+					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/snake/snake.png"));
 					break;
 				case "QUEEN":
 					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/queen/queen.png"));
@@ -253,37 +277,107 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				case "WORK":
 					wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/mobs/worker/worker.png"));
 					break;
-				case "AHILL":
-					//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
-					break;
-				case "HOUSE":
-					//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
-					break;
-				case "WALL":
-					//wind.getLabelTab(line, col).getJlentity().setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
-					break;
 				default:
 				}
 			}
 		}
-		this.event=null;
+		else if (this.building != null){
+			switch (this.building.getType()){
+			case "AHILL":
+				wind.getLabelTab(this.buildingPos.getX(), this.buildingPos.getY()).getJlentity().setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
+				break;
+			case "HOUSE":
+				wind.getLabelTab(this.buildingPos.getX(), this.buildingPos.getY()).getJlentity().setIcon(new ImageIcon("./img/buildings/HOUSE_BUILDING.png"));
+				break;
+			case "POSTGUARD":
+				wind.getLabelTab(this.buildingPos.getX(), this.buildingPos.getY()).getJlentity().setIcon(new ImageIcon("./img/buildings/POSTGUARD_BUILDING.png"));
+				break;
+			default:
+			}
+		}
+		wind.getDisp().getJpanelLeft().setHp(0, 0);
+		wind.getDisp().getJpanelLeft().setArmor(0);
 	}
 	
 	/**
-	 * Allows the player to move any unit.
+	 * Allows the player to move any of his unit.
 	 */
 	public void moveUnit(LabelCustom label) {
-		//Position destPos = label.get;
-		//unit.moveUnit(destPos, startingPos, map);
-		
+			// checks if the unit is owned by the player (team 1)
+		if (this.wind.getLabelTab(this.unitsPos.get(0).getX(), this.unitsPos.get(0).getY()).getLabEntity().getTeam()==1){
+			int line=0;
+			int col=0;
+			for (int numLabel = 0 ; numLabel < Map.NBCOLUMN*Map.NBLINE ; numLabel++){
+				if (label==wind.getLabelTab(numLabel/Map.NBLINE, numLabel%Map.NBCOLUMN)){
+					line = numLabel/Map.NBLINE;
+					col = numLabel%Map.NBCOLUMN;
+				}
+			}
+			Position destPos = new Position(line, col);
+				// for every selected unit
+			for (int numUnit = 0 ; numUnit < this.units.size() ; numUnit++) {
+				
+				InterfaceMap map = wind.getDisp().getGame().getMap();
+				
+				if (checkMoveSpeed(this.units.get(numUnit), this.unitsPos.get(numUnit), destPos)){
+				
+						//if there is no water/tree on the destination position and if there is no entity
+					if (!(this.units.get(numUnit).moveAvailable(destPos, map))){
+						Position newPos=null;
+						int numPos = 0;
+						newPos = getNewPosition(destPos, numPos, map);
+						numPos++;
+						while (numPos < 24 && !(this.units.get(numUnit).moveAvailable(newPos, map))){
+							newPos = getNewPosition(destPos, numPos, map);
+							numPos++;
+						}
+						if (this.units.get(numUnit).moveAvailable(newPos, map)){
+							this.units.get(numUnit).moveUnit(newPos, this.unitsPos.get(numUnit), map, wind);
+							clickState = 3;
+						}
+					}
+					else{
+						this.units.get(numUnit).moveUnit(destPos, this.unitsPos.get(numUnit), map, wind);
+						clickState = 3;
+					}
+				}
+			}
+		}
 	}
 	
+	/**
+	 * checks the unit's movement speed, the unit position and the destination's position
+	 * returns true if the move should be possible ; false otherwise
+	 * @param unit
+	 * @return
+	 */
+	private boolean checkMoveSpeed(Unit unit, Position posUnit, Position posDest) {
+		if (Math.abs(posDest.getX()-posUnit.getX()) + Math.abs(posDest.getY()-posUnit.getY()) <= unit.getDeplacements())
+			return true;
+		return false;
+	}
+
 	/**
 	 * Allow the player to select one building
 	 * @param building
+	 * @param label 
 	 */
 	@Override
-	public void selectBuilding(Building building) {
+	public void selectBuilding(LabelCustom label, MouseEvent e) {
+		this.event = e;
+		this.building = (Building) label.getLabEntity();
+		int line=0;
+		int col=0;
+		for (int numLine = 0 ; numLine < Map.NBLINE ; numLine++){
+			for (int numCol = 0 ; numCol < Map.NBCOLUMN ; numCol++){
+				if (label == wind.getLabelTab(numLine, numCol)){
+					line = numLine;
+					col = numCol;
+				}
+			}
+		}
+		this.buildingPos = new Position(line, col);
+		addPictureSelection();
 	}
 	
 	/**
@@ -300,22 +394,18 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		this.wind = (Window) e.getComponent().getParent().getParent().getParent().getParent().getParent().getParent();
+		
 		LabelCustom label = (LabelCustom) e.getComponent();
 		
 		if (label.getLabEntity()==null && e.getButton()!=3){
 				// looses all the selected entities and then select the cell
-			this.addPictureUnselection();
-			this.units=null;
-			this.building=null;
-			this.unitsPos=null;
-			this.lab=null;
-			clickState=0;
+			reinitializeSelection();
 			return;
 		}
 			// different action depending on which mouse button was pressed
 		switch (e.getButton()){
 		case 3:		// move - attack         RIGHT CLICK
-			if (clickState !=2 || this.units == null || this.units.get(0).getTeam() != 1){
+			if (clickState < 2 || this.units == null || this.units.get(0).getTeam() != 1){
 				// no ally unit selected (=> unselect everything)
 				this.reinitializeSelection();
 				break;
@@ -329,6 +419,12 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 		case 2:		//						LEFT CLICK - MIDDLE CLICK
 			switch (clickState){
 			case 0:
+				if (label.getLabEntity().getMaxHealthPoints() > 40) { // building
+					this.reinitializeSelection();
+					selectBuilding(label, e);
+					break;
+				}
+							// unit
 				this.lab = (LabelCustom) e.getComponent();
 				clickState=1;
 				break;
@@ -338,11 +434,9 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 				this.selectUnits(this.lab, label, e);
 				clickState=2;
 				break;
-			case 2:
+			case 2: default: 	// looses all the selected units
 				this.reinitializeSelection();
 				break;
-			default:	// looses all the selected entities and then select the cell
-				this.reinitializeSelection();
 			}
 			break;
 			
@@ -355,13 +449,125 @@ public class Interface implements InterfaceHM, MouseListener, ActionListener {
 	 * except clickState wich is taking the value 0 (=nothing selected)
 	 */
 	public void reinitializeSelection(){
-		if (this.event != null)
+		if (this.event != null && clickState != 3)
 			addPictureUnselection();
 		this.units = null;
 		this.unitsPos = null;
 		this.building = null;
+		this.buildingPos = null;
 		this.lab = null;
 		this.clickState = 0;
+		this.event = null;
+	}
+	
+	/**
+	 * returns a new position within 2cells around the initial position
+	 * @param pos
+	 * @param numPos
+	 * @param map
+	 * @return
+	 */
+	public Position getNewPosition(Position pos, int numPos, InterfaceMap map){
+		Position newPos = null;
+		switch (numPos){
+		case 0:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-1, pos.getY()-1)))){
+				newPos = new Position(pos.getX()-1, pos.getY()-1);
+			}
+		case 1:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-1, pos.getY())))){
+				newPos = new Position(pos.getX()-1, pos.getY());
+			}
+		case 2:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-1, pos.getY()+1)))){
+				newPos = new Position(pos.getX()-1, pos.getY()+1);
+			}
+		case 3:
+			if (!(map.notOutOfTheMap(new Position(pos.getX(), pos.getY()+1)))){
+				newPos = new Position(pos.getX(), pos.getY()+1);
+			}
+		case 4:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+1, pos.getY()+1)))){
+				newPos = new Position(pos.getX()+1, pos.getY()+1);
+			}
+		case 5:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+1, pos.getY())))){
+				newPos = new Position(pos.getX()+1, pos.getY());
+			}
+		case 6:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+1, pos.getY()-1)))){
+				newPos = new Position(pos.getX()+1, pos.getY()-1);
+			}
+		case 7:
+			if (!(map.notOutOfTheMap(new Position(pos.getX(), pos.getY()-1)))){
+				newPos = new Position(pos.getX(), pos.getY()-1);
+			}
+		case 8:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-2, pos.getY()-1)))){
+				newPos = new Position(pos.getX()-2, pos.getY()-1);
+			}
+		case 9:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-2, pos.getY())))){
+				newPos = new Position(pos.getX()-2, pos.getY());
+			}
+		case 10:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-2, pos.getY()+1)))){
+				newPos = new Position(pos.getX()-2, pos.getY()+1);
+			}
+		case 11:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-2, pos.getY()+2)))){
+				newPos = new Position(pos.getX()-2, pos.getY()+2);
+			}
+		case 12:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-1, pos.getY()+2)))){
+				newPos = new Position(pos.getX()-1, pos.getY()+2);
+			}
+		case 13:
+			if (!(map.notOutOfTheMap(new Position(pos.getX(), pos.getY()+2)))){
+				newPos = new Position(pos.getX(), pos.getY()+2);
+			}
+		case 14:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+1, pos.getY()+2)))){
+				newPos = new Position(pos.getX()+1, pos.getY()+2);
+			}
+		case 15:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+2, pos.getY()+2)))){
+				newPos = new Position(pos.getX()+2, pos.getY()+2);
+			}
+		case 16:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+2, pos.getY()+1)))){
+				newPos = new Position(pos.getX()+2, pos.getY()+1);
+			}
+		case 17:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+2, pos.getY())))){
+				newPos = new Position(pos.getX()+2, pos.getY());
+			}
+		case 18:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+2, pos.getY()-1)))){
+				newPos = new Position(pos.getX()+2, pos.getY()-1);
+			}
+		case 19:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+2, pos.getY()-2)))){
+				newPos = new Position(pos.getX()+2, pos.getY()-2);
+			}
+		case 20:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()+1, pos.getY()-2)))){
+				newPos = new Position(pos.getX()+1, pos.getY()-2);
+			}
+		case 21:
+			if (!(map.notOutOfTheMap(new Position(pos.getX(), pos.getY()-2)))){
+				newPos = new Position(pos.getX(), pos.getY()-2);
+			}
+		case 22:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-1, pos.getY()-2)))){
+				newPos = new Position(pos.getX()-1, pos.getY()-2);
+			}
+		case 23:
+			if (!(map.notOutOfTheMap(new Position(pos.getX()-2, pos.getY()-2)))){
+				newPos = new Position(pos.getX()-2, pos.getY()-2);
+			}
+		}
+		return newPos;
 	}
 	
 	// these following listeners probably won't be used

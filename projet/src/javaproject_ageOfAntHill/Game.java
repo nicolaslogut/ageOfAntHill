@@ -3,7 +3,6 @@ package javaproject_ageOfAntHill;
 import javaproject_ageOfAntHill.map.InterfaceMap;
 import javaproject_ageOfAntHill.map.Map;
 
-// I thought it was starting an instance of the game ?
 /**
  * This class allows the user to launch the game.
  * 
@@ -17,7 +16,7 @@ public class Game {
 	/**
 	 * Map generation.
 	 */
-	private Map theMap;
+	private InterfaceMap theMap;
 	/**
 	 * interface etc...
 	 */
@@ -49,11 +48,11 @@ public class Game {
 	 * Number of team Duration Difficulty ?
 	 */
 	public void createGame(Displaying disp) {
-		InterfaceMap map = new Map();
-		map.generateSandWater(disp);
-		map.generateTree(disp);
-		map.generateStartingUnits(disp);
-		map.generateIAUnits(disp);
+		this.theMap = new Map();
+		theMap.generateSandWater(disp);
+		theMap.generateTree(disp);
+		theMap.generateStartingUnits(disp);
+		theMap.generateIAUnits(disp);
 	}
 
 	/**
@@ -81,8 +80,7 @@ public class Game {
 	public void loadGame() {
 	}
 
-	public Map getMap() {
-		
+	public InterfaceMap getMap() {
 		return this.theMap;
 	}
 }

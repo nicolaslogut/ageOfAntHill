@@ -20,7 +20,7 @@ public interface InterfaceHM {
 
 	public void selectUnits(LabelCustom labelUnit1, LabelCustom labelUnit2, MouseEvent e);
 	
-	public void selectBuilding(Building building);
+	public void selectBuilding(LabelCustom label, MouseEvent e);
 
 	public void moveUnit(LabelCustom label);
 

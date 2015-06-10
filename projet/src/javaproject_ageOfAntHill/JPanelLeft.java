@@ -1,10 +1,7 @@
 package javaproject_ageOfAntHill;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javaproject_ageOfAntHill.entity.Entity;
@@ -13,7 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.OverlayLayout;
 
 @SuppressWarnings("serial")
@@ -38,7 +34,7 @@ public class JPanelLeft extends JPanel {
 	private JButton building;
 	
 	/**
-	 * Set the type of the food and the dirt values
+	 * Set the type of the food and the dirt values and unit informations
 	 */
 	private int foodValueInt;
 	private int dirtValueInt;
@@ -232,7 +228,7 @@ public class JPanelLeft extends JPanel {
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Guardian");
 			break;
 		case "LIZ":
-			selection.setIcon(new ImageIcon("./img/mobs/lizard/lizardDisplay.png"));
+			selection.setIcon(new ImageIcon("./img/mobs/snake/snakeDisplay.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Snake");
 			break;
 		case "QUEEN":
@@ -259,12 +255,6 @@ public class JPanelLeft extends JPanel {
 			selection.setIcon(new ImageIcon("./img/mobs/worker/workerDisplay.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Worker");
 			break;
-		case "ALLIES":
-			selection.setIcon(new ImageIcon("./img/mobs/alliesDisplay"));
-			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Allies");
-		case "ENEMIES":
-			selection.setIcon(new ImageIcon("./img/mobs/enemiesDisplay"));
-			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Enemies");
 		case "AHILL":
 			selection.setIcon(new ImageIcon("./img/buildings/ANTHILL_BUILDING.png"));
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Anthill");
@@ -278,6 +268,19 @@ public class JPanelLeft extends JPanel {
 			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>PostGuard");
 			break;
 		default:
+		}
+	}
+	
+	public void selectionEntity(int team){
+		switch (team){
+		case 1:
+			selection.setIcon(new ImageIcon("./img/mobs/alliesDisplay"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Allies");
+			break;
+		case 2:
+			selection.setIcon(new ImageIcon("./img/mobs/enemiesDisplay"));
+			selectionType.setText("<html><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Enemies");
+			break;
 		}
 	}
 }

@@ -4,7 +4,6 @@ import java.util.Random;
 
 import javaproject_ageOfAntHill.Displaying;
 import javaproject_ageOfAntHill.LabelCustom;
-import javaproject_ageOfAntHill.Ressource;
 import javaproject_ageOfAntHill.entity.Fly;
 import javaproject_ageOfAntHill.entity.Snake;
 import javaproject_ageOfAntHill.entity.Queen;

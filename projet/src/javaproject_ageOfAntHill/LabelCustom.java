@@ -69,8 +69,8 @@ public class LabelCustom extends JPanel {
 		case "GUARD":
 			jlentity.setIcon(new ImageIcon("./img/mobs/guardian/guardian.png"));
 			break;
-		case "LIZ":
-			jlentity.setIcon(new ImageIcon("./img/mobs/lizard/lizard.png"));
+		case "SNA":
+			jlentity.setIcon(new ImageIcon("./img/mobs/snake/snake.png"));
 			break;
 		case "QUEEN":
 			jlentity.setIcon(new ImageIcon("./img/mobs/queen/queen.png"));
@@ -103,6 +103,10 @@ public class LabelCustom extends JPanel {
 		}
 	}
 	
+	public void rmvEntityMap(){
+		this.entity=null;
+		jlentity.setIcon(null);
+	}
 	
 	public void switchGroundPicture(CellState color) {
 		switch (color) {
